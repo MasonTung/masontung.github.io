@@ -54,4 +54,4 @@ https://x.com/Minatooo_Kira
 ## Steam
 https://steamcommunity.com/id/minatoookira/
 ## Mail
-liufsh2024@shanghaitech.edu.cn
+masondong418@gmail.com
