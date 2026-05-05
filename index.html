@@ -49,6 +49,7 @@
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+          <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="btn btn-ghost">Visit MatchBiotech</a>
         </div>
       </div>
     </div>
@@ -206,10 +207,6 @@
   <section class="section" id="contact">
     <canvas class="section-canvas" data-field="ripples"></canvas>
     <div class="section-inner section-center fade-in">
-      <span class="contact-status">
-        <span class="contact-status-dot"></span>
-        Available for collaboration
-      </span>
       <h2 class="section-title">Contact</h2>
       <p class="contact-desc">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</p>
       <div class="contact-icons">
@@ -832,18 +829,21 @@
               continue;
             }
             const progress = age / rp.life;
+            // Smooth fade out over the ripple lifetime
+            const fade = Math.pow(Math.max(0, 1 - progress), 1.8);
+
             // Three concentric expanding rings, staggered — radar pulse feel
             for (let ring = 0; ring < 3; ring++) {
               const rp2 = (progress + ring * 0.18) % 1;
               const r = rp2 * rp.maxR;
-              const a = Math.sin(rp2 * Math.PI) * (light ? 0.16 : 0.20);
+              const a = (1 - rp2) * fade * (light ? 0.16 : 0.20);
               ctx.strokeStyle = `rgba(${core}, ${a})`;
               ctx.beginPath();
               ctx.arc(rp.x, rp.y, r, 0, Math.PI * 2);
               ctx.stroke();
             }
-            // Origin dot fades over the source's life
-            const dotA = (1 - progress) * (light ? 0.45 : 0.55);
+            // Origin dot fades smoothly via fade multiplier
+            const dotA = fade * (light ? 0.45 : 0.55);
             ctx.fillStyle = `rgba(${core}, ${dotA})`;
             ctx.beginPath();
             ctx.arc(rp.x, rp.y, 1.6, 0, Math.PI * 2);
