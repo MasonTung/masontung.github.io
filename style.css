@@ -106,14 +106,16 @@ a {
 }
 
 .scroll-progress {
-  position: absolute;
-  bottom: -1px;
+  position: fixed;
+  top: 0;
   left: 0;
   height: 2px;
   width: 0%;
   background: var(--accent-bright);
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
+  z-index: 101;  /* above the nav (z-index 100) so it stays visible */
+  pointer-events: none;
 }
 
 /* Opal-style nav: everything left-cluster aligned in the top-left of the page,
@@ -1636,12 +1638,12 @@ a {
 /* Tablet & below: collapse the grouped center nav into a hamburger drawer */
 @media (max-width: 980px) {
   .nav-inner {
-    grid-template-columns: auto auto;
     min-height: 64px;
     padding: 0.85rem 1.75rem;
     align-items: center;
+    gap: 1rem;
   }
-  .nav-logo { padding-top: 0; }
+  .nav-logo { padding-top: 0; font-size: 1.35rem; }
   .nav-actions { padding-top: 0; }
   .nav-groups {
     position: fixed;
