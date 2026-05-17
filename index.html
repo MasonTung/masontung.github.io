@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,28 +7,28 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // Bootstrap theme before body parses to avoid a wrong-theme flash
+    (function () {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    })();
+  </script>
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-logo">Mason Tung</span>
+      <span class="nav-logo">Mason Dong</span>
       <ul class="nav-links">
-        <li><a href="#about"><span lang="en">About</span><span lang="zh">关于</span></a></li>
-        <li><a href="#experience"><span lang="en">Experience</span><span lang="zh">履历</span></a></li>
-        <li><a href="#work"><span lang="en">Work</span><span lang="zh">项目</span></a></li>
-        <li><a href="#gallery"><span lang="en">Gallery</span><span lang="zh">影像</span></a></li>
-        <li><a href="#contact"><span lang="en">Contact</span><span lang="zh">联系</span></a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="nav-controls">
-      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language" title="Switch language / 切换语言">
-        <span class="lang-opt" data-lang="en">EN</span>
-        <span class="lang-sep">/</span>
-        <span class="lang-opt" data-lang="zh">中</span>
-      </button>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <!-- Sun: shown in dark mode, click → go light -->
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -42,7 +42,6 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
-      </div>
     </div>
     <div class="scroll-progress" id="scroll-progress"></div>
   </nav>
@@ -56,21 +55,21 @@
              width="1254" height="1254" decoding="async" fetchpriority="high" />
       </div>
       <div class="hero-text">
-        <p class="hero-greeting"><span lang="en">Hi, I'm</span><span lang="zh">你好，我是</span></p>
-        <h1 class="hero-name" data-text-en="Runlin DONG" data-text-zh="董润霖" data-text="Runlin DONG">Runlin DONG</h1>
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name" data-text="Runlin DONG">Runlin DONG</h1>
         <p class="hero-tagline">
-          <span lang="en">All you need is salt and pepper.</span>
-          <span lang="zh">盐与胡椒，足矣。</span>
+          Love is the key.
+          
         </p>
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary">
-            <span lang="en">View My Work</span><span lang="zh">查看作品</span>
+            View My Work
           </a>
           <a href="#contact" class="btn btn-ghost">
-            <span lang="en">Get In Touch</span><span lang="zh">联系我</span>
+            Get In Touch
           </a>
           <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="btn btn-ghost">
-            <span lang="en">Visit MatchBiotech</span><span lang="zh">访问 MatchBiotech</span>
+            Visit MatchBiotech
           </a>
         </div>
       </div>
@@ -86,35 +85,33 @@
   <section class="section" id="about">
     <canvas class="section-canvas" data-field="dna"></canvas>
     <div class="section-inner">
-      <h2 class="section-title"><span lang="en">About</span><span lang="zh">关于</span></h2>
+      <h2 class="section-title">About</h2>
       <div class="about-grid">
         <div class="about-text fade-in">
-          <p lang="en">Undergraduate at ShanghaiTech University, working at the intersection of synthetic biology and computational design. I build things that bridge wet lab and dry lab — from engineering proteins from scratch to writing code that makes sense of biological data.</p>
-          <p lang="zh">上海科技大学本科生，专注于合成生物学与计算设计的交叉领域。我喜欢做连接湿实验与干实验的事——从从头设计蛋白质，到用代码把生物数据讲清楚。</p>
-          <p lang="en">iGEM 2025 Gold Medalist and iGEM 2026 Advisor. Co-founder of MakeSense Society and Match Biotech. Currently serving as Technical Lead for SensUs 2026 MakeSense.</p>
-          <p lang="zh">iGEM 2025 金牌选手，iGEM 2026 顾问。MakeSense Society 与 Match Biotech 联合创始人。现任 SensUs 2026 MakeSense 团队技术负责人。</p>
-        </div>
+          <p>Undergraduate at ShanghaiTech University, working at the intersection of synthetic biology and computational design. I build things that bridge wet lab and dry lab — from engineering proteins from scratch to writing code that makes sense of biological data.</p>
+          <p>iGEM 2025 Gold Medalist and iGEM 2026 Advisor. Co-founder of MakeSense Society and Match Biotech. Currently serving as Technical Lead for SensUs 2026 MakeSense.</p>
+          </div>
         <div class="about-tags fade-in" style="transition-delay:0.1s">
           <div class="tag-group">
-            <h3 class="tag-group-title"><span lang="en">Skills</span><span lang="zh">技能</span></h3>
+            <h3 class="tag-group-title">Skills</h3>
             <div class="tags">
-              <span class="tag" data-search="Machine Learning"><span lang="en">Machine Learning</span><span lang="zh">机器学习</span></span>
-              <span class="tag" data-search="Wet Lab"><span lang="en">Wet Lab</span><span lang="zh">湿实验</span></span>
-              <span class="tag" data-search="Molecular Cloning"><span lang="en">Molecular Cloning</span><span lang="zh">分子克隆</span></span>
-              <span class="tag" data-search="Protein Purification"><span lang="en">Protein Purification</span><span lang="zh">蛋白纯化</span></span>
-              <span class="tag" data-search="Bioinformatics"><span lang="en">Bioinformatics</span><span lang="zh">生物信息学</span></span>
-              <span class="tag" data-search="Protein Design"><span lang="en">Protein Design</span><span lang="zh">蛋白设计</span></span>
-              <span class="tag" data-search="Synthetic Biology"><span lang="en">Synthetic Biology</span><span lang="zh">合成生物学</span></span>
-              <span class="tag" data-search="Frontend Development"><span lang="en">Frontend Dev</span><span lang="zh">前端开发</span></span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Wet Lab</span>
+              <span class="tag">Molecular Cloning</span>
+              <span class="tag">Protein Purification</span>
+              <span class="tag">Bioinformatics</span>
+              <span class="tag">Protein Design</span>
+              <span class="tag">Synthetic Biology</span>
+              <span class="tag">Frontend Dev</span>
             </div>
           </div>
           <div class="tag-group">
-            <h3 class="tag-group-title"><span lang="en">Interests</span><span lang="zh">兴趣</span></h3>
+            <h3 class="tag-group-title">Interests</h3>
             <div class="tags">
-              <span class="tag" data-search="Guitar"><span lang="en">Guitar</span><span lang="zh">吉他</span></span>
-              <span class="tag" data-search="Protein De Novo Design"><span lang="en">Protein De Novo Design</span><span lang="zh">蛋白从头设计</span></span>
-              <span class="tag" data-search="Arknights"><span lang="en">Arknights</span><span lang="zh">明日方舟</span></span>
-              <span class="tag" data-search="Project Moon"><span lang="en">Project Moon</span><span lang="zh">Project Moon</span></span>
+              <span class="tag">Guitar</span>
+              <span class="tag">Protein De Novo Design</span>
+              <span class="tag">Arknights</span>
+              <span class="tag">Project Moon</span>
             </div>
           </div>
         </div>
@@ -125,85 +122,102 @@
   <!-- Experience -->
   <section class="section" id="experience">
     <div class="section-inner">
-      <h2 class="section-title"><span lang="en">Experience</span><span lang="zh">履历</span></h2>
+      <h2 class="section-title">Experience</h2>
 
       <!-- Roles timeline -->
       <div class="exp-roles">
         <article class="exp-item fade-in">
           <div class="exp-meta">
-            <span class="exp-date"><span lang="en">2025.09 — Present</span><span lang="zh">2025.09 — 至今</span></span>
-            <span class="exp-role"><span lang="en">Founder &amp; CEO</span><span lang="zh">创始人 &amp; CEO</span></span>
+            <span class="exp-date">2025.09 — Present</span>
+            <span class="exp-role">Founder &amp; CEO</span>
           </div>
           <h3 class="exp-org">Match Biotech</h3>
           <p class="exp-where">
-            <span lang="en">Biotech startup · Shanghai</span>
-            <span lang="zh">生物技术初创 · 上海</span>
+            Biotech startup · Shanghai
+            
           </p>
-          <p class="exp-desc" lang="en">Leading a startup focused on point-of-care molecular sensing for Parkinson's disease. Drove the strategic pivot after the team's SensUs world championship; own R&amp;D from clinical research to industrial design, and build partnerships across research, clinical, and commercial networks. Prototype targeted for April 2026, with animal trials in preparation.</p>
-          <p class="exp-desc" lang="zh">创办专注于帕金森病即时分子传感的初创公司。在团队取得 SensUs 世界冠军后主导战略转型；统筹从临床研究到工业设计的研发全链路，搭建科研、临床与商业伙伴网络。原型机预计于 2026 年 4 月完成，动物实验正在筹备中。</p>
+          <p class="exp-desc">Leading a startup focused on point-of-care molecular sensing for Parkinson's disease. Drove the strategic pivot after the team's SensUs world championship; own R&amp;D from clinical research to industrial design, and build partnerships across research, clinical, and commercial networks. Prototype targeted for April 2026, with animal trials in preparation.</p>
           <div class="exp-tags">
-            <span class="card-tag tag-venture"><span lang="en">Startup</span><span lang="zh">创业</span></span>
-            <span class="card-tag tag-bio"><span lang="en">Bio</span><span lang="zh">生物</span></span>
-            <span class="card-tag tag-bio"><span lang="en">Sensing</span><span lang="zh">传感</span></span>
+            <span class="card-tag tag-venture">Startup</span>
+            <span class="card-tag tag-bio">Bio</span>
+            <span class="card-tag tag-bio">Sensing</span>
           </div>
         </article>
 
         <article class="exp-item fade-in" style="transition-delay:0.08s">
           <div class="exp-meta">
-            <span class="exp-date">2024.11 — 2025.09</span>
-            <span class="exp-role"><span lang="en">Co-founder &amp; Creative Director</span><span lang="zh">联合创始人 &amp; 创意总监</span></span>
+            <span class="exp-date">2025.02 — 2025.10</span>
+            <span class="exp-role">Industrial Design Lead</span>
           </div>
           <h3 class="exp-org">
-            <span lang="en">Shanghai Oude Technology</span>
-            <span lang="zh">上海欧德科技</span>
+            ShanghaiTech iGEM Team
+            
           </h3>
           <p class="exp-where">
-            <span lang="en">Angel-funded fragrance startup</span>
-            <span lang="zh">天使轮香氛初创公司</span>
+            iGEM — International Genetically Engineered Machine Competition
+            
           </p>
-          <p class="exp-desc" lang="en">Co-led product definition and MVP market validation, shipping two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer talent pipeline through three rounds of team iteration, and co-authored the business plan that closed the angel round.</p>
-          <p class="exp-desc" lang="zh">联合主导产品定义与 MVP 市场验证，推出两款经过市场验证的香氛产品，含在上海外滩首发的定制香薰机。经三轮团队迭代搭建起 70 人规模的设计师人才池，并参与撰写完成天使轮融资的商业计划书。</p>
+          <p class="exp-desc">Owned the industrial-design workstream end-to-end and advised the Networking department on education planning and PR/marketing campaigns. Team won International Gold with 3 single-track nominations.</p>
           <div class="exp-tags">
-            <span class="card-tag tag-venture"><span lang="en">Startup</span><span lang="zh">创业</span></span>
-            <span class="card-tag tag-venture"><span lang="en">Design</span><span lang="zh">设计</span></span>
+            <span class="card-tag tag-bio">Bio</span>
+            <span class="card-tag tag-venture">Design</span>
           </div>
         </article>
 
         <article class="exp-item fade-in" style="transition-delay:0.16s">
           <div class="exp-meta">
-            <span class="exp-date">2024.07 — 2024.10</span>
-            <span class="exp-role"><span lang="en">Research Intern</span><span lang="zh">研究实习生</span></span>
+            <span class="exp-date">2024.11 — 2025.09</span>
+            <span class="exp-role">Co-founder &amp; Creative Director</span>
           </div>
           <h3 class="exp-org">
-            <span lang="en">Covestro Asia-Pacific Innovation Center</span>
-            <span lang="zh">科思创亚太创新中心</span>
+            Shanghai Oude Technology
+            
           </h3>
           <p class="exp-where">
-            <span lang="en">Color &amp; Design Trend Research · Shanghai</span>
-            <span lang="zh">色彩与设计趋势研究 · 上海</span>
+            Angel-funded fragrance startup
+            
           </p>
-          <p class="exp-desc" lang="en">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
-          <p class="exp-desc" lang="zh">参与撰写 <em>《2025+ 全球 CMF 趋势手册》</em>，结合 AI 工具与全球市场调研，产出结构化的行业趋势报告；支持全球色彩趋势发布会与对外咨询项目。</p>
+          <p class="exp-desc">Co-led product definition and MVP market validation, shipping two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer talent pipeline through three rounds of team iteration, and co-authored the business plan that closed the angel round.</p>
           <div class="exp-tags">
-            <span class="card-tag tag-tech"><span lang="en">Research</span><span lang="zh">研究</span></span>
-            <span class="card-tag tag-venture"><span lang="en">Design</span><span lang="zh">设计</span></span>
+            <span class="card-tag tag-venture">Startup</span>
+            <span class="card-tag tag-venture">Design</span>
+          </div>
+        </article>
+
+        <article class="exp-item fade-in" style="transition-delay:0.24s">
+          <div class="exp-meta">
+            <span class="exp-date">2024.07 — 2024.10</span>
+            <span class="exp-role">Research Intern</span>
+          </div>
+          <h3 class="exp-org">
+            Covestro Asia-Pacific Innovation Center
+            
+          </h3>
+          <p class="exp-where">
+            Color &amp; Design Trend Research · Shanghai
+            
+          </p>
+          <p class="exp-desc">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
+          <div class="exp-tags">
+            <span class="card-tag tag-tech">Research</span>
+            <span class="card-tag tag-venture">Design</span>
           </div>
         </article>
       </div>
 
       <!-- Awards -->
-      <h3 class="exp-section-title"><span lang="en">Awards &amp; Honors</span><span lang="zh">奖项 &amp; 荣誉</span></h3>
+      <h3 class="exp-section-title">Awards &amp; Honors</h3>
       <ul class="awards">
         <li class="award">
           <span class="award-medal" data-tier="gold">Gold</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">SensUs 2025 — Global Biosensing Competition</span>
-              <span lang="zh">SensUs 2025 — 全球生物传感大赛</span>
+              SensUs 2025 — Global Biosensing Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">International Gold · Detection Award · Innovation Silver</span>
-              <span lang="zh">国际金奖 · 检测奖 · 创新银奖</span>
+              International Gold · Detection Award · Innovation Silver
+              
             </p>
           </div>
         </li>
@@ -211,12 +225,12 @@
           <span class="award-medal" data-tier="gold">Gold</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">iGEM 2025 — International Genetically Engineered Machine Competition</span>
-              <span lang="zh">iGEM 2025 — 国际基因工程机器大赛</span>
+              iGEM 2025 — International Genetically Engineered Machine Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">International Gold · 3 single-track nominations</span>
-              <span lang="zh">国际金奖 · 3 项单项提名</span>
+              International Gold · 3 single-track nominations
+              
             </p>
           </div>
         </li>
@@ -224,12 +238,12 @@
           <span class="award-medal" data-tier="second">Nat'l 2nd</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">10th National Biomedical Engineering Innovation Design Competition</span>
-              <span lang="zh">第十届全国生物医学工程创新设计大赛</span>
+              10th National Biomedical Engineering Innovation Design Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">National Second Prize</span>
-              <span lang="zh">全国二等奖</span>
+              National Second Prize
+              
             </p>
           </div>
         </li>
@@ -237,12 +251,12 @@
           <span class="award-medal" data-tier="silver">Silver</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">4th Synthetic Biology Innovation Competition</span>
-              <span lang="zh">第四届合成生物学创新创业大赛</span>
+              4th Synthetic Biology Innovation Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">National Silver</span>
-              <span lang="zh">全国银奖</span>
+              National Silver
+              
             </p>
           </div>
         </li>
@@ -250,12 +264,12 @@
           <span class="award-medal" data-tier="second">Nat'l 2nd</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">18th Cesim Global Business Simulation Challenge (China)</span>
-              <span lang="zh">第十八届 Cesim 全球商业模拟挑战赛（中国赛区）</span>
+              18th Cesim Global Business Simulation Challenge (China)
+              
             </p>
             <p class="award-meta">
-              <span lang="en">National Second Prize</span>
-              <span lang="zh">全国二等奖</span>
+              National Second Prize
+              
             </p>
           </div>
         </li>
@@ -263,12 +277,12 @@
           <span class="award-medal" data-tier="second">Nat'l 2nd</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">2025 National Youth Cup Art &amp; Design Competition</span>
-              <span lang="zh">2025 全国青年杯艺术与设计大赛</span>
+              2025 National Youth Cup Art &amp; Design Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">National Second Prize</span>
-              <span lang="zh">全国二等奖</span>
+              National Second Prize
+              
             </p>
           </div>
         </li>
@@ -276,12 +290,12 @@
           <span class="award-medal" data-tier="top">Top 3</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">1st Qingyun National College Design Competition</span>
-              <span lang="zh">首届青云全国大学生设计大赛</span>
+              1st Qingyun National College Design Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">Top 3 Finalist</span>
-              <span lang="zh">全国三强</span>
+              Top 3 Finalist
+              
             </p>
           </div>
         </li>
@@ -289,12 +303,12 @@
           <span class="award-medal" data-tier="first">Nat'l 1st</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">4th National College Mental Health Knowledge Competition</span>
-              <span lang="zh">第四届全国大学生心理健康知识竞赛</span>
+              4th National College Mental Health Knowledge Competition
+              
             </p>
             <p class="award-meta">
-              <span lang="en">National First Prize</span>
-              <span lang="zh">全国一等奖</span>
+              National First Prize
+              
             </p>
           </div>
         </li>
@@ -302,28 +316,57 @@
           <span class="award-medal" data-tier="other">5th</span>
           <div class="award-body">
             <p class="award-name">
-              <span lang="en">2025 Shanghai Open Rowing</span>
-              <span lang="zh">2025 上海赛艇公开赛</span>
+              2025 Shanghai Open Rowing
+              
             </p>
             <p class="award-meta">
-              <span lang="en">Men's 8+ 4.2 km Pursuit · 5th place</span>
-              <span lang="zh">男子八人单桨 4.2 公里追逐赛 · 第五名</span>
+              Men's 8+ 4.2 km Pursuit · 5th place
+              
+            </p>
+          </div>
+        </li>
+        <li class="award">
+          <span class="award-medal" data-tier="second">2nd</span>
+          <div class="award-body">
+            <p class="award-name">
+              7th ShanghaiTech Innovation &amp; Entrepreneurship Competition
+              
+            </p>
+            <p class="award-meta">
+              Second Prize + 2 × Honorable Mention
+              
+            </p>
+          </div>
+        </li>
+        <li class="award">
+          <span class="award-medal" data-tier="other">Hon.</span>
+          <div class="award-body">
+            <p class="award-name">
+              ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition
+              
+            </p>
+            <p class="award-meta">
+              Honorable Mention
+              
             </p>
           </div>
         </li>
       </ul>
 
       <!-- Other -->
-      <h3 class="exp-section-title"><span lang="en">Other Engagements</span><span lang="zh">其他任职 &amp; 经历</span></h3>
+      <h3 class="exp-section-title">Other Engagements</h3>
       <ul class="other-list">
-        <li><span lang="en">Key Visual Designer — Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</span><span lang="zh">主视觉设计师 — 上海爱乐 &amp; 费城交响乐团联合音乐会</span></li>
-        <li><span lang="en">Project Director — ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</span><span lang="zh">项目总监 — 上海科技大学创意与艺术学院 2024 DreamBox</span></li>
-        <li><span lang="en">Project Designer — Wenxing Village Rural Revitalization, Dali Prefecture</span><span lang="zh">项目设计师 — 大理州文兴村乡村振兴项目</span></li>
-        <li><span lang="en">Contracted Designer — Qingyun New Materials Co., Ltd.</span><span lang="zh">签约设计师 — 青云新材料有限公司</span></li>
-        <li><span lang="en">Industrial Design Intern — Yineng Radio (2024.09 – 2024.12)</span><span lang="zh">工业设计实习生 — 猗能广播（2024.09 – 2024.12）</span></li>
-        <li><span lang="en">Research Grant Recipient — ShanghaiTech "Future Materials Innovation Class"</span><span lang="zh">科研资助获得者 — 上海科技大学"未来材料创新班"</span></li>
-        <li><span lang="en">Future Catalyst Program · Participant — Shanghai Bank × ShanghaiTech Innovation Incubator</span><span lang="zh">未来催化营 · 学员 — 上海银行 × 上海科技大学创新孵化营</span></li>
-        <li><span lang="en">Student Representative — College of Creativity &amp; Art Opening Ceremony (2023, 2024)</span><span lang="zh">学生代表 — 创意与艺术学院开学典礼（2023、2024）</span></li>
+        <li>Key Visual Designer — Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
+        <li>Project Director — ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
+        <li>Project Designer — Wenxing Village Rural Revitalization, Dali Prefecture</li>
+        <li>Contracted Designer — Qingyun New Materials Co., Ltd.</li>
+        <li>Industrial Design Intern — Yineng Radio (2024.09 – 2024.12)</li>
+        <li>Team Designer — ShanghaiTech Rowing Team</li>
+        <li>League Branch Secretary — Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
+        <li>Research Grant Recipient — ShanghaiTech "Future Materials Innovation Class"</li>
+        <li>Future Catalyst Program · Participant — Shanghai Bank × ShanghaiTech Innovation Incubator</li>
+        <li>Public Speaking &amp; Executive Presentations — audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
+        <li>Student Representative — College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
       </ul>
     </div>
   </section>
@@ -334,8 +377,8 @@
       <canvas class="section-canvas" data-field="constellation"></canvas>
       <div class="work-pin-inner">
         <div class="work-header">
-          <h2 class="section-title"><span lang="en">Work</span><span lang="zh">项目</span></h2>
-          <span class="work-hint" aria-hidden="true"><span lang="en">scroll →</span><span lang="zh">横向滑动 →</span></span>
+          <h2 class="section-title">Work</h2>
+          <span class="work-hint" aria-hidden="true">scroll →</span>
         </div>
         <div class="cards-track">
           <div class="cards-row">
@@ -348,10 +391,9 @@
                 </div>
               </div>
               <h3 class="card-title">Handbook of Project DOCTOR</h3>
-              <p class="card-desc" lang="en">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
-              <p class="card-desc" lang="zh">面向大众的科普手册，系统介绍鼻窦炎相关知识，以及 Project DOCTOR 在诊断与治疗方面的创新尝试。</p>
+              <p class="card-desc">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
               <div class="card-links">
-                <a href="https://Mason Tung.github.io/DOCTOR/HandBook.pdf" target="_blank" rel="noopener" class="card-link"><span lang="en">Read →</span><span lang="zh">阅读 →</span></a>
+                <a href="https://Mason Dong.github.io/DOCTOR/HandBook.pdf" target="_blank" rel="noopener" class="card-link">Read →</a>
               </div>
             </div>
             <div class="card fade-in" style="transition-delay:0.08s">
@@ -363,10 +405,9 @@
                 </div>
               </div>
               <h3 class="card-title">MakeSense Society</h3>
-              <p class="card-desc" lang="en">A compact, high-caliber, interdisciplinary innovation community — bringing researchers and builders together on ambitious sci-tech projects.</p>
-              <p class="card-desc" lang="zh">一个精而小的高水平、跨学科科创社群，连接全球科研者与创新者，共同推进有野心的科技项目。</p>
+              <p class="card-desc">A compact, high-caliber, interdisciplinary innovation community — bringing researchers and builders together on ambitious sci-tech projects.</p>
               <div class="card-links">
-                <a href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener" class="card-link"><span lang="en">Read →</span><span lang="zh">阅读 →</span></a>
+                <a href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener" class="card-link">Read →</a>
               </div>
             </div>
             <div class="card fade-in" style="transition-delay:0.16s">
@@ -379,10 +420,9 @@
                 </div>
               </div>
               <h3 class="card-title">MCTSevo-AF3ver</h3>
-              <p class="card-desc" lang="en">A protein directed-evolution tool combining MCTS, ESM and AlphaFold3 — tree-search exploration paired with structure-aware fitness prediction.</p>
-              <p class="card-desc" lang="zh">结合 MCTS、ESM 与 AlphaFold3 的蛋白定向进化工具：用蒙特卡洛树搜索探索序列空间，并以结构感知的适应度预测为指导。</p>
+              <p class="card-desc">A protein directed-evolution tool combining MCTS, ESM and AlphaFold3 — tree-search exploration paired with structure-aware fitness prediction.</p>
               <div class="card-links">
-                <a href="https://github.com/Mason Tung/MCTSevo-AF3ver" target="_blank" rel="noopener" class="card-link">GitHub →</a>
+                <a href="https://github.com/Mason Dong/MCTSevo-AF3ver" target="_blank" rel="noopener" class="card-link">GitHub →</a>
               </div>
             </div>
             <div class="card fade-in" style="transition-delay:0.24s">
@@ -394,8 +434,7 @@
                 </div>
               </div>
               <h3 class="card-title">Project DOCTOR</h3>
-              <p class="card-desc" lang="en">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded Gold Medal.</p>
-              <p class="card-desc" lang="zh">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis（鼻窦炎的诊断优化与化学治疗）— 为 iGEM 2025 打造的合成生物学项目，斩获国际金奖。</p>
+              <p class="card-desc">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded Gold Medal.</p>
               <div class="card-links">
                 <a href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener" class="card-link">Wiki →</a>
               </div>
@@ -409,10 +448,9 @@
                 </div>
               </div>
               <h3 class="card-title">ProteinEvo-Light</h3>
-              <p class="card-desc" lang="en">A protein-sequence evolution tool tuned for consumer-grade GPUs (RTX 4070, 8 GB VRAM) — EvoDiff's generative capability paired with ESM-2 for directed-evolution evaluation.</p>
-              <p class="card-desc" lang="zh">面向消费级 GPU（RTX 4070, 8 GB 显存）的蛋白序列进化工具，结合 EvoDiff 的生成能力与 ESM-2 的评估能力，实现轻量化定向进化。</p>
+              <p class="card-desc">A protein-sequence evolution tool tuned for consumer-grade GPUs (RTX 4070, 8 GB VRAM) — EvoDiff's generative capability paired with ESM-2 for directed-evolution evaluation.</p>
               <div class="card-links">
-                <a href="https://github.com/Mason Tung/ProteinEvo-Light" target="_blank" rel="noopener" class="card-link">GitHub →</a>
+                <a href="https://github.com/Mason Dong/ProteinEvo-Light" target="_blank" rel="noopener" class="card-link">GitHub →</a>
               </div>
             </div>
             <div class="card fade-in" style="transition-delay:0.40s">
@@ -425,10 +463,9 @@
                 </div>
               </div>
               <h3 class="card-title">SensUs 2026 MakeSense</h3>
-              <p class="card-desc" lang="en">Tackling precision drug delivery for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
-              <p class="card-desc" lang="zh">围绕帕金森病 L-多巴治疗中的精准给药难题：以 AI 驱动的蛋白工程结合微孔传感硬件，实现实时监测与个体化给药。</p>
+              <p class="card-desc">Tackling precision drug delivery for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
               <div class="card-links">
-                <a href="https://sensus.org/" target="_blank" rel="noopener" class="card-link"><span lang="en">Website →</span><span lang="zh">官网 →</span></a>
+                <a href="https://sensus.org/" target="_blank" rel="noopener" class="card-link">Website →</a>
               </div>
             </div>
           </div>
@@ -441,10 +478,10 @@
   <section class="section" id="gallery">
     <div class="section-inner">
       <div class="gallery-head fade-in">
-        <h2 class="section-title"><span lang="en">Gallery</span><span lang="zh">影像</span></h2>
+        <h2 class="section-title">Gallery</h2>
         <p class="gallery-intro">
-          <span lang="en">Moments through my lens — fragments of light, places, and stillness.</span>
-          <span lang="zh">透过镜头记录的片刻——光、地方与一些安静的时刻。</span>
+          Moments through my lens — fragments of light, places, and stillness.
+          
         </p>
       </div>
       <div class="masonry" id="masonry">
@@ -496,10 +533,10 @@
   <section class="section" id="contact">
     <canvas class="section-canvas" data-field="ripples"></canvas>
     <div class="section-inner section-center fade-in">
-      <h2 class="section-title"><span lang="en">Contact</span><span lang="zh">联系</span></h2>
+      <h2 class="section-title">Contact</h2>
       <p class="contact-desc">
-        <span lang="en">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</span>
-        <span lang="zh">无论是科研、合作，还是只想聊聊天，都欢迎来找我。</span>
+        Whether it's research, collaboration, or just a good conversation — feel free to reach out.
+        
       </p>
       <div class="contact-icons">
 
@@ -510,10 +547,10 @@
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
             </svg>
           </span>
-          <span class="contact-icon-label"><span lang="en">Email</span><span lang="zh">邮箱</span></span>
+          <span class="contact-icon-label">Email</span>
         </a>
 
-        <a href="https://github.com/Mason Tung" target="_blank" rel="noopener" class="contact-icon" title="GitHub" style="--i:1">
+        <a href="https://github.com/Mason Dong" target="_blank" rel="noopener" class="contact-icon" title="GitHub" style="--i:1">
           <span class="contact-icon-circle">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
@@ -531,7 +568,7 @@
           <span class="contact-icon-label">X</span>
         </a>
 
-        <a href="https://steamcommunity.com/id/Mason Tung/" target="_blank" rel="noopener" class="contact-icon" title="Steam" style="--i:3">
+        <a href="https://steamcommunity.com/id/Mason Dong/" target="_blank" rel="noopener" class="contact-icon" title="Steam" style="--i:3">
           <span class="contact-icon-circle">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.455 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z"/>
@@ -546,7 +583,7 @@
               <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .55-.012.82-.036-.27-.495-.42-1.058-.42-1.652 0-3.523 3.314-6.378 7.4-6.378.275 0 .547.013.815.038-.621-3.291-3.972-5.654-7.616-5.654zM5.785 5.991c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.323 0 1.16 1.16 0 0 1 1.161-1.16zm5.813 0c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.324 0 1.16 1.16 0 0 1 1.162-1.16zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.001-.27-.02-.407-.022zm-2.51 3.184c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97zm4.844 0c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97z"/>
             </svg>
           </span>
-          <span class="contact-icon-label"><span lang="en">WeChat</span><span lang="zh">微信</span></span>
+          <span class="contact-icon-label">WeChat</span>
         </button>
 
       </div>
@@ -591,31 +628,16 @@
   </div>
 
   <script>
-    // Theme toggle
+    // Theme + language: initial state is set inline in <head> to avoid FOUC.
+    // Here we just wire up the toggles.
     const root = document.documentElement;
+
     const themeBtn = document.getElementById('theme-toggle');
-    root.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
     themeBtn.addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
-
-    // Language toggle (en / zh). On first visit, follow browser language.
-    const langBtn = document.getElementById('lang-toggle');
-    const detectLang = () => /^zh\b/i.test(navigator.language || '') ? 'zh' : 'en';
-    const initialLang = localStorage.getItem('lang') || detectLang();
-    root.setAttribute('data-lang', initialLang);
-    root.setAttribute('lang', initialLang === 'zh' ? 'zh-CN' : 'en');
-    langBtn.addEventListener('click', () => {
-      const next = root.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
-      root.setAttribute('data-lang', next);
-      root.setAttribute('lang', next === 'zh' ? 'zh-CN' : 'en');
-      localStorage.setItem('lang', next);
-      // Notify subscribers (e.g. hero name canvas) so JS-rendered text re-renders.
-      window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: next } }));
-    });
-
     // Nav: scrolled class + scroll progress bar (RAF-throttled to avoid jank)
     const nav = document.querySelector('.nav');
     const progressBar = document.getElementById('scroll-progress');
@@ -669,9 +691,12 @@
           try { ok = document.execCommand('copy'); } catch (_) {}
           document.body.removeChild(ta);
         }
-        toast(ok
-          ? `已复制公众号「${name}」· 请在微信中搜索`
-          : `公众号「${name}」· 请在微信中搜索`);
+        const lang = document.documentElement.getAttribute('data-lang') || 'en';
+        toast(lang === 'zh'
+          ? (ok ? `已复制公众号「${name}」· 请在微信中搜索`
+                : `公众号「${name}」· 请在微信中搜索`)
+          : (ok ? `Copied WeChat ID "${name}" · search it in WeChat`
+                : `WeChat ID "${name}" · search it in WeChat`));
       });
     });
 
@@ -812,16 +837,7 @@
       const nameEl = document.querySelector('.hero-name');
       if (!nameEl) return;
       const text = nameEl.dataset.text || nameEl.textContent.trim();
-
-      const fill = document.createElement('span');
-      fill.className = 'hero-name-fill';
-      fill.textContent = text;
-
-      const stroke = document.createElement('span');
-      stroke.className = 'hero-name-stroke';
-      stroke.setAttribute('aria-hidden', 'true');
-      stroke.textContent = text;
-
+
       nameEl.replaceChildren(fill, stroke);
     })();
 
@@ -916,7 +932,7 @@
       }, { passive: true });
     })();
 
-    // Dot-matrix text — "Mason Tung" particle field with spring physics + glow
+    // Dot-matrix text — "Mason Dong" particle field with spring physics + glow
     (function () {
       const canvas = document.getElementById('hero-canvas');
       if (!canvas) return;
@@ -942,12 +958,12 @@
 
         // Auto-fit: measure at 100px then scale to fill 88% of canvas width
         oc.font = `700 100px Inter, "Helvetica Neue", Arial, sans-serif`;
-        const fs = Math.floor(100 * (w * 0.88) / oc.measureText('Mason Tung').width);
+        const fs = Math.floor(100 * (w * 0.88) / oc.measureText('Mason Dong').width);
         oc.font = `700 ${fs}px Inter, "Helvetica Neue", Arial, sans-serif`;
         oc.fillStyle = '#fff';
         oc.textAlign = 'center';
         oc.textBaseline = 'middle';
-        oc.fillText('Mason Tung', w / 2, h / 2);
+        oc.fillText('Mason Dong', w / 2, h / 2);
 
         const data = oc.getImageData(0, 0, w, h).data;
         const gap = Math.max(6, Math.round(w / 150));
