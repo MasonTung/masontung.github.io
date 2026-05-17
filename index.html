@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Runlin DONG</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -111,31 +114,44 @@
         <article class="exp-item fade-in">
           <div class="exp-meta">
             <span class="exp-date">2025.09 — Present</span>
-            <span class="exp-tag">Founder &amp; CEO</span>
+            <span class="exp-role">Founder &amp; CEO</span>
           </div>
           <h3 class="exp-org">Match Biotech</h3>
           <p class="exp-where">Biotech startup · Shanghai</p>
           <p class="exp-desc">Leading a startup focused on point-of-care molecular sensing for Parkinson's disease. Drove the strategic pivot after the team's SensUs world championship; own R&amp;D from clinical research through industrial design, and build partnerships across research, clinical, and commercial networks. Prototype targeted for April 2026, with animal trials in preparation.</p>
+          <div class="exp-tags">
+            <span class="card-tag tag-venture">Startup</span>
+            <span class="card-tag tag-bio">Bio</span>
+            <span class="card-tag tag-bio">Sensing</span>
+          </div>
         </article>
 
         <article class="exp-item fade-in" style="transition-delay:0.08s">
           <div class="exp-meta">
             <span class="exp-date">2024.11 — 2025.09</span>
-            <span class="exp-tag">Co-founder &amp; Creative Director</span>
+            <span class="exp-role">Co-founder &amp; Creative Director</span>
           </div>
           <h3 class="exp-org">Shanghai Oude Technology</h3>
           <p class="exp-where">Angel-funded fragrance startup</p>
           <p class="exp-desc">Co-led product definition and MVP market validation, delivering two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer pipeline through three rounds of team iteration and co-authored the BP that closed the angel round.</p>
+          <div class="exp-tags">
+            <span class="card-tag tag-venture">Startup</span>
+            <span class="card-tag tag-venture">Design</span>
+          </div>
         </article>
 
         <article class="exp-item fade-in" style="transition-delay:0.16s">
           <div class="exp-meta">
             <span class="exp-date">2024.07 — 2024.10</span>
-            <span class="exp-tag">Research Intern</span>
+            <span class="exp-role">Research Intern</span>
           </div>
           <h3 class="exp-org">Covestro Asia-Pacific Innovation Center</h3>
           <p class="exp-where">Color &amp; Design Trend Research · Shanghai</p>
           <p class="exp-desc">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
+          <div class="exp-tags">
+            <span class="card-tag tag-tech">Research</span>
+            <span class="card-tag tag-venture">Design</span>
+          </div>
         </article>
       </div>
 
@@ -235,19 +251,11 @@
           <div class="cards-row">
             <div class="card fade-in" style="transition-delay:0s">
               <div class="card-header">
-                <span class="card-icon">◎</span>
-                <span class="card-tag">Research</span>
-              </div>
-              <h3 class="card-title">BetterMPNN</h3>
-              <p class="card-desc">Reinforcement learning framework for protein sequence optimization using Group Relative Policy Optimization (GRPO) to fine-tune ProteinMPNN. Enables efficient protein design from backbone to high-performance binding within hours.</p>
-              <div class="card-links">
-                <a href="https://github.com/Terry-Wang-Lynx/BetterMPNN" target="_blank" rel="noopener" class="card-link">GitHub →</a>
-              </div>
-            </div>
-            <div class="card fade-in" style="transition-delay:0.08s">
-              <div class="card-header">
                 <span class="card-icon">◻</span>
-                <span class="card-tag">iGEM</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-bio">iGEM</span>
+                  <span class="card-tag tag-soft">Outreach</span>
+                </div>
               </div>
               <h3 class="card-title">HandBook of Project DOCTOR</h3>
               <p class="card-desc">Science outreach handbook introducing rhinosinusitis knowledge and Project DOCTOR's diagnostic and treatment innovations to general audiences.</p>
@@ -255,10 +263,13 @@
                 <a href="https://Mason Tung.github.io/DOCTOR/HandBook.pdf" target="_blank" rel="noopener" class="card-link">Read →</a>
               </div>
             </div>
-            <div class="card fade-in" style="transition-delay:0.16s">
+            <div class="card fade-in" style="transition-delay:0.08s">
               <div class="card-header">
                 <span class="card-icon">⬡</span>
-                <span class="card-tag">Community</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-soft">Community</span>
+                  <span class="card-tag tag-venture">Startup</span>
+                </div>
               </div>
               <h3 class="card-title">MakeSense Society</h3>
               <p class="card-desc">Small-scale, high-level, international, interdisciplinary sci-tech innovation community. Bringing together researchers and innovators for collaborative breakthrough projects.</p>
@@ -266,21 +277,14 @@
                 <a href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener" class="card-link">Read →</a>
               </div>
             </div>
-            <div class="card fade-in" style="transition-delay:0.24s">
+            <div class="card fade-in" style="transition-delay:0.16s">
               <div class="card-header">
                 <span class="card-icon">◎</span>
-                <span class="card-tag">Research</span>
-              </div>
-              <h3 class="card-title">MCTSevo</h3>
-              <p class="card-desc">Protein directed evolution guided by Monte Carlo Tree Search, combining ESM-1v log-likelihood ratios with Gaussian Process Regression trained on wet-lab fitness data.</p>
-              <div class="card-links">
-                <a href="https://github.com/Mason Tung/MCTSevo" target="_blank" rel="noopener" class="card-link">GitHub →</a>
-              </div>
-            </div>
-            <div class="card fade-in" style="transition-delay:0.32s">
-              <div class="card-header">
-                <span class="card-icon">◎</span>
-                <span class="card-tag">Research</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-tech">AI/ML</span>
+                  <span class="card-tag tag-bio">Bio</span>
+                  <span class="card-tag tag-tech">Research</span>
+                </div>
               </div>
               <h3 class="card-title">MCTSevo-AF3ver</h3>
               <p class="card-desc">An MCTS + ESM + AlphaFold3-based tool for protein directed evolution, extending MCTSevo with structure-aware fitness prediction.</p>
@@ -288,10 +292,13 @@
                 <a href="https://github.com/Mason Tung/MCTSevo-AF3ver" target="_blank" rel="noopener" class="card-link">GitHub →</a>
               </div>
             </div>
-            <div class="card fade-in" style="transition-delay:0.40s">
+            <div class="card fade-in" style="transition-delay:0.24s">
               <div class="card-header">
                 <span class="card-icon">⬡</span>
-                <span class="card-tag">iGEM 2025</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-bio">iGEM 2025</span>
+                  <span class="card-tag tag-bio">Synthetic Bio</span>
+                </div>
               </div>
               <h3 class="card-title">Project DOCTOR</h3>
               <p class="card-desc">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic biology project developed for iGEM 2025, awarded Gold Medal.</p>
@@ -299,10 +306,13 @@
                 <a href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener" class="card-link">Wiki →</a>
               </div>
             </div>
-            <div class="card fade-in" style="transition-delay:0.48s">
+            <div class="card fade-in" style="transition-delay:0.32s">
               <div class="card-header">
                 <span class="card-icon">◈</span>
-                <span class="card-tag">Tool</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-tech">AI/ML</span>
+                  <span class="card-tag tag-tech">Tool</span>
+                </div>
               </div>
               <h3 class="card-title">ProteinEvo-Light</h3>
               <p class="card-desc">A protein sequence evolution tool for consumer-grade GPUs (RTX 4070, 8GB VRAM), combining EvoDiff's generative capability with ESM-2's evaluation for directed evolution.</p>
@@ -310,10 +320,14 @@
                 <a href="https://github.com/Mason Tung/ProteinEvo-Light" target="_blank" rel="noopener" class="card-link">GitHub →</a>
               </div>
             </div>
-            <div class="card fade-in" style="transition-delay:0.56s">
+            <div class="card fade-in" style="transition-delay:0.40s">
               <div class="card-header">
                 <span class="card-icon">⬡</span>
-                <span class="card-tag">Project</span>
+                <div class="card-tags">
+                  <span class="card-tag tag-bio">Bio</span>
+                  <span class="card-tag tag-bio">Sensing</span>
+                  <span class="card-tag tag-tech">AI/ML</span>
+                </div>
               </div>
               <h3 class="card-title">SensUs2026 MakeSense</h3>
               <p class="card-desc">Tackling precision drug delivery for Parkinson's L-Dopa treatment via AI-driven protein engineering and micropore sensing technology for real-time monitoring and personalized dosing.</p>
@@ -841,8 +855,8 @@
         const R = 95, K = 1.4, spring = 0.007, damp = 0.95;
         const t = (performance.now() - t0) * 0.001;
 
-        // Original palette — muted violet, single hue
-        const core = light ? '70, 50, 190' : '200, 188, 255';
+        // VIS palette — Medium Purple (dark mode) / darker Purple (light mode)
+        const core = light ? '122, 77, 216' : '178, 127, 254';
 
         for (const p of particles) {
           const elapsed = t - p.birth;
@@ -934,7 +948,7 @@
         },
         draw(ctx, ps, s) {
           const { w, h, light, mx, my } = s;
-          const core = light ? '70, 50, 190' : '200, 188, 255';
+          const core = light ? '122, 77, 216' : '178, 127, 254';
           ctx.clearRect(0, 0, w, h);
 
           const R = 150, FORCE = 1.4; // stronger cursor push
@@ -993,7 +1007,7 @@
         },
         draw(ctx, ps, s) {
           const { w, h, light, mx, my, t } = s;
-          const core = light ? '70, 50, 190' : '200, 188, 255';
+          const core = light ? '122, 77, 216' : '178, 127, 254';
           const cy  = h / 2;
           const amp = Math.min(85, h * 0.12);
           const wavelength = Math.max(220, w / 3.2);
@@ -1084,7 +1098,7 @@
         },
         draw(ctx, sources, s) {
           const { w, h, light, mx, my, t } = s;
-          const core = light ? '70, 50, 190' : '200, 188, 255';
+          const core = light ? '122, 77, 216' : '178, 127, 254';
           ctx.clearRect(0, 0, w, h);
           ctx.lineWidth = 1;
 
