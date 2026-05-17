@@ -79,7 +79,7 @@ a {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(15, 15, 15, 0.85);
+  background: rgba(24, 29, 48, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -95,7 +95,7 @@ a {
   left: 0;
   height: 2px;
   width: 0%;
-  background: var(--accent);
+  background: var(--accent-bright);
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
 }
@@ -114,7 +114,7 @@ a {
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-bright);
   letter-spacing: 0.05em;
 }
 
@@ -136,10 +136,10 @@ a {
 
 /* Light mode nav */
 [data-theme="light"] .nav {
-  background: rgba(245, 245, 245, 0.88);
+  background: rgba(243, 243, 241, 0.88);
 }
 [data-theme="light"] .nav.scrolled {
-  background: rgba(245, 245, 245, 0.97);
+  background: rgba(243, 243, 241, 0.97);
 }
 
 /* Theme toggle button */
@@ -267,7 +267,7 @@ a {
 .hero-name-fill {
   display: block;
   padding-bottom: 0.15em;
-  background: linear-gradient(135deg, #e8e8e8 0%, #888 100%);
+  background: linear-gradient(135deg, #F3F3F1 0%, #8A91A8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -275,19 +275,19 @@ a {
 }
 
 [data-theme="light"] .hero-name-fill {
-  background: linear-gradient(135deg, #1a1a1a 0%, #555 100%);
+  background: linear-gradient(135deg, #181D30 0%, #4C5275 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Stroke outline span */
+/* Stroke outline span — neon-green signature accent */
 .hero-name-stroke {
   position: absolute;
   top: 0; left: 0;
   white-space: nowrap;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px rgba(124, 106, 247, 0.9);
+  -webkit-text-stroke: 1.5px rgba(var(--accent-bright-rgb), 0.95);
   background: none;
   pointer-events: none;
   animation: heroStroke 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
@@ -336,13 +336,15 @@ a {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent-bright);
+  color: var(--on-accent-bright);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: #DDFF55;
   transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px rgba(var(--accent-bright-rgb), 0.4);
 }
 
 .btn-ghost {
@@ -427,11 +429,11 @@ a {
   gap: 2rem;
 }
 
-[data-theme="light"] .about-text p { color: #3a3a3a; }
-[data-theme="light"] .tag          { color: #555; }
+[data-theme="light"] .about-text p { color: #2C3151; }
+[data-theme="light"] .tag          { color: #4C5275; }
 
 .about-text p {
-  color: #c0c0c0;
+  color: #C8CCDB;
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
   line-height: 1.85;
@@ -462,7 +464,7 @@ a {
   border: 1px solid var(--border);
   border-radius: 100px;
   font-size: 0.8rem;
-  color: #999;
+  color: #A8AEC6;
   cursor: pointer;
   user-select: none;
 }
@@ -600,10 +602,10 @@ a {
   font-size: 0.7rem;
   font-family: var(--font-mono);
   color: var(--accent);
-  background: rgba(124, 106, 247, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
   padding: 0.2rem 0.6rem;
   border-radius: 100px;
-  border: 1px solid rgba(124, 106, 247, 0.25);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
 }
 
 .card-title {
@@ -710,7 +712,7 @@ a {
 .contact-icon-btn:focus-visible .contact-icon-circle {
   border-color: var(--accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25);
 }
 
 @keyframes contactRise {
@@ -737,7 +739,7 @@ a {
   content: '';
   position: absolute;
   inset: -2px;
-  background: radial-gradient(circle at center, rgba(124, 106, 247, 0.35), transparent 70%);
+  background: radial-gradient(circle at center, rgba(var(--accent-rgb), 0.35), transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -768,7 +770,7 @@ a {
 .contact-icon:hover .contact-icon-circle {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px -8px rgba(124, 106, 247, 0.45);
+  box-shadow: 0 12px 30px -8px rgba(var(--accent-rgb), 0.45);
 }
 
 .contact-icon:hover .contact-icon-circle::before {
