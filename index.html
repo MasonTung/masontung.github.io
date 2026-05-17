@@ -21,27 +21,54 @@
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-logo">Mason Dong</span>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <!-- Sun: shown in dark mode, click → go light -->
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
-          <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
-          <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
-          <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
-        </svg>
-        <!-- Moon: shown in light mode, click → go dark -->
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      </button>
+      <a href="#" class="nav-logo">Mason Dong</a>
+
+      <div class="nav-groups" id="nav-groups">
+        <div class="nav-group">
+          <span class="nav-group-label">Work</span>
+          <ul class="nav-group-links">
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">About</span>
+          <ul class="nav-group-links">
+            <li><a href="#about">Bio</a></li>
+            <li><a href="#experience">Experience</a></li>
+          </ul>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">Connect</span>
+          <ul class="nav-group-links">
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://matchbiotech.com/" target="_blank" rel="noopener">MatchBiotech</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <!-- Sun: shown in dark mode, click → go light -->
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+          </svg>
+          <!-- Moon: shown in light mode, click → go dark -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <line x1="3" y1="7"  x2="21" y2="7"/>
+            <line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="scroll-progress" id="scroll-progress"></div>
   </nav>
@@ -639,6 +666,24 @@
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
+
+    // Mobile nav drawer: hamburger toggles the grouped category menu
+    const menuBtn   = document.getElementById('nav-menu-btn');
+    const navGroups = document.getElementById('nav-groups');
+    if (menuBtn && navGroups) {
+      const setOpen = (open) => {
+        navGroups.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+      };
+      menuBtn.addEventListener('click', () => setOpen(!navGroups.classList.contains('open')));
+      // Close drawer when a link is tapped
+      navGroups.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      // Close drawer on resize-up (desktop layout reasserts itself)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) setOpen(false);
+      }, { passive: true });
+    }
+
     // Nav: scrolled class + scroll progress bar (RAF-throttled to avoid jank)
     const nav = document.querySelector('.nav');
     const progressBar = document.getElementById('scroll-progress');
