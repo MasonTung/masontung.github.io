@@ -76,10 +76,6 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-photo-wrap">
-        <img src="mason-tung-avatar.jpg" alt="Runlin DONG" class="hero-photo"
-             width="1254" height="1254" decoding="async" fetchpriority="high" />
-      </div>
       <div class="hero-text">
         <p class="hero-greeting">Hi, I'm</p>
         <h1 class="hero-name" data-text="Runlin DONG">Runlin DONG</h1>
@@ -224,8 +220,7 @@
             <span class="exp-role">Co-founder &amp; Creative Director</span>
           </div>
           <h3 class="exp-org">
-            Shanghai Oude Technology
-            
+            Shanghai Ode Technology
           </h3>
           <p class="exp-where">
             Angel-funded fragrance startup
@@ -836,46 +831,6 @@
 
       setup();
     })();
-
-    // Pointer-capable devices only (skip on touchscreens)
-    const hasHover = window.matchMedia('(hover: hover)').matches;
-
-    if (hasHover) {
-      // Cursor spotlight
-      window.addEventListener('mousemove', (e) => {
-        document.body.style.setProperty('--cx', e.clientX + 'px');
-        document.body.style.setProperty('--cy', e.clientY + 'px');
-      }, { passive: true });
-
-      // Hero photo 3D tilt
-      const heroEl = document.querySelector('.hero');
-      const photoWrap = document.querySelector('.hero-photo-wrap');
-      if (heroEl && photoWrap) {
-        heroEl.addEventListener('mousemove', (e) => {
-          const r = photoWrap.getBoundingClientRect();
-          const dx = (e.clientX - (r.left + r.width  / 2)) / 120;
-          const dy = (e.clientY - (r.top  + r.height / 2)) / 120;
-          photoWrap.style.transform =
-            `perspective(900px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg) scale(1.015)`;
-        });
-        heroEl.addEventListener('mouseleave', () => {
-          photoWrap.style.transform = '';
-        });
-      }
-
-      // Magnetic buttons
-      document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-          const r = btn.getBoundingClientRect();
-          const x = (e.clientX - r.left - r.width  / 2) * 0.3;
-          const y = (e.clientY - r.top  - r.height / 2) * 0.3;
-          btn.style.transform = `translate(${x}px, ${y}px)`;
-        });
-        btn.addEventListener('mouseleave', () => {
-          btn.style.transform = '';
-        });
-      });
-    }
 
     // Gallery: fade-in on load + lightbox with prev/next navigation, keyboard, and swipe
     (function () {
