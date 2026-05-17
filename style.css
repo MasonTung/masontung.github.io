@@ -1165,6 +1165,13 @@ html[data-lang="zh"] .lang-toggle .lang-opt[data-lang="zh"] {
               box-shadow 0.35s ease;
 }
 
+/* Ultra-wide panoramas break out of column flow and span full gallery width */
+.masonry-item.is-wide {
+  column-span: all;
+  -webkit-column-span: all;
+  margin: 4px 0 16px;
+}
+
 .masonry-item::after {
   content: '';
   position: absolute;
