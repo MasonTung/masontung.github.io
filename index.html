@@ -48,7 +48,6 @@
 
   <!-- Hero -->
   <section class="hero">
-    <canvas id="hero-canvas"></canvas>
     <div class="hero-inner">
       <div class="hero-photo-wrap">
         <img src="mason-tung-avatar.jpg" alt="Runlin DONG" class="hero-photo"
@@ -57,10 +56,7 @@
       <div class="hero-text">
         <p class="hero-greeting">Hi, I'm</p>
         <h1 class="hero-name" data-text="Runlin DONG">Runlin DONG</h1>
-        <p class="hero-tagline">
-          Love is the key.
-          
-        </p>
+        <p class="hero-tagline">Love is all you need.</p>
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary">
             View My Work
@@ -83,7 +79,6 @@
 
   <!-- About -->
   <section class="section" id="about">
-    <canvas class="section-canvas" data-field="dna"></canvas>
     <div class="section-inner">
       <h2 class="section-title">About</h2>
       <div class="about-grid">
@@ -374,7 +369,6 @@
   <!-- Work -->
   <section class="section section-alt work-horizontal" id="work">
     <div class="work-pin">
-      <canvas class="section-canvas" data-field="constellation"></canvas>
       <div class="work-pin-inner">
         <div class="work-header">
           <h2 class="section-title">Work</h2>
@@ -531,7 +525,6 @@
 
   <!-- Contact -->
   <section class="section" id="contact">
-    <canvas class="section-canvas" data-field="ripples"></canvas>
     <div class="section-inner section-center fade-in">
       <h2 class="section-title">Contact</h2>
       <p class="contact-desc">
@@ -577,7 +570,7 @@
           <span class="contact-icon-label">Steam</span>
         </a>
 
-        <button type="button" class="contact-icon contact-icon-btn" title="WeChat 公众号" style="--i:4" data-wechat="董寜寜">
+        <button type="button" class="contact-icon contact-icon-btn" title="WeChat · Public Account" style="--i:4" data-wechat="董寜寜">
           <span class="contact-icon-circle">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .55-.012.82-.036-.27-.495-.42-1.058-.42-1.652 0-3.523 3.314-6.378 7.4-6.378.275 0 .547.013.815.038-.621-3.291-3.972-5.654-7.616-5.654zM5.785 5.991c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.323 0 1.16 1.16 0 0 1 1.161-1.16zm5.813 0c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.324 0 1.16 1.16 0 0 1 1.162-1.16zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.001-.27-.02-.407-.022zm-2.51 3.184c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97zm4.844 0c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97z"/>
@@ -592,10 +585,18 @@
 
   <!-- Footer -->
   <footer class="gallery-footer">
+    <!--
+      Logo collection: drop logo files (SVG / PNG / JPG / WEBP — any web image format)
+      into the `icon/` folder, then add one <img class="org-logo" ...> below per logo.
+      They render in a centered row, wrap on small screens, and auto-scale to a uniform height.
+    -->
     <div class="gallery-orgs">
-      <img src="icon/Group 374.svg" alt="Organizations" class="org-logo" />
+      <!-- Example (uncomment and edit once files are in icon/):
+      <img src="icon/shanghaitech.svg" alt="ShanghaiTech University" class="org-logo" />
+      <img src="icon/match-biotech.png" alt="Match Biotech" class="org-logo" />
+      -->
     </div>
-    <div class="gallery-copyright">© 2026 Runlin DONG</div>
+    <div class="gallery-copyright">© 2026 RUNLIN DONG</div>
   </footer>
 
   <!-- Toast -->
@@ -691,18 +692,14 @@
           try { ok = document.execCommand('copy'); } catch (_) {}
           document.body.removeChild(ta);
         }
-        const lang = document.documentElement.getAttribute('data-lang') || 'en';
-        toast(lang === 'zh'
-          ? (ok ? `已复制公众号「${name}」· 请在微信中搜索`
-                : `公众号「${name}」· 请在微信中搜索`)
-          : (ok ? `Copied WeChat ID "${name}" · search it in WeChat`
-                : `WeChat ID "${name}" · search it in WeChat`));
+        toast(ok
+          ? `Copied WeChat ID "${name}" · search it in WeChat`
+          : `WeChat ID "${name}" · search it in WeChat`);
       });
     });
 
     // About tags: click to search (browsers don't expose the default
-    // search engine to web pages, so we use Google). Prefer data-search so
-    // the query stays English even when the user is viewing the zh variant.
+    // search engine to web pages, so we use Google)
     document.querySelectorAll('.about-tags .tag').forEach(tag => {
       const text = tag.dataset.search || tag.textContent.trim();
       const url  = `https://www.google.com/search?q=${encodeURIComponent(text)}`;
@@ -832,15 +829,6 @@
       });
     }
 
-    // Hero name: split into fill + stroke spans so they animate independently
-    (function () {
-      const nameEl = document.querySelector('.hero-name');
-      if (!nameEl) return;
-      const text = nameEl.dataset.text || nameEl.textContent.trim();
-
-      nameEl.replaceChildren(fill, stroke);
-    })();
-
     // Gallery: fade-in on load + lightbox with prev/next navigation, keyboard, and swipe
     (function () {
       const lightbox    = document.getElementById('lightbox');
@@ -932,412 +920,6 @@
       }, { passive: true });
     })();
 
-    // Dot-matrix text — "Mason Dong" particle field with spring physics + glow
-    (function () {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      let mx = -9999, my = -9999;
-      const t0 = performance.now();
-
-      function resize() {
-        canvas.width  = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        buildParticles();
-      }
-
-      function buildParticles() {
-        particles = [];
-        const w = canvas.width, h = canvas.height;
-        if (!w || !h) return;
-
-        const off = document.createElement('canvas');
-        off.width = w; off.height = h;
-        const oc = off.getContext('2d');
-
-        // Auto-fit: measure at 100px then scale to fill 88% of canvas width
-        oc.font = `700 100px Inter, "Helvetica Neue", Arial, sans-serif`;
-        const fs = Math.floor(100 * (w * 0.88) / oc.measureText('Mason Dong').width);
-        oc.font = `700 ${fs}px Inter, "Helvetica Neue", Arial, sans-serif`;
-        oc.fillStyle = '#fff';
-        oc.textAlign = 'center';
-        oc.textBaseline = 'middle';
-        oc.fillText('Mason Dong', w / 2, h / 2);
-
-        const data = oc.getImageData(0, 0, w, h).data;
-        const gap = Math.max(6, Math.round(w / 150));
-        for (let y = 0; y < h; y += gap) {
-          for (let x = 0; x < w; x += gap) {
-            if (data[(y * w + x) * 4 + 3] > 120) {
-              // Small random offset (≤ 28px) so particles spring in from nearby
-              const ox = (Math.random() - 0.5) * 120;
-              const oy = (Math.random() - 0.5) * 120;
-              particles.push({
-                x: x + ox, y: y + oy,
-                hx: x, hy: y,
-                vx: 0, vy: 0,
-                r: Math.random() * 1.3 + 0.9,
-                phase: Math.random() * Math.PI * 2,
-                birth: Math.random() * 2   // staggered over 2 s
-              });
-            }
-          }
-        }
-      }
-
-      function tick() {
-        const w = canvas.width, h = canvas.height;
-        const light = document.documentElement.getAttribute('data-theme') === 'light';
-
-        // Full clear each frame — keeps text crisp, no ghosting behind other copy
-        ctx.clearRect(0, 0, w, h);
-
-        // Very slow, heavily damped spring — Apple-style floaty easing
-        const R = 95, K = 1.4, spring = 0.007, damp = 0.95;
-        const t = (performance.now() - t0) * 0.001;
-
-        // VIS palette — Medium Purple (dark mode) / darker Purple (light mode)
-        const core = light ? '122, 77, 216' : '178, 127, 254';
-
-        for (const p of particles) {
-          const elapsed = t - p.birth;
-          if (elapsed <= 0) continue;
-          // Fade in over 1.2 s after birth
-          const alpha = Math.min(1, elapsed / 1.2);
-
-          // Subtle, slow breathing around home position
-          const bx = p.hx + Math.sin(t * 0.25 + p.phase) * 0.7;
-          const by = p.hy + Math.cos(t * 0.25 + p.phase) * 0.7;
-
-          // Cursor repulsion
-          const dx = p.x - mx, dy = p.y - my;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < R * R && d2 > 0) {
-            const d = Math.sqrt(d2);
-            const f = ((R - d) / R) * K;
-            p.vx += (dx / d) * f;
-            p.vy += (dy / d) * f;
-          }
-          p.vx += (bx - p.x) * spring;
-          p.vy += (by - p.y) * spring;
-          p.vx *= damp;
-          p.vy *= damp;
-          p.x  += p.vx;
-          p.y  += p.vy;
-
-          // Soft halo
-          ctx.fillStyle = `rgba(${core}, ${alpha * (light ? 0.08 : 0.10)})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-          ctx.fill();
-
-          // Core dot
-          ctx.fillStyle = `rgba(${core}, ${alpha * (light ? 0.65 : 0.82)})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        requestAnimationFrame(tick);
-      }
-
-      const hero = document.querySelector('.hero');
-      hero.addEventListener('mousemove', e => {
-        const r = canvas.getBoundingClientRect();
-        mx = e.clientX - r.left;
-        my = e.clientY - r.top;
-      }, { passive: true });
-      hero.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
-
-      // Touch support
-      hero.addEventListener('touchmove', e => {
-        const t = e.touches[0];
-        const r = canvas.getBoundingClientRect();
-        mx = t.clientX - r.left;
-        my = t.clientY - r.top;
-      }, { passive: true });
-      hero.addEventListener('touchend', () => { mx = -9999; my = -9999; });
-
-      document.fonts.ready.then(() => { resize(); tick(); });
-
-      let rt;
-      window.addEventListener('resize', () => {
-        clearTimeout(rt);
-        rt = setTimeout(resize, 200);
-      }, { passive: true });
-    })();
-
-    // Section particle fields — DNA helix for About, constellation for Work.
-    (function () {
-      const fieldT0 = performance.now();
-
-      // --- Field: constellation (drifting dots + link lines, stronger repulsion) ---
-      const Constellation = {
-        build(w, h) {
-          const count = Math.min(70, Math.max(18, Math.round((w * h) / 26000)));
-          const ps = [];
-          for (let i = 0; i < count; i++) {
-            ps.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
-              vx: (Math.random() - 0.5) * 0.18,
-              vy: (Math.random() - 0.5) * 0.18,
-              r: Math.random() * 1.2 + 0.8
-            });
-          }
-          return ps;
-        },
-        draw(ctx, ps, s) {
-          const { w, h, light, mx, my } = s;
-          const core = light ? '122, 77, 216' : '178, 127, 254';
-          ctx.clearRect(0, 0, w, h);
-
-          const R = 150, FORCE = 1.4; // stronger cursor push
-          for (const p of ps) {
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0) p.x = w; else if (p.x > w) p.x = 0;
-            if (p.y < 0) p.y = h; else if (p.y > h) p.y = 0;
-            const dx = p.x - mx, dy = p.y - my;
-            const d2 = dx * dx + dy * dy;
-            if (d2 < R * R && d2 > 0) {
-              const d = Math.sqrt(d2);
-              const f = ((R - d) / R) * FORCE;
-              p.x += (dx / d) * f;
-              p.y += (dy / d) * f;
-            }
-          }
-
-          const linkD = 140;
-          ctx.lineWidth = 0.6;
-          for (let i = 0; i < ps.length; i++) {
-            const p1 = ps[i];
-            for (let j = i + 1; j < ps.length; j++) {
-              const p2 = ps[j];
-              const dx = p1.x - p2.x, dy = p1.y - p2.y;
-              const d2 = dx * dx + dy * dy;
-              if (d2 < linkD * linkD) {
-                const a = (1 - Math.sqrt(d2) / linkD) * (light ? 0.14 : 0.18);
-                ctx.strokeStyle = `rgba(${core}, ${a})`;
-                ctx.beginPath();
-                ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-              }
-            }
-          }
-          for (const p of ps) {
-            ctx.fillStyle = `rgba(${core}, ${light ? 0.55 : 0.70})`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      };
-
-      // --- Field: DNA (double-helix, slowly flowing, springs back after mouse push) ---
-      const DNA = {
-        build(w, h) {
-          const gap = 14;
-          const ps = [];
-          for (let x = -gap; x <= w + gap; x += gap) {
-            ps.push({ baseX: x, strand: 0, x, y: h / 2, vx: 0, vy: 0, r: 1.3 + Math.random() * 0.5 });
-            ps.push({ baseX: x, strand: 1, x, y: h / 2, vx: 0, vy: 0, r: 1.3 + Math.random() * 0.5 });
-          }
-          return ps;
-        },
-        draw(ctx, ps, s) {
-          const { w, h, light, mx, my, t } = s;
-          const core = light ? '122, 77, 216' : '178, 127, 254';
-          const cy  = h / 2;
-          const amp = Math.min(85, h * 0.12);
-          const wavelength = Math.max(220, w / 3.2);
-          const k = (Math.PI * 2) / wavelength;
-          const flow = t * 0.45;
-          const R = 260, FORCE = 0.5;
-
-          ctx.clearRect(0, 0, w, h);
-
-          for (const p of ps) {
-            const phase = p.strand === 0 ? 0 : Math.PI / 2;
-            const hx = p.baseX;
-            const hy = cy + Math.sin(k * p.baseX + flow + phase) * amp;
-            const dx = p.x - mx, dy = p.y - my;
-            const d2 = dx * dx + dy * dy;
-            // Temporarily disabled: mouse attraction
-            if (false && d2 < R * R && d2 > 0) {
-              const d = Math.sqrt(d2);
-              const f = ((R - d) / R) * FORCE;
-              p.vx += (-dx / d) * f;  // attraction: pull toward mouse
-              p.vy += (-dy / d) * f;
-            }
-            p.vx += (hx - p.x) * 0.03;
-            p.vy += (hy - p.y) * 0.03;
-            p.vx *= 0.96;
-            p.vy *= 0.96;
-            p.x += p.vx;
-            p.y += p.vy;
-          }
-
-          // Base pairs (every 3rd rung)
-          ctx.lineWidth = 0.8;
-          for (let i = 0; i + 1 < ps.length; i += 2) {
-            if ((i / 2) % 3 !== 0) continue;
-            const p0 = ps[i], p1 = ps[i + 1];
-            const depth = Math.abs(Math.sin(k * p0.baseX + flow));
-            ctx.strokeStyle = `rgba(${core}, ${(light ? 0.16 : 0.22) * depth})`;
-            ctx.beginPath();
-            ctx.moveTo(p0.x, p0.y);
-            ctx.lineTo(p1.x, p1.y);
-            ctx.stroke();
-          }
-
-          // Two sugar-phosphate backbones as smooth lines
-          for (let strand = 0; strand < 2; strand++) {
-            ctx.strokeStyle = `rgba(${core}, ${light ? 0.32 : 0.42})`;
-            ctx.lineWidth = 1.1;
-            ctx.beginPath();
-            let first = true;
-            for (const p of ps) {
-              if (p.strand !== strand) continue;
-              if (first) { ctx.moveTo(p.x, p.y); first = false; }
-              else ctx.lineTo(p.x, p.y);
-            }
-            ctx.stroke();
-          }
-
-          // Nucleotide dots — size & alpha modulated by depth (front/back illusion)
-          for (const p of ps) {
-            const phase = p.strand === 0 ? 0 : Math.PI / 2;
-            const s = Math.sin(k * p.baseX + flow + phase); // -1 (back) .. +1 (front)
-            const depth = (s + 1) / 2;                      // 0..1
-            const rr = p.r * (0.65 + 0.55 * depth);
-            const a  = (light ? 0.55 : 0.72) * (0.45 + 0.55 * depth);
-            ctx.fillStyle = `rgba(${core}, ${a})`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, rr, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      };
-
-      // --- Field: ripples (radio-signal style — concentric rings emanating from random origins) ---
-      const Ripples = {
-        build(w, h) {
-          const sources = [];
-          const count = Math.min(7, Math.max(3, Math.round((w * h) / 220000)));
-          for (let i = 0; i < count; i++) {
-            sources.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
-              born: -Math.random() * 6,
-              life: 7 + Math.random() * 4,
-              maxR: 180 + Math.random() * 140
-            });
-          }
-          return sources;
-        },
-        draw(ctx, sources, s) {
-          const { w, h, light, mx, my, t } = s;
-          const core = light ? '122, 77, 216' : '178, 127, 254';
-          ctx.clearRect(0, 0, w, h);
-          ctx.lineWidth = 1;
-
-          for (const rp of sources) {
-            const age = t - rp.born;
-            if (age < 0) continue;
-            if (age > rp.life) {
-              // Respawn at a fresh random spot
-              rp.x = Math.random() * w;
-              rp.y = Math.random() * h;
-              rp.born = t + Math.random() * 2;
-              rp.life = 7 + Math.random() * 4;
-              rp.maxR = 180 + Math.random() * 140;
-              continue;
-            }
-            const progress = age / rp.life;
-            // Smooth fade out over the ripple lifetime
-            const fade = Math.pow(Math.max(0, 1 - progress), 1.8);
-
-            // Three concentric expanding rings, staggered — radar pulse feel
-            for (let ring = 0; ring < 3; ring++) {
-              const rp2 = (progress + ring * 0.18) % 1;
-              const r = rp2 * rp.maxR;
-              const a = (1 - rp2) * fade * (light ? 0.16 : 0.20);
-              ctx.strokeStyle = `rgba(${core}, ${a})`;
-              ctx.beginPath();
-              ctx.arc(rp.x, rp.y, r, 0, Math.PI * 2);
-              ctx.stroke();
-            }
-            // Origin dot fades smoothly via fade multiplier
-            const dotA = fade * (light ? 0.45 : 0.55);
-            ctx.fillStyle = `rgba(${core}, ${dotA})`;
-            ctx.beginPath();
-            ctx.arc(rp.x, rp.y, 1.6, 0, Math.PI * 2);
-            ctx.fill();
-          }
-
-          // Soft halo following cursor
-          if (mx > -1000) {
-            const grd = ctx.createRadialGradient(mx, my, 0, mx, my, 90);
-            grd.addColorStop(0, `rgba(${core}, ${light ? 0.18 : 0.22})`);
-            grd.addColorStop(1, `rgba(${core}, 0)`);
-            ctx.fillStyle = grd;
-            ctx.fillRect(mx - 90, my - 90, 180, 180);
-          }
-        }
-      };
-
-      const fields = { constellation: Constellation, dna: DNA, ripples: Ripples };
-
-      document.querySelectorAll('canvas[data-field]').forEach(canvas => {
-        const field = fields[canvas.dataset.field];
-        if (!field) return;
-        const ctx    = canvas.getContext('2d');
-        const parent = canvas.parentElement;
-        let particles = [];
-        let mx = -9999, my = -9999;
-        let visible = false;
-
-        function resize() {
-          canvas.width  = parent.offsetWidth;
-          canvas.height = parent.offsetHeight;
-          particles = field.build(canvas.width, canvas.height);
-        }
-
-        function tick() {
-          requestAnimationFrame(tick);
-          if (!visible) return;
-          const light = document.documentElement.getAttribute('data-theme') === 'light';
-          field.draw(ctx, particles, {
-            w: canvas.width, h: canvas.height,
-            light, mx, my,
-            t: (performance.now() - fieldT0) * 0.001
-          });
-        }
-
-        parent.addEventListener('mousemove', e => {
-          const r = canvas.getBoundingClientRect();
-          mx = e.clientX - r.left;
-          my = e.clientY - r.top;
-        }, { passive: true });
-        parent.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
-
-        new IntersectionObserver(entries => {
-          visible = entries[0].isIntersecting;
-        }, { threshold: 0 }).observe(parent);
-
-        let rt;
-        window.addEventListener('resize', () => {
-          clearTimeout(rt);
-          rt = setTimeout(resize, 200);
-        }, { passive: true });
-
-        resize();
-        tick();
-      });
-    })();
   </script>
 </body>
 </html>

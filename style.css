@@ -8,7 +8,7 @@
 }
 
 :root {
-  /* Mason Dong VIS — Dark Blue / Neon Green / Medium Purple / Orange */
+  /* Mason Dong VIS — Dark Blue / Neon Green / Orange */
   --bg:                 #181D30;   /* Dark Blue · primary */
   --bg-alt:             #1E2440;
   --surface:            #232A4D;
@@ -16,10 +16,10 @@
   --text:               #F3F3F1;   /* Anti Flash White */
   --text-rgb:           243, 243, 241;
   --text-muted:         #9098B0;
-  --accent:             #B27FFE;   /* Medium Purple · everyday accent */
-  --accent-rgb:         178, 127, 254;
-  --accent-hover:       #C599FF;
-  --accent-bright:      #CFF933;   /* Neon Green · high-impact secondary */
+  --accent:             #CFF933;   /* Neon Green · everyday accent */
+  --accent-rgb:         207, 249, 51;
+  --accent-hover:       #E0FF66;
+  --accent-bright:      #CFF933;   /* Neon Green · high-impact pop (alias) */
   --accent-bright-rgb:  207, 249, 51;
   --accent-warm:        #FF5A40;   /* Orange · special highlight */
   --accent-warm-rgb:    255, 90, 64;
@@ -39,10 +39,10 @@
   --text:               #181D30;   /* Dark Blue */
   --text-rgb:           24, 29, 48;
   --text-muted:         #6B7088;
-  --accent:             #7A4DD8;   /* darker purple for white-bg readability */
-  --accent-rgb:         122, 77, 216;
-  --accent-hover:       #8F66E5;
-  --accent-bright:      #B5DA20;   /* darker green for white-bg readability */
+  --accent:             #6B8E0F;   /* deeper green for small-text readability on white */
+  --accent-rgb:         107, 142, 15;
+  --accent-hover:       #82A816;
+  --accent-bright:      #B5DA20;   /* brighter green for filled surfaces on white */
   --accent-bright-rgb:  181, 218, 32;
   --accent-warm:        #E84A30;
   --accent-warm-rgb:    232, 74, 48;
@@ -85,7 +85,6 @@ a {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  /* Own compositing layer — prevents particle canvas repaints from triggering nav repaints */
   transform: translateZ(0);
   will-change: transform;
   transition: background 0.3s ease;
@@ -370,22 +369,6 @@ a {
 
 /* Only hero section snaps; rest scrolls freely */
 
-/* Decorative particle field behind section content */
-.section-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.7;
-  /* Own compositing layer — isolate particle redraws from nav */
-  transform: translateZ(0);
-  will-change: contents;
-}
-[data-theme="light"] .section-canvas {
-  opacity: 0.85;
-}
 .section-inner {
   position: relative;
   z-index: 1;
@@ -1188,23 +1171,28 @@ a {
 
 .gallery-orgs {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: 1.5rem 2.5rem;
   padding: 2.5rem 2rem 1rem;
   background: var(--bg);
 }
 
 .org-logo {
-  width: min(860px, 88%);
-  height: auto;
+  height: 56px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
   display: block;
-  border-radius: 12px;
   transition: opacity var(--transition);
 }
 
 /* Dark mode: light pill so branded colors stay accurate */
 :not([data-theme="light"]) .org-logo {
   background: rgba(255, 255, 255, 0.92);
-  padding: 1rem 2rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
   opacity: 0.9;
 }
 
@@ -1617,22 +1605,6 @@ body::before {
     rgba(var(--accent-rgb), 0.08),
     transparent 60%
   );
-}
-
-/* Dot-matrix canvas */
-#hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.45;
-  filter: blur(4px);
-  transition: opacity 0.3s ease;
-}
-[data-theme="light"] #hero-canvas {
-  opacity: 0.85;
-  filter: blur(3px);
 }
 
 /* Hero photo 3D tilt */
