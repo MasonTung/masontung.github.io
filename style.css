@@ -8,30 +8,45 @@
 }
 
 :root {
-  --bg: #0f0f0f;
-  --bg-alt: #161616;
-  --surface: #1e1e1e;
-  --border: #2a2a2a;
-  --text: #e8e8e8;
-  --text-muted: #6b6b6b;
-  --accent: #7c6af7;
-  --accent-hover: #9585f9;
+  /* Mason Tung VIS — Dark Blue / Neon Green / Medium Purple / Orange */
+  --bg:                 #181D30;   /* Dark Blue · primary */
+  --bg-alt:             #1E2440;
+  --surface:            #232A4D;
+  --border:             #2F3661;
+  --text:               #F3F3F1;   /* Anti Flash White */
+  --text-rgb:           243, 243, 241;
+  --text-muted:         #9098B0;
+  --accent:             #B27FFE;   /* Medium Purple · everyday accent */
+  --accent-rgb:         178, 127, 254;
+  --accent-hover:       #C599FF;
+  --accent-bright:      #CFF933;   /* Neon Green · high-impact secondary */
+  --accent-bright-rgb:  207, 249, 51;
+  --accent-warm:        #FF5A40;   /* Orange · special highlight */
+  --accent-warm-rgb:    255, 90, 64;
+  --on-accent-bright:   #181D30;   /* dark text on neon-green surfaces */
   --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 12px;
   --transition: 0.2s ease;
 }
 
-/* Light theme overrides */
+/* Light theme overrides — same palette, contrast-flipped */
 [data-theme="light"] {
-  --bg:           #f5f5f5;
-  --bg-alt:       #ebebeb;
-  --surface:      #ffffff;
-  --border:       #dcdcdc;
-  --text:         #1a1a1a;
-  --text-muted:   #888888;
-  --accent:       #6254e8;
-  --accent-hover: #7c6af7;
+  --bg:                 #F3F3F1;   /* Anti Flash White */
+  --bg-alt:             #E8E8E5;
+  --surface:            #FFFFFF;
+  --border:             #DCDCD7;
+  --text:               #181D30;   /* Dark Blue */
+  --text-rgb:           24, 29, 48;
+  --text-muted:         #6B7088;
+  --accent:             #7A4DD8;   /* darker purple for white-bg readability */
+  --accent-rgb:         122, 77, 216;
+  --accent-hover:       #8F66E5;
+  --accent-bright:      #B5DA20;   /* darker green for white-bg readability */
+  --accent-bright-rgb:  181, 218, 32;
+  --accent-warm:        #E84A30;
+  --accent-warm-rgb:    232, 74, 48;
+  --on-accent-bright:   #181D30;
 }
 
 html {
@@ -682,6 +697,22 @@ a {
   animation-delay: calc(0.1s + var(--i, 0) * 0.08s);
 }
 
+/* Button variant: match anchor visuals exactly (no native button chrome) */
+.contact-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: center;
+}
+.contact-icon-btn:focus-visible .contact-icon-circle {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.25);
+}
+
 @keyframes contactRise {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1040,6 +1071,47 @@ a {
   border-radius: 100px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+/* ===========================
+   Toast
+=========================== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translate(-50%, 14px);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1100;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 600px) {
+  .toast {
+    bottom: 1rem;
+    max-width: calc(100% - 2rem);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    border-radius: 16px;
+  }
 }
 
 /* ===========================
