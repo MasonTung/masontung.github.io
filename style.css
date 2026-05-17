@@ -99,7 +99,6 @@ a {
   background: rgba(11, 13, 18, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
   transform: translateZ(0);
   will-change: transform;
   transition: background 0.3s ease;
