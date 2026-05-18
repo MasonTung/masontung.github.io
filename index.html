@@ -495,6 +495,59 @@
     </div>
   </section>
 
+  <!-- Visual Design -->
+  <section class="section" id="visual-design">
+    <div class="section-inner">
+      <div class="vd-head fade-in">
+        <h2 class="section-title">Visual Design</h2>
+        <p class="vd-intro">A small collection of visual-communication pieces — click a thumbnail to read the story behind it.</p>
+      </div>
+
+      <div class="vd-grid" id="vd-grid">
+        <article class="vd-item">
+          <button class="vd-thumb" type="button" aria-expanded="false">
+            <img src="Visual%20Design/%E8%85%8A%E5%85%AB%E8%8A%82%E5%BF%AB%E4%B9%90.png" alt="腊八节快乐" loading="lazy" decoding="async" />
+            <span class="vd-caption">
+              <span class="vd-title">腊八节快乐</span>
+              <span class="vd-year">2025</span>
+            </span>
+          </button>
+          <script type="application/json" class="vd-data">{
+            "title": "腊八节快乐",
+            "year": "2025",
+            "meta": "Designer · Self-initiated · Holiday Key Visual",
+            "brief": "A warm, traditional take on Laba Festival — a steamed-bowl typographic poster honoring the eight-grain harvest.",
+            "body": [
+              "Laba (腊八) is the eighth day of the twelfth lunar month, traditionally celebrated with a porridge of eight grains. The poster reframes that ritual as an editorial type composition: warm earthy palette, ceremonial centering, restrained ornament.",
+              "Goal was to feel both grounded and contemporary — modern Chinese typography that still nods to folk craft. Custom kerning on the title; small auxiliary marks reference steam, grain, and ladle."
+            ]
+          }</script>
+        </article>
+
+        <article class="vd-item">
+          <button class="vd-thumb" type="button" aria-expanded="false">
+            <img src="Visual%20Design/90_54-1.png" alt="Visual Design 90_54" loading="lazy" decoding="async" />
+            <span class="vd-caption">
+              <span class="vd-title">Untitled (90_54)</span>
+              <span class="vd-year">2025</span>
+            </span>
+          </button>
+          <script type="application/json" class="vd-data">{
+            "title": "Untitled (90_54)",
+            "year": "2025",
+            "meta": "Designer · Personal Study · Poster",
+            "brief": "Replace with a one-sentence summary of what this piece is about.",
+            "body": [
+              "First paragraph: context — what was the brief, the occasion, or the question that started this piece?",
+              "Second paragraph: process — references, iterations, what was tried and discarded.",
+              "Third paragraph: outcome — what the final piece does, where it lived, and how it was received."
+            ]
+          }</script>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Gallery -->
   <section class="section" id="gallery">
     <div class="section-inner">
@@ -819,6 +872,83 @@
       cardObs.observe(section);
 
       setup();
+    })();
+
+    // Visual Design: click a thumb → inline expanded row with the case-study story
+    (function () {
+      const grid = document.getElementById('vd-grid');
+      if (!grid) return;
+
+      let openItem = null;
+      let panel = null;
+
+      function buildPanel(data, imgSrc, imgAlt) {
+        const el = document.createElement('div');
+        el.className = 'vd-panel';
+        const bodyHTML = (data.body || []).map(p => `<p>${p}</p>`).join('');
+        el.innerHTML = `
+          <div class="vd-panel-img">
+            <img src="${imgSrc}" alt="${imgAlt}" loading="lazy" decoding="async" />
+          </div>
+          <div class="vd-panel-body">
+            <button type="button" class="vd-panel-close" aria-label="Close">×</button>
+            <p class="vd-panel-meta">${data.year || ''}${data.meta ? ' · ' + data.meta : ''}</p>
+            <h3>${data.title || ''}</h3>
+            <p class="vd-panel-brief">${data.brief || ''}</p>
+            ${bodyHTML}
+          </div>
+        `;
+        return el;
+      }
+
+      function closePanel() {
+        if (panel && panel.parentNode) panel.parentNode.removeChild(panel);
+        if (openItem) {
+          openItem.querySelector('.vd-thumb').setAttribute('aria-expanded', 'false');
+          openItem = null;
+        }
+        panel = null;
+      }
+
+      grid.addEventListener('click', (e) => {
+        // Close button inside panel
+        if (e.target.closest('.vd-panel-close')) {
+          closePanel();
+          return;
+        }
+        const thumb = e.target.closest('.vd-thumb');
+        if (!thumb) return;
+        const item = thumb.closest('.vd-item');
+        if (!item) return;
+
+        // Clicking the same item again → toggle close
+        if (openItem === item) {
+          closePanel();
+          return;
+        }
+
+        // Parse data, build panel, insert after the clicked item
+        const dataEl = item.querySelector('.vd-data');
+        if (!dataEl) return;
+        let data;
+        try { data = JSON.parse(dataEl.textContent); }
+        catch (_) { return; }
+        const imgEl = thumb.querySelector('img');
+        const newPanel = buildPanel(data, imgEl.getAttribute('src'), imgEl.alt || '');
+
+        closePanel();
+        item.insertAdjacentElement('afterend', newPanel);
+        thumb.setAttribute('aria-expanded', 'true');
+        openItem = item;
+        panel = newPanel;
+
+        // Scroll the panel into comfortable view
+        newPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && openItem) closePanel();
+      });
     })();
 
     // Gallery: fade-in on load + lightbox with prev/next navigation, keyboard, and swipe

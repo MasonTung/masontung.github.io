@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runlin DONG — Demo Layout</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="demo.css" />
+  <script>
+    (function () {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    })();
+  </script>
+</head>
+<body>
+
+  <div class="demo-banner">DEMO LAYOUT · Opal-style redesign · <a href="index.html">← back to current site</a></div>
+
+  <!-- Nav (Opal-style, same as current site) -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Mason Dong</a>
+
+      <div class="nav-groups">
+        <div class="nav-group">
+          <span class="nav-group-label">Work</span>
+          <ul class="nav-group-links">
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">About</span>
+          <ul class="nav-group-links">
+            <li><a href="#about">Bio</a></li>
+            <li><a href="#experience">Experience</a></li>
+          </ul>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">Connect</span>
+          <ul class="nav-group-links">
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://matchbiotech.com/" target="_blank" rel="noopener">MatchBiotech</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO: Asymmetric — left text dominant, right image bleed -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="eyebrow">Designer · Founder · Student</p>
+        <h1 class="hero-name">Runlin<br/>DONG<span class="hero-name-mark">.</span></h1>
+        <p class="hero-tagline">Love is the key.</p>
+        <p class="hero-sub">Junior at ShanghaiTech, working across healthcare, business, design and AI. Founder &amp; CEO of <a href="https://matchbiotech.com/" target="_blank" rel="noopener">Match Biotech</a>.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View My Work <span>→</span></a>
+          <a href="#contact" class="btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-photo-frame">
+          <img src="mason-tung-avatar.jpg" alt="Runlin DONG" loading="eager" />
+        </div>
+        <p class="hero-photo-caption">Shanghai · 2026</p>
+      </div>
+    </div>
+
+    <!-- Spec rail: real hard metrics -->
+    <aside class="spec-rail" aria-label="At a glance">
+      <div class="spec">
+        <span class="spec-value">2</span>
+        <span class="spec-label">Startups<br/><em>co-founded</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">3</span>
+        <span class="spec-label">International<br/><em>gold medals</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">70<sup>+</sup></span>
+        <span class="spec-label">Designers<br/><em>managed</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">1k<sup>+</sup></span>
+        <span class="spec-label">Audience<br/><em>at pitches</em></span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- OVERSIZE WORDMARK MOMENT -->
+  <section class="wordmark-strip" aria-hidden="true">
+    <p class="wordmark"><span>Bridging</span> <em>design</em> <span>×</span> <em>biology</em></p>
+  </section>
+
+  <!-- 01 / OVERVIEW (About) -->
+  <section class="chapter" id="about">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">01</p>
+        <p class="chapter-label">Overview</p>
+      </header>
+      <h2 class="chapter-title">A junior in Smart Design,<br/>building things that matter.</h2>
+      <div class="chapter-body-grid">
+        <div>
+          <p>I work across healthcare, business, design and AI — three years, three roles: trend-research intern at <strong>Covestro APAC Innovation Center</strong>, co-founder &amp; creative director of an angel-funded fragrance startup, and now founder &amp; CEO of <strong>Match Biotech</strong>, building point-of-care molecular sensing for Parkinson's disease.</p>
+          <p>SensUs 2025 <em>Gold · Detection Gold · Innovation Silver</em>, and iGEM 2025 <em>International Gold</em> with 3 single-track nominations. Founder of the MakeSense Society; Design &amp; Business Lead at Match Biotech for SensUs 2026; ART &amp; DESIGN Lead for iGEM 2025 ShanghaiTech.</p>
+          <p class="chapter-coda">What I care about: <strong>ownership</strong>, <strong>decisive judgment</strong>, and the bridge between research, product and people.</p>
+        </div>
+        <aside class="chapter-sidebar">
+          <p class="sidebar-label">Skills</p>
+          <ul class="sidebar-list">
+            <li>Strategic Design</li>
+            <li>Product Definition</li>
+            <li>Leadership</li>
+            <li>Stakeholder Mapping</li>
+            <li>MVP Testing</li>
+            <li>Industrial Design</li>
+            <li>Protein Design</li>
+            <li>Vibe Coding</li>
+          </ul>
+          <p class="sidebar-label">Tools</p>
+          <ul class="sidebar-list sidebar-list-mono">
+            <li>Rhino</li>
+            <li>Creo</li>
+            <li>Figma</li>
+            <li>Illustrator</li>
+            <li>Photoshop</li>
+            <li>Keyshot</li>
+            <li>PyTorch</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / EXPERIENCE -->
+  <section class="chapter chapter-alt" id="experience">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">02</p>
+        <p class="chapter-label">Experience</p>
+      </header>
+      <h2 class="chapter-title">Three years,<br/>three roles.</h2>
+
+      <ol class="exp-timeline">
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2025.09 — Present</span>
+            <span class="exp-tag">Founder &amp; CEO</span>
+          </div>
+          <h3 class="exp-org">Match Biotech</h3>
+          <p class="exp-where">Biotech startup · Shanghai</p>
+          <p class="exp-desc">Led the strategic pivot in two weeks following the team's SensUs global championship — focusing on point-of-care molecular sensing for Parkinson's disease. Own end-to-end R&amp;D from clinical research and industrial design to interaction ecosystem. Tech route validated; prototype targeted for April 2026; animal trials in preparation.</p>
+        </li>
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2024.11 — 2025.09</span>
+            <span class="exp-tag">Co-founder &amp; Creative Director</span>
+          </div>
+          <h3 class="exp-org">Shanghai Oude Technology</h3>
+          <p class="exp-where">Angel-funded fragrance startup · Shanghai</p>
+          <p class="exp-desc">Co-led product definition and MVP market validation; shipped two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer pipeline through three rounds of team iteration; co-authored the business plan that closed the angel round.</p>
+        </li>
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2024.07 — 2024.10</span>
+            <span class="exp-tag">Research Intern</span>
+          </div>
+          <h3 class="exp-org">Covestro Asia-Pacific Innovation Center</h3>
+          <p class="exp-where">Bayer Group · Color &amp; Design Trend Research</p>
+          <p class="exp-desc">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 / SELECTED WORK — chapter format per project -->
+  <section class="chapter" id="work">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">03</p>
+        <p class="chapter-label">Selected Work</p>
+      </header>
+      <h2 class="chapter-title">Selected projects.</h2>
+    </div>
+
+    <!-- Project 01: Match Biotech -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">01</p>
+        <p class="project-tags"><span>Bio</span><span>Sensing</span><span>AI/ML</span></p>
+        <h3 class="project-title">Match Biotech × SensUs 2026</h3>
+        <p class="project-lede">Point-of-care molecular sensing for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Founder &amp; CEO</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+          <div><span class="meta-label">Status</span><span class="meta-value">Prototype Apr 2026</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://matchbiotech.com/" target="_blank" rel="noopener">matchbiotech.com →</a></div>
+        </div>
+        <div class="project-gallery project-gallery-2">
+          <div class="proj-img proj-placeholder">
+            <span class="proj-placeholder-label">Prototype · placeholder</span>
+          </div>
+          <div class="proj-img proj-placeholder proj-placeholder-alt">
+            <span class="proj-placeholder-label">Team · placeholder</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 02: Project DOCTOR -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">02</p>
+        <p class="project-tags"><span>iGEM 2025</span><span>Synthetic Bio</span></p>
+        <h3 class="project-title">Project DOCTOR</h3>
+        <p class="project-lede">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded International Gold with 3 single-track nominations.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">ART &amp; DESIGN Lead</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+          <div><span class="meta-label">Award</span><span class="meta-value">International Gold</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener">2025.igem.wiki →</a></div>
+        </div>
+        <div class="project-gallery project-gallery-2">
+          <div class="proj-img proj-placeholder">
+            <span class="proj-placeholder-label">Wiki cover · placeholder</span>
+          </div>
+          <div class="proj-img proj-placeholder proj-placeholder-alt">
+            <span class="proj-placeholder-label">Team photo · placeholder</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 03: MakeSense Society -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">03</p>
+        <p class="project-tags"><span>Community</span><span>Interdisciplinary</span></p>
+        <h3 class="project-title">MakeSense Society</h3>
+        <p class="project-lede">A compact, high-caliber, interdisciplinary innovation community at ShanghaiTech — bringing researchers and builders together on ambitious sci-tech projects.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Founder</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+          <div><span class="meta-label">Members</span><span class="meta-value">Interdisciplinary</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener">Coverage →</a></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 04: Handbook -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">04</p>
+        <p class="project-tags"><span>iGEM</span><span>Outreach</span></p>
+        <h3 class="project-title">Handbook of Project DOCTOR</h3>
+        <p class="project-lede">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Editorial &amp; Design</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+          <div><span class="meta-label">Format</span><span class="meta-value">PDF handbook</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="#" target="_blank" rel="noopener">Read →</a></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- 04 / GALLERY -->
+  <section class="chapter chapter-alt" id="gallery">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">04</p>
+        <p class="chapter-label">Gallery</p>
+      </header>
+      <h2 class="chapter-title">Through my lens.</h2>
+      <p class="chapter-lede">Moments through my lens — fragments of light, places, and stillness.</p>
+
+      <div class="gallery-grid">
+        <figure><img src="Gallery/DSC_1375.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/29-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/30-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/31-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/32-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/33-1.webp" alt="" loading="lazy" /></figure>
+      </div>
+
+      <p class="chapter-cta-row">
+        <a href="#" class="link-arrow">Open full gallery →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 / CONTACT -->
+  <section class="chapter chapter-contact" id="contact">
+    <div class="chapter-inner chapter-inner-narrow">
+      <header class="chapter-head">
+        <p class="chapter-num">05</p>
+        <p class="chapter-label">Contact</p>
+      </header>
+      <h2 class="chapter-title">Let's talk.</h2>
+      <p class="chapter-lede">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</p>
+
+      <ul class="contact-list">
+        <li><span class="contact-label">Email</span><a href="mailto:masondong@shanghaitech.edu.cn">masondong@shanghaitech.edu.cn</a></li>
+        <li><span class="contact-label">GitHub</span><a href="https://github.com/MasonTung" target="_blank" rel="noopener">github.com/MasonTung ↗</a></li>
+        <li>
+          <span class="contact-label">WeChat 公众号</span>
+          <button type="button" class="contact-link contact-wechat" data-wechat="董寜寜" title="Click to copy">
+            董寜寜 <span class="contact-copy-hint" aria-hidden="true">click to copy</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Mason Dong</span>
+      <span class="footer-meta">© 2026 Runlin DONG · ShanghaiTech University</span>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Subtle nav background on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+</body>
+</html>
