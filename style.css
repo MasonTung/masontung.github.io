@@ -1275,6 +1275,121 @@ a.meta-value:hover { color: var(--accent); }
 }
 
 /* ===========================
+   Generic collapse — animated 0fr → 1fr disclosure
+   Used by Selected Work project details. The toggle button anywhere on the
+   page can target a collapse by id via aria-controls.
+=========================== */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 420ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 280ms ease;
+}
+.collapse.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.collapse-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.05rem 0.55rem 1.15rem;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.collapse-toggle:hover {
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+}
+.collapse-toggle-chevron {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.collapse-toggle[aria-expanded="true"] .collapse-toggle-chevron {
+  transform: rotate(180deg);
+}
+/* Swap labels based on state — keeps a11y semantics clear */
+.collapse-toggle [data-label-expanded] { display: none; }
+.collapse-toggle[aria-expanded="true"] [data-label-collapsed] { display: none; }
+.collapse-toggle[aria-expanded="true"] [data-label-expanded] { display: inline; }
+
+/* Wrapper that centers / spaces a collapse toggle after a list or section */
+.collapse-toggle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Show-more list pattern: hide items past N until parent gets .is-open.
+   No animation here — lists feel snappier appearing instantly. A soft
+   fade-out on the last visible item hints at "there's more below". */
+.awards-list:not(.is-open) > li:nth-child(n+6),
+.other-list:not(.is-open) > li:nth-child(n+6) {
+  display: none;
+}
+
+/* ===========================
+   Selected Work — collapsible per-project details
+=========================== */
+.project-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.05rem 0.55rem 1.15rem;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.project-expand:hover {
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+}
+.project-expand-chevron {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project-expand[aria-expanded="true"] .project-expand-chevron {
+  transform: rotate(180deg);
+}
+.project-expand [data-label-expanded] { display: none; }
+.project-expand[aria-expanded="true"] [data-label-collapsed] { display: none; }
+.project-expand[aria-expanded="true"] [data-label-expanded] { display: inline; }
+
+/* Space the detail content away from the expand button when open.
+   Inner children keep their original margins. */
+.project-detail-wrap > .collapse-inner > :first-child {
+  margin-top: 2rem;
+}
+
+/* ===========================
    Visual Design — aspect-honest cards, stacked-paper series,
    smooth inline expansion via grid-template-rows: 0fr → 1fr
 =========================== */

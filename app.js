@@ -351,6 +351,26 @@
   })();
 
   // ---------------------------------------------------------------------------
+  // Generic collapse toggles — any [data-collapse-toggle] button whose
+  // aria-controls points to an element gets a click handler that toggles
+  // the .is-open class on that element and the aria-expanded state on
+  // itself. Used by Recognition show-more lists and Selected Work details.
+  // ---------------------------------------------------------------------------
+  (function () {
+    const triggers = document.querySelectorAll('[data-collapse-toggle]');
+    if (!triggers.length) return;
+    triggers.forEach((btn) => {
+      const targetId = btn.getAttribute('aria-controls');
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+      btn.addEventListener('click', () => {
+        const open = target.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+  })();
+
+  // ---------------------------------------------------------------------------
   // WeChat copy: clipboard API with execCommand fallback
   // ---------------------------------------------------------------------------
   (function () {

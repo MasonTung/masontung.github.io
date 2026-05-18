@@ -215,7 +215,7 @@
       <!-- Awards -->
       <div class="sub-block">
         <p class="sub-label">Awards &amp; Honors</p>
-        <ul class="awards-list">
+        <ul class="awards-list" id="awards-list">
           <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">SensUs 2025 — Global Biosensing Competition</p><p class="award-meta">International Gold &middot; Detection Gold &middot; Innovation Silver</p></div></li>
           <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">iGEM 2025 — International Genetically Engineered Machine Competition</p><p class="award-meta">International Gold &middot; 3 single-track nominations</p></div></li>
           <li><span class="medal medal-first">Nat'l 1st</span><div class="award-body"><p class="award-name">4th National College Mental Health Knowledge Competition</p><p class="award-meta">National First Prize</p></div></li>
@@ -228,12 +228,22 @@
           <li><span class="medal medal-other">5th</span><div class="award-body"><p class="award-name">2025 Shanghai Open Rowing</p><p class="award-meta">Men's 8+ 4.2 km Pursuit &middot; 5th place</p></div></li>
           <li><span class="medal medal-other">Hon.</span><div class="award-body"><p class="award-name">ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition</p><p class="award-meta">Honorable Mention</p></div></li>
         </ul>
+        <div class="collapse-toggle-row">
+          <button type="button" class="collapse-toggle" data-collapse-toggle
+                  aria-controls="awards-list" aria-expanded="false">
+            <span data-label-collapsed>Show all 11 awards</span>
+            <span data-label-expanded>Show fewer</span>
+            <span class="collapse-toggle-chevron" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+            </span>
+          </button>
+        </div>
       </div>
 
       <!-- Other Engagements -->
       <div class="sub-block">
         <p class="sub-label">Other Engagements</p>
-        <ul class="other-list">
+        <ul class="other-list" id="other-list">
           <li><span>Key Visual Designer</span> &middot; Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
           <li><span>Project Director</span> &middot; ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
           <li><span>Project Designer</span> &middot; Wenxing Village Rural Revitalization, Dali Prefecture</li>
@@ -246,6 +256,16 @@
           <li><span>Public Speaking &amp; Executive Presentations</span> &middot; audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
           <li><span>Student Representative</span> &middot; College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
         </ul>
+        <div class="collapse-toggle-row">
+          <button type="button" class="collapse-toggle" data-collapse-toggle
+                  aria-controls="other-list" aria-expanded="false">
+            <span data-label-collapsed>Show all 11 engagements</span>
+            <span data-label-expanded>Show fewer</span>
+            <span class="collapse-toggle-chevron" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -267,18 +287,30 @@
         <p class="project-tags"><span>Bio</span><span>Sensing</span><span>AI/ML</span></p>
         <h3 class="project-title">Match Biotech × SensUs 2026</h3>
         <p class="project-lede">Point-of-care molecular sensing for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
-        <div class="project-meta">
-          <div><span class="meta-label">Role</span><span class="meta-value">Founder &amp; CEO</span></div>
-          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
-          <div><span class="meta-label">Status</span><span class="meta-value">Prototype Apr 2026</span></div>
-          <div><span class="meta-label">Link</span><a class="meta-value" href="https://matchbiotech.com/" target="_blank" rel="noopener">matchbiotech.com →</a></div>
-        </div>
-        <div class="project-gallery project-gallery-2">
-          <div class="proj-img proj-placeholder">
-            <span class="proj-placeholder-label">Prototype · placeholder</span>
-          </div>
-          <div class="proj-img proj-placeholder proj-placeholder-alt">
-            <span class="proj-placeholder-label">Team · placeholder</span>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-01-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-01-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Founder &amp; CEO</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+              <div><span class="meta-label">Status</span><span class="meta-value">Prototype Apr 2026</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://matchbiotech.com/" target="_blank" rel="noopener">matchbiotech.com →</a></div>
+            </div>
+            <div class="project-gallery project-gallery-2">
+              <div class="proj-img proj-placeholder">
+                <span class="proj-placeholder-label">Prototype · placeholder</span>
+              </div>
+              <div class="proj-img proj-placeholder proj-placeholder-alt">
+                <span class="proj-placeholder-label">Team · placeholder</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -291,18 +323,30 @@
         <p class="project-tags"><span>iGEM 2025</span><span>Synthetic Bio</span></p>
         <h3 class="project-title">Project DOCTOR</h3>
         <p class="project-lede">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded International Gold with 3 single-track nominations.</p>
-        <div class="project-meta">
-          <div><span class="meta-label">Role</span><span class="meta-value">ART &amp; DESIGN Lead</span></div>
-          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
-          <div><span class="meta-label">Award</span><span class="meta-value">International Gold</span></div>
-          <div><span class="meta-label">Link</span><a class="meta-value" href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener">2025.igem.wiki →</a></div>
-        </div>
-        <div class="project-gallery project-gallery-2">
-          <div class="proj-img proj-placeholder">
-            <span class="proj-placeholder-label">Wiki cover · placeholder</span>
-          </div>
-          <div class="proj-img proj-placeholder proj-placeholder-alt">
-            <span class="proj-placeholder-label">Team photo · placeholder</span>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-02-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-02-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">ART &amp; DESIGN Lead</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+              <div><span class="meta-label">Award</span><span class="meta-value">International Gold</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener">2025.igem.wiki →</a></div>
+            </div>
+            <div class="project-gallery project-gallery-2">
+              <div class="proj-img proj-placeholder">
+                <span class="proj-placeholder-label">Wiki cover · placeholder</span>
+              </div>
+              <div class="proj-img proj-placeholder proj-placeholder-alt">
+                <span class="proj-placeholder-label">Team photo · placeholder</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -315,11 +359,23 @@
         <p class="project-tags"><span>Community</span><span>Interdisciplinary</span></p>
         <h3 class="project-title">MakeSense Society</h3>
         <p class="project-lede">A compact, high-caliber, interdisciplinary innovation community at ShanghaiTech — bringing researchers and builders together on ambitious sci-tech projects.</p>
-        <div class="project-meta">
-          <div><span class="meta-label">Role</span><span class="meta-value">Founder</span></div>
-          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
-          <div><span class="meta-label">Members</span><span class="meta-value">Interdisciplinary</span></div>
-          <div><span class="meta-label">Link</span><a class="meta-value" href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener">Coverage →</a></div>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-03-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-03-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Founder</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+              <div><span class="meta-label">Members</span><span class="meta-value">Interdisciplinary</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener">Coverage →</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -331,11 +387,23 @@
         <p class="project-tags"><span>iGEM</span><span>Outreach</span></p>
         <h3 class="project-title">Handbook of Project DOCTOR</h3>
         <p class="project-lede">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
-        <div class="project-meta">
-          <div><span class="meta-label">Role</span><span class="meta-value">Editorial &amp; Design</span></div>
-          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
-          <div><span class="meta-label">Format</span><span class="meta-value">PDF handbook</span></div>
-          <div><span class="meta-label">Link</span><a class="meta-value" href="#" target="_blank" rel="noopener">Read →</a></div>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-04-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-04-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Editorial &amp; Design</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+              <div><span class="meta-label">Format</span><span class="meta-value">PDF handbook</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="#" target="_blank" rel="noopener">Read →</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </article>
