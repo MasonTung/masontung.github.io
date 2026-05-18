@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="noah-style-demo.css">
 </head>
 <body class="green">
-	<div class="page-reveal" aria-hidden="true"></div>
 	<div id="ns">
 		<div id="content" class="container">
 			<div id="main">
@@ -118,7 +117,6 @@
 		while (body.classList.contains(themes[random])) {
 			random = Math.floor(Math.random() * themes.length);
 		}
-		// Preserve the page-reveal overlay state by only swapping the theme tokens
 		themes.forEach(t => body.classList.remove(t));
 		body.classList.add(themes[random]);
 	}
