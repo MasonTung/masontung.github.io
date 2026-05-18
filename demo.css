@@ -665,6 +665,138 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===========================
+   Recognition sub-blocks (Awards + Other)
+=========================== */
+.sub-block {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.sub-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.sub-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.awards-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+}
+.awards-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.medal {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  background: rgba(var(--accent-rgb), 0.10);
+  color: var(--accent);
+  border: 1px solid rgba(var(--accent-rgb), 0.30);
+}
+.medal-gold {
+  color: #E4D27A;
+  background: rgba(228, 210, 122, 0.10);
+  border-color: rgba(228, 210, 122, 0.35);
+}
+[data-theme="light"] .medal-gold {
+  color: #876515;
+  background: rgba(228, 210, 122, 0.18);
+  border-color: rgba(228, 210, 122, 0.55);
+}
+.medal-silver,
+.medal-second {
+  color: #D4D8E6;
+  background: rgba(212, 216, 230, 0.08);
+  border-color: rgba(212, 216, 230, 0.30);
+}
+[data-theme="light"] .medal-silver,
+[data-theme="light"] .medal-second {
+  color: #5C627E;
+  background: rgba(92, 98, 126, 0.08);
+  border-color: rgba(92, 98, 126, 0.35);
+}
+.medal-first {
+  color: #E0A89A;
+  background: rgba(224, 168, 154, 0.12);
+  border-color: rgba(224, 168, 154, 0.35);
+}
+[data-theme="light"] .medal-first {
+  color: #A05439;
+  background: rgba(224, 168, 154, 0.18);
+  border-color: rgba(224, 168, 154, 0.55);
+}
+.medal-top, .medal-other {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.10);
+  border-color: rgba(var(--accent-rgb), 0.30);
+}
+
+.award-body { flex: 1; min-width: 0; }
+
+.award-name {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 0.2rem;
+}
+
+.award-meta {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.other-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+}
+.other-list li {
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.other-list li span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .awards-list, .other-list { grid-template-columns: 1fr; }
+}
+
+/* ===========================
    Project chapter
 =========================== */
 .project {
@@ -853,6 +985,64 @@ a.meta-value:hover { color: var(--accent); }
 }
 .contact-list a:hover {
   border-bottom-color: var(--accent);
+}
+
+/* WeChat button — looks like a link, behaves like a button */
+.contact-wechat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+.contact-wechat:hover { border-bottom-color: var(--accent); }
+.contact-copy-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.contact-wechat:hover .contact-copy-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 2.5rem;
+  transform: translate(-50%, 1rem);
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 300;
+  max-width: calc(100vw - 2rem);
+  white-space: nowrap;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* ===========================
