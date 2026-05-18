@@ -424,19 +424,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    // WeChat copy
-    (function () {
-      const toastEl = document.getElementById('toast');
-      let tid;
-      function toast(msg) {
-        if (!toastEl) return;
-        toastEl.textContent = msg;
-        toastEl.classList.add('show');
-        clearTimeout(tid);
-        tid = setTimeout(() => toastEl.classList.remove('show'), 2600);
-      }
-    })();
-
     // Gallery lightbox with prev/next, keyboard, swipe
     (function () {
       const lightbox    = document.getElementById('lightbox');

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Runlin DONG</title>
+  <title>Runlin DONG · Mason Dong</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
   <script>
-    // Bootstrap theme before body parses to avoid a wrong-theme flash
     (function () {
       document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
     })();
@@ -23,7 +22,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">Mason Dong</a>
 
-      <div class="nav-groups" id="nav-groups">
+      <div class="nav-groups">
         <div class="nav-group">
           <span class="nav-group-label">Work</span>
           <ul class="nav-group-links">
@@ -51,463 +50,302 @@
       <div class="nav-actions">
         <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <!-- Sun: shown in dark mode, click → go light -->
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
             <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
             <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
             <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
           </svg>
-          <!-- Moon: shown in light mode, click → go dark -->
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </button>
-        <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-            <line x1="3" y1="7"  x2="21" y2="7"/>
-            <line x1="3" y1="17" x2="21" y2="17"/>
-          </svg>
-        </button>
       </div>
     </div>
-    <div class="scroll-progress" id="scroll-progress"></div>
   </nav>
 
-  <!-- Hero -->
+  <!-- HERO: Asymmetric — left text dominant, right image bleed -->
   <section class="hero">
-    <div class="hero-inner">
-      <img src="mason-tung-avatar.jpg" alt="Runlin DONG" class="hero-photo"
-           width="1254" height="1254" decoding="async" fetchpriority="high" />
-      <div class="hero-text">
-        <p class="hero-greeting">Hi, I'm</p>
-        <h1 class="hero-name" data-text="Runlin DONG">Runlin DONG</h1>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="eyebrow">Designer · Founder · Student</p>
+        <h1 class="hero-name">Runlin<br/>DONG<span class="hero-name-mark">.</span></h1>
         <p class="hero-tagline">Love is the key.</p>
+        <p class="hero-sub">Junior at ShanghaiTech, working across healthcare, business, design and AI. Founder &amp; CEO of <a href="https://matchbiotech.com/" target="_blank" rel="noopener">Match Biotech</a>.</p>
         <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">
-            View My Work
-          </a>
-          <a href="#contact" class="btn btn-ghost">
-            Get In Touch
-          </a>
-          <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="btn btn-ghost">
-            Visit MatchBiotech
-          </a>
+          <a href="#work" class="btn-primary">View My Work <span>→</span></a>
+          <a href="#contact" class="btn-ghost">Get in touch</a>
         </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-photo-frame">
+          <img src="mason-tung-avatar.jpg" alt="Runlin DONG" loading="eager" />
+        </div>
+        <p class="hero-photo-caption">Shanghai · 2026</p>
       </div>
     </div>
-    <aside class="stat-card" aria-label="At a glance">
-      <div class="stat-row">
-        <div class="stat-meta">
-          <span class="stat-label">Course Units</span>
-          <span class="stat-value">966</span>
-        </div>
-        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
-        </svg>
+
+    <!-- Spec rail: real hard metrics -->
+    <aside class="spec-rail" aria-label="At a glance">
+      <div class="spec">
+        <span class="spec-value">2</span>
+        <span class="spec-label">Startups<br/><em>co-founded</em></span>
       </div>
-      <div class="stat-row">
-        <div class="stat-meta">
-          <span class="stat-label">Countries Educated</span>
-          <span class="stat-value">46</span>
-        </div>
-        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/>
-        </svg>
+      <div class="spec">
+        <span class="spec-value">3</span>
+        <span class="spec-label">International<br/><em>gold medals</em></span>
       </div>
-      <div class="stat-row">
-        <div class="stat-meta">
-          <span class="stat-label">Laboratory Tests</span>
-          <span class="stat-value">22</span>
-        </div>
-        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 3h6M10 3v6.5L4.5 19a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 9.5V3"/>
-          <path d="M7.5 14h9"/>
-        </svg>
+      <div class="spec">
+        <span class="spec-value">70<sup>+</sup></span>
+        <span class="spec-label">Designers<br/><em>managed</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">1k<sup>+</sup></span>
+        <span class="spec-label">Audience<br/><em>at pitches</em></span>
       </div>
     </aside>
-
-    <div class="hero-scroll-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </div>
   </section>
 
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="section-inner">
-      <h2 class="section-title">About</h2>
-      <div class="about-grid">
-        <div class="about-text fade-in">
-          <p>Junior at ShanghaiTech University, majoring in Smart Design. I work across healthcare, business, design and AI — three years, three roles: trend-research intern at Covestro APAC Innovation Center, co-founder &amp; creative director of an angel-funded fragrance startup, and now founder &amp; CEO of Match Biotech, building point-of-care molecular sensing for Parkinson's disease.</p>
-          <p>SensUs 2025 Gold &middot; Detection Gold &middot; Innovation Silver, and iGEM 2025 International Gold with 3 single-track nominations. Founder of the MakeSense Society; Design &amp; Business Lead at Match Biotech for SensUs 2026; ART &amp; DESIGN Lead for iGEM 2025 ShanghaiTech. What I care about: ownership, decisive judgment, and the bridge between research, product and people.</p>
-          </div>
-        <div class="about-tags fade-in" style="transition-delay:0.1s">
-          <div class="tag-group">
-            <h3 class="tag-group-title">Skills</h3>
-            <div class="tags">
-              <span class="tag">Strategic Design</span>
-              <span class="tag">Product Definition</span>
-              <span class="tag">Leadership</span>
-              <span class="tag">Stakeholder Mapping</span>
-              <span class="tag">MVP Testing</span>
-              <span class="tag">Industrial Design</span>
-              <span class="tag">Protein Design</span>
-              <span class="tag">Vibe Coding</span>
-            </div>
-          </div>
-          <div class="tag-group">
-            <h3 class="tag-group-title">Interests</h3>
-            <div class="tags">
-              <span class="tag">Guitar</span>
-              <span class="tag">Protein De Novo Design</span>
-              <span class="tag">Arknights</span>
-              <span class="tag">Project Moon</span>
-            </div>
-          </div>
+  <!-- OVERSIZE WORDMARK MOMENT -->
+  <section class="wordmark-strip" aria-hidden="true">
+    <p class="wordmark"><span>Bridging</span> <em>design</em> <span>×</span> <em>biology</em></p>
+  </section>
+
+  <!-- 01 / OVERVIEW (About) -->
+  <section class="chapter" id="about">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">01</p>
+        <p class="chapter-label">Overview</p>
+      </header>
+      <h2 class="chapter-title">A junior in Smart Design,<br/>building things that matter.</h2>
+      <div class="chapter-body-grid">
+        <div>
+          <p>I work across healthcare, business, design and AI — three years, three roles: trend-research intern at <strong>Covestro APAC Innovation Center</strong>, co-founder &amp; creative director of an angel-funded fragrance startup, and now founder &amp; CEO of <strong>Match Biotech</strong>, building point-of-care molecular sensing for Parkinson's disease.</p>
+          <p>SensUs 2025 <em>Gold · Detection Gold · Innovation Silver</em>, and iGEM 2025 <em>International Gold</em> with 3 single-track nominations. Founder of the MakeSense Society; Design &amp; Business Lead at Match Biotech for SensUs 2026; ART &amp; DESIGN Lead for iGEM 2025 ShanghaiTech.</p>
+          <p class="chapter-coda">What I care about: <strong>ownership</strong>, <strong>decisive judgment</strong>, and the bridge between research, product and people.</p>
         </div>
+        <aside class="chapter-sidebar">
+          <p class="sidebar-label">Skills</p>
+          <ul class="sidebar-list">
+            <li>Strategic Design</li>
+            <li>Product Definition</li>
+            <li>Leadership</li>
+            <li>Stakeholder Mapping</li>
+            <li>MVP Testing</li>
+            <li>Industrial Design</li>
+            <li>Protein Design</li>
+            <li>Vibe Coding</li>
+          </ul>
+          <p class="sidebar-label">Tools</p>
+          <ul class="sidebar-list sidebar-list-mono">
+            <li>Rhino</li>
+            <li>Creo</li>
+            <li>Figma</li>
+            <li>Illustrator</li>
+            <li>Photoshop</li>
+            <li>Keyshot</li>
+            <li>PyTorch</li>
+          </ul>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section class="section" id="experience">
-    <div class="section-inner">
-      <h2 class="section-title">Experience</h2>
+  <!-- 02 / EXPERIENCE -->
+  <section class="chapter chapter-alt" id="experience">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">02</p>
+        <p class="chapter-label">Experience</p>
+      </header>
+      <h2 class="chapter-title">Three years,<br/>three roles.</h2>
 
-      <!-- Roles timeline -->
-      <div class="exp-roles">
-        <article class="exp-item fade-in">
+      <ol class="exp-timeline">
+        <li class="exp-item">
           <div class="exp-meta">
             <span class="exp-date">2025.09 — Present</span>
-            <span class="exp-role">Founder &amp; CEO</span>
+            <span class="exp-tag">Founder &amp; CEO</span>
           </div>
           <h3 class="exp-org">Match Biotech</h3>
-          <p class="exp-where">
-            Biotech startup · Shanghai
-            
-          </p>
-          <p class="exp-desc">Leading a startup focused on point-of-care molecular sensing for Parkinson's disease. Drove the strategic pivot after the team's SensUs world championship; own R&amp;D from clinical research to industrial design, and build partnerships across research, clinical, and commercial networks. Prototype targeted for April 2026, with animal trials in preparation.</p>
-          <div class="exp-tags">
-            <span class="card-tag tag-venture">Startup</span>
-            <span class="card-tag tag-bio">Bio</span>
-            <span class="card-tag tag-bio">Sensing</span>
-          </div>
-        </article>
-
-        <article class="exp-item fade-in" style="transition-delay:0.08s">
-          <div class="exp-meta">
-            <span class="exp-date">2025.02 — 2025.10</span>
-            <span class="exp-role">Industrial Design Lead</span>
-          </div>
-          <h3 class="exp-org">
-            ShanghaiTech iGEM Team
-            
-          </h3>
-          <p class="exp-where">
-            iGEM — International Genetically Engineered Machine Competition
-            
-          </p>
-          <p class="exp-desc">Owned the industrial-design workstream end-to-end and advised the Networking department on education planning and PR/marketing campaigns. Team won International Gold with 3 single-track nominations.</p>
-          <div class="exp-tags">
-            <span class="card-tag tag-bio">Bio</span>
-            <span class="card-tag tag-venture">Design</span>
-          </div>
-        </article>
-
-        <article class="exp-item fade-in" style="transition-delay:0.16s">
+          <p class="exp-where">Biotech startup · Shanghai</p>
+          <p class="exp-desc">Led the strategic pivot in two weeks following the team's SensUs global championship — focusing on point-of-care molecular sensing for Parkinson's disease. Own end-to-end R&amp;D from clinical research and industrial design to interaction ecosystem. Tech route validated; prototype targeted for April 2026; animal trials in preparation.</p>
+        </li>
+        <li class="exp-item">
           <div class="exp-meta">
             <span class="exp-date">2024.11 — 2025.09</span>
-            <span class="exp-role">Co-founder &amp; Creative Director</span>
+            <span class="exp-tag">Co-founder &amp; Creative Director</span>
           </div>
-          <h3 class="exp-org">
-            Shanghai Ode Technology
-          </h3>
-          <p class="exp-where">
-            Angel-funded fragrance startup
-            
-          </p>
-          <p class="exp-desc">Co-led product definition and MVP market validation, shipping two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer talent pipeline through three rounds of team iteration, and co-authored the business plan that closed the angel round.</p>
-          <div class="exp-tags">
-            <span class="card-tag tag-venture">Startup</span>
-            <span class="card-tag tag-venture">Design</span>
-          </div>
-        </article>
-
-        <article class="exp-item fade-in" style="transition-delay:0.24s">
+          <h3 class="exp-org">Shanghai Oude Technology</h3>
+          <p class="exp-where">Angel-funded fragrance startup · Shanghai</p>
+          <p class="exp-desc">Co-led product definition and MVP market validation; shipped two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer pipeline through three rounds of team iteration; co-authored the business plan that closed the angel round.</p>
+        </li>
+        <li class="exp-item">
           <div class="exp-meta">
             <span class="exp-date">2024.07 — 2024.10</span>
-            <span class="exp-role">Research Intern</span>
+            <span class="exp-tag">Research Intern</span>
           </div>
-          <h3 class="exp-org">
-            Covestro Asia-Pacific Innovation Center
-            
-          </h3>
-          <p class="exp-where">
-            Color &amp; Design Trend Research · Shanghai
-            
-          </p>
+          <h3 class="exp-org">Covestro Asia-Pacific Innovation Center</h3>
+          <p class="exp-where">Bayer Group · Color &amp; Design Trend Research</p>
           <p class="exp-desc">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
-          <div class="exp-tags">
-            <span class="card-tag tag-tech">Research</span>
-            <span class="card-tag tag-venture">Design</span>
-          </div>
-        </article>
-      </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 / RECOGNITION (Awards + Other Engagements) -->
+  <section class="chapter" id="recognition">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">03</p>
+        <p class="chapter-label">Recognition</p>
+      </header>
+      <h2 class="chapter-title">Awards &amp;<br/>engagements.</h2>
 
       <!-- Awards -->
-      <h3 class="exp-section-title">Awards &amp; Honors</h3>
-      <ul class="awards">
-        <li class="award">
-          <span class="award-medal" data-tier="gold">Gold</span>
-          <div class="award-body">
-            <p class="award-name">
-              SensUs 2025 — Global Biosensing Competition
-              
-            </p>
-            <p class="award-meta">
-              International Gold · Detection Award · Innovation Silver
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="gold">Gold</span>
-          <div class="award-body">
-            <p class="award-name">
-              iGEM 2025 — International Genetically Engineered Machine Competition
-              
-            </p>
-            <p class="award-meta">
-              International Gold · 3 single-track nominations
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="second">Nat'l 2nd</span>
-          <div class="award-body">
-            <p class="award-name">
-              10th National Biomedical Engineering Innovation Design Competition
-              
-            </p>
-            <p class="award-meta">
-              National Second Prize
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="silver">Silver</span>
-          <div class="award-body">
-            <p class="award-name">
-              4th Synthetic Biology Innovation Competition
-              
-            </p>
-            <p class="award-meta">
-              National Silver
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="second">Nat'l 2nd</span>
-          <div class="award-body">
-            <p class="award-name">
-              18th Cesim Global Business Simulation Challenge (China)
-              
-            </p>
-            <p class="award-meta">
-              National Second Prize
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="second">Nat'l 2nd</span>
-          <div class="award-body">
-            <p class="award-name">
-              2025 National Youth Cup Art &amp; Design Competition
-              
-            </p>
-            <p class="award-meta">
-              National Second Prize
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="top">Top 3</span>
-          <div class="award-body">
-            <p class="award-name">
-              1st Qingyun National College Design Competition
-              
-            </p>
-            <p class="award-meta">
-              Top 3 Finalist
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="first">Nat'l 1st</span>
-          <div class="award-body">
-            <p class="award-name">
-              4th National College Mental Health Knowledge Competition
-              
-            </p>
-            <p class="award-meta">
-              National First Prize
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="other">5th</span>
-          <div class="award-body">
-            <p class="award-name">
-              2025 Shanghai Open Rowing
-              
-            </p>
-            <p class="award-meta">
-              Men's 8+ 4.2 km Pursuit · 5th place
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="second">2nd</span>
-          <div class="award-body">
-            <p class="award-name">
-              7th ShanghaiTech Innovation &amp; Entrepreneurship Competition
-              
-            </p>
-            <p class="award-meta">
-              Second Prize + 2 × Honorable Mention
-              
-            </p>
-          </div>
-        </li>
-        <li class="award">
-          <span class="award-medal" data-tier="other">Hon.</span>
-          <div class="award-body">
-            <p class="award-name">
-              ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition
-              
-            </p>
-            <p class="award-meta">
-              Honorable Mention
-              
-            </p>
-          </div>
-        </li>
-      </ul>
+      <div class="sub-block">
+        <p class="sub-label">Awards &amp; Honors</p>
+        <ul class="awards-list">
+          <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">SensUs 2025 — Global Biosensing Competition</p><p class="award-meta">International Gold &middot; Detection Gold &middot; Innovation Silver</p></div></li>
+          <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">iGEM 2025 — International Genetically Engineered Machine Competition</p><p class="award-meta">International Gold &middot; 3 single-track nominations</p></div></li>
+          <li><span class="medal medal-first">Nat'l 1st</span><div class="award-body"><p class="award-name">4th National College Mental Health Knowledge Competition</p><p class="award-meta">National First Prize</p></div></li>
+          <li><span class="medal medal-silver">Silver</span><div class="award-body"><p class="award-name">4th Synthetic Biology Innovation Competition</p><p class="award-meta">National Silver</p></div></li>
+          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">10th National Biomedical Engineering Innovation Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
+          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">18th Cesim Global Business Simulation Challenge (China)</p><p class="award-meta">National Second Prize</p></div></li>
+          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">2025 National Youth Cup Art &amp; Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
+          <li><span class="medal medal-second">2nd</span><div class="award-body"><p class="award-name">7th ShanghaiTech Innovation &amp; Entrepreneurship Competition</p><p class="award-meta">Second Prize + 2 &times; Honorable Mention</p></div></li>
+          <li><span class="medal medal-top">Top 3</span><div class="award-body"><p class="award-name">1st Qingyun National College Design Competition</p><p class="award-meta">Top 3 Finalist</p></div></li>
+          <li><span class="medal medal-other">5th</span><div class="award-body"><p class="award-name">2025 Shanghai Open Rowing</p><p class="award-meta">Men's 8+ 4.2 km Pursuit &middot; 5th place</p></div></li>
+          <li><span class="medal medal-other">Hon.</span><div class="award-body"><p class="award-name">ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition</p><p class="award-meta">Honorable Mention</p></div></li>
+        </ul>
+      </div>
 
-      <!-- Other -->
-      <h3 class="exp-section-title">Other Engagements</h3>
-      <ul class="other-list">
-        <li>Key Visual Designer — Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
-        <li>Project Director — ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
-        <li>Project Designer — Wenxing Village Rural Revitalization, Dali Prefecture</li>
-        <li>Contracted Designer — Qingyun New Materials Co., Ltd.</li>
-        <li>Industrial Design Intern — Yineng Radio (2024.09 – 2024.12)</li>
-        <li>Team Designer — ShanghaiTech Rowing Team</li>
-        <li>League Branch Secretary — Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
-        <li>Research Grant Recipient — ShanghaiTech "Future Materials Innovation Class"</li>
-        <li>Future Catalyst Program · Participant — Shanghai Bank × ShanghaiTech Innovation Incubator</li>
-        <li>Public Speaking &amp; Executive Presentations — audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
-        <li>Student Representative — College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Work -->
-  <section class="section section-alt work-horizontal" id="work">
-    <div class="work-pin">
-      <div class="work-pin-inner">
-        <div class="work-header">
-          <h2 class="section-title">Work</h2>
-          <span class="work-hint" aria-hidden="true">scroll →</span>
-        </div>
-        <div class="cards-track">
-          <div class="cards-row">
-            <div class="card fade-in" style="transition-delay:0s">
-              <div class="card-header">
-                <span class="card-icon">◻</span>
-                <div class="card-tags">
-                  <span class="card-tag tag-bio">iGEM</span>
-                  <span class="card-tag tag-soft">Outreach</span>
-                </div>
-              </div>
-              <h3 class="card-title">Handbook of Project DOCTOR</h3>
-              <p class="card-desc">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
-              <div class="card-links">
-                <a href="https://MinatoooKira.github.io/DOCTOR/HandBook.pdf" target="_blank" rel="noopener" class="card-link">Read →</a>
-              </div>
-            </div>
-            <div class="card fade-in" style="transition-delay:0.08s">
-              <div class="card-header">
-                <span class="card-icon">⬡</span>
-                <div class="card-tags">
-                  <span class="card-tag tag-soft">Community</span>
-                  <span class="card-tag tag-venture">Startup</span>
-                </div>
-              </div>
-              <h3 class="card-title">MakeSense Society</h3>
-              <p class="card-desc">A compact, high-caliber, interdisciplinary innovation community — bringing researchers and builders together on ambitious sci-tech projects.</p>
-              <div class="card-links">
-                <a href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener" class="card-link">Read →</a>
-              </div>
-            </div>
-            <div class="card fade-in" style="transition-delay:0.16s">
-              <div class="card-header">
-                <span class="card-icon">⬡</span>
-                <div class="card-tags">
-                  <span class="card-tag tag-bio">iGEM 2025</span>
-                  <span class="card-tag tag-bio">Synthetic Bio</span>
-                </div>
-              </div>
-              <h3 class="card-title">Project DOCTOR</h3>
-              <p class="card-desc">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded Gold Medal.</p>
-              <div class="card-links">
-                <a href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener" class="card-link">Wiki →</a>
-              </div>
-            </div>
-            <div class="card fade-in" style="transition-delay:0.40s">
-              <div class="card-header">
-                <span class="card-icon">⬡</span>
-                <div class="card-tags">
-                  <span class="card-tag tag-bio">Bio</span>
-                  <span class="card-tag tag-bio">Sensing</span>
-                  <span class="card-tag tag-tech">AI/ML</span>
-                </div>
-              </div>
-              <h3 class="card-title">Match Biotech × SensUs 2026</h3>
-              <p class="card-desc">Tackling precision drug delivery for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing. Built at Match Biotech for SensUs 2026.</p>
-              <div class="card-links">
-                <a href="https://sensus.org/" target="_blank" rel="noopener" class="card-link">Website →</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Other Engagements -->
+      <div class="sub-block">
+        <p class="sub-label">Other Engagements</p>
+        <ul class="other-list">
+          <li><span>Key Visual Designer</span> &middot; Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
+          <li><span>Project Director</span> &middot; ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
+          <li><span>Project Designer</span> &middot; Wenxing Village Rural Revitalization, Dali Prefecture</li>
+          <li><span>Contracted Designer</span> &middot; Qingyun New Materials Co., Ltd.</li>
+          <li><span>Industrial Design Intern</span> &middot; Yineng Radio (2024.09 – 2024.12)</li>
+          <li><span>Team Designer</span> &middot; ShanghaiTech Rowing Team</li>
+          <li><span>League Branch Secretary</span> &middot; Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
+          <li><span>Research Grant Recipient</span> &middot; ShanghaiTech "Future Materials Innovation Class"</li>
+          <li><span>Future Catalyst Program · Participant</span> &middot; Shanghai Bank × ShanghaiTech Innovation Incubator</li>
+          <li><span>Public Speaking &amp; Executive Presentations</span> &middot; audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
+          <li><span>Student Representative</span> &middot; College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Visual Design -->
-  <section class="section" id="visual-design">
-    <div class="section-inner">
-      <div class="vd-head fade-in">
-        <h2 class="section-title">Visual Design</h2>
-        <p class="vd-intro">A small collection of visual-communication pieces — click a thumbnail to read the story behind it.</p>
+  <!-- 04 / SELECTED WORK — chapter format per project -->
+  <section class="chapter chapter-alt" id="work">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">04</p>
+        <p class="chapter-label">Selected Work</p>
+      </header>
+      <h2 class="chapter-title">Selected projects.</h2>
+    </div>
+
+    <!-- Project 01: Match Biotech -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">01</p>
+        <p class="project-tags"><span>Bio</span><span>Sensing</span><span>AI/ML</span></p>
+        <h3 class="project-title">Match Biotech × SensUs 2026</h3>
+        <p class="project-lede">Point-of-care molecular sensing for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Founder &amp; CEO</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+          <div><span class="meta-label">Status</span><span class="meta-value">Prototype Apr 2026</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://matchbiotech.com/" target="_blank" rel="noopener">matchbiotech.com →</a></div>
+        </div>
+        <div class="project-gallery project-gallery-2">
+          <div class="proj-img proj-placeholder">
+            <span class="proj-placeholder-label">Prototype · placeholder</span>
+          </div>
+          <div class="proj-img proj-placeholder proj-placeholder-alt">
+            <span class="proj-placeholder-label">Team · placeholder</span>
+          </div>
+        </div>
       </div>
+    </article>
+
+    <!-- Project 02: Project DOCTOR -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">02</p>
+        <p class="project-tags"><span>iGEM 2025</span><span>Synthetic Bio</span></p>
+        <h3 class="project-title">Project DOCTOR</h3>
+        <p class="project-lede">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded International Gold with 3 single-track nominations.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">ART &amp; DESIGN Lead</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+          <div><span class="meta-label">Award</span><span class="meta-value">International Gold</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener">2025.igem.wiki →</a></div>
+        </div>
+        <div class="project-gallery project-gallery-2">
+          <div class="proj-img proj-placeholder">
+            <span class="proj-placeholder-label">Wiki cover · placeholder</span>
+          </div>
+          <div class="proj-img proj-placeholder proj-placeholder-alt">
+            <span class="proj-placeholder-label">Team photo · placeholder</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 03: MakeSense Society -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">03</p>
+        <p class="project-tags"><span>Community</span><span>Interdisciplinary</span></p>
+        <h3 class="project-title">MakeSense Society</h3>
+        <p class="project-lede">A compact, high-caliber, interdisciplinary innovation community at ShanghaiTech — bringing researchers and builders together on ambitious sci-tech projects.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Founder</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+          <div><span class="meta-label">Members</span><span class="meta-value">Interdisciplinary</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener">Coverage →</a></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 04: Handbook -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">04</p>
+        <p class="project-tags"><span>iGEM</span><span>Outreach</span></p>
+        <h3 class="project-title">Handbook of Project DOCTOR</h3>
+        <p class="project-lede">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
+        <div class="project-meta">
+          <div><span class="meta-label">Role</span><span class="meta-value">Editorial &amp; Design</span></div>
+          <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+          <div><span class="meta-label">Format</span><span class="meta-value">PDF handbook</span></div>
+          <div><span class="meta-label">Link</span><a class="meta-value" href="#" target="_blank" rel="noopener">Read →</a></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- 05 / VISUAL DESIGN -->
+  <section class="chapter" id="visual-design">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">05</p>
+        <p class="chapter-label">Visual Design</p>
+      </header>
+      <h2 class="chapter-title">Visual<br/>communication.</h2>
+      <p class="chapter-lede">A small collection of visual-communication pieces — click a card to read the story behind it. Series pieces are quietly stacked.</p>
 
       <div class="vd-grid" id="vd-grid">
         <article class="vd-item">
           <button class="vd-thumb" type="button" aria-expanded="false">
-            <img src="Visual%20Design/%E8%85%8A%E5%85%AB%E8%8A%82%E5%BF%AB%E4%B9%90.png" alt="腊八节快乐" loading="lazy" decoding="async" />
+            <img src="Visual%20Design/%E8%85%8A%E5%85%AB%E8%8A%82%E5%BF%AB%E4%B9%90.png" alt="腊八节快乐"
+                 width="6871" height="8993" loading="lazy" decoding="async" />
             <span class="vd-caption">
               <span class="vd-title">腊八节快乐</span>
               <span class="vd-year">2025</span>
@@ -527,7 +365,8 @@
 
         <article class="vd-item">
           <button class="vd-thumb" type="button" aria-expanded="false">
-            <img src="Visual%20Design/90_54-1.png" alt="Visual Design 90_54" loading="lazy" decoding="async" />
+            <img src="Visual%20Design/90_54-1.png" alt="Visual Design 90_54"
+                 width="2700" height="1620" loading="lazy" decoding="async" />
             <span class="vd-caption">
               <span class="vd-title">Untitled (90_54)</span>
               <span class="vd-year">2025</span>
@@ -546,146 +385,92 @@
           }</script>
         </article>
       </div>
-    </div>
-  </section>
 
-  <!-- Gallery -->
-  <section class="section" id="gallery">
-    <div class="section-inner">
-      <div class="gallery-head fade-in">
-        <h2 class="section-title">Gallery</h2>
-        <p class="gallery-intro">
-          Moments through my lens — fragments of light, places, and stillness.
-          
-        </p>
-      </div>
-      <div class="masonry" id="masonry">
-        <figure class="masonry-item">
-          <img src="Gallery/30-1.webp" alt="Photograph by Runlin DONG"
-               width="4032" height="6048" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item is-wide">
-          <img src="Gallery/22-1.webp" alt="Photograph by Runlin DONG"
-               width="12094" height="4922" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/32-1.webp" alt="Photograph by Runlin DONG"
-               width="5787" height="3980" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/31-1.webp" alt="Photograph by Runlin DONG"
-               width="2317" height="3476" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/29-1.webp" alt="Photograph by Runlin DONG"
-               width="4962" height="3308" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/8c72a5fccad7493e5d95bb5bd60ae204.webp" alt="Photograph by Runlin DONG"
-               width="4096" height="3072" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/33-1.webp" alt="Photograph by Runlin DONG"
-               width="3291" height="2060" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item is-wide">
-          <img src="Gallery/DSC_1375.webp" alt="Photograph by Runlin DONG"
-               width="4518" height="1991" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item is-wide">
-          <img src="Gallery/22-1%20%281%29.webp" alt="Photograph by Runlin DONG"
-               width="12094" height="4922" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="masonry-item">
-          <img src="Gallery/%E8%BD%A6%E9%87%8C%E7%9A%84%E7%8B%97.webp" alt="Photograph by Runlin DONG"
-               width="2749" height="1681" loading="lazy" decoding="async" />
-        </figure>
-      </div>
-    </div>
-  </section>
+      <!--
+        TIP — to turn any piece into a multi-chapter series, replace its
+        <script type="application/json"> with the schema below. The card
+        automatically gets the stacked-paper effect and the expand panel
+        renders each chapter in turn:
 
-  <!-- Contact -->
-  <section class="section" id="contact">
-    <div class="section-inner section-center fade-in">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-icons">
-
-        <a href="mailto:masondong418@gmail.com" class="contact-icon" title="Email" style="--i:0">
-          <span class="contact-icon-circle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-          </span>
-          <span class="contact-icon-label">Email</span>
-        </a>
-
-        <a href="https://github.com/MasonTung" target="_blank" rel="noopener" class="contact-icon" title="GitHub" style="--i:1">
-          <span class="contact-icon-circle">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-          </span>
-          <span class="contact-icon-label">GitHub</span>
-        </a>
-
-        <a href="https://www.linkedin.com/in/runlin-dong/" target="_blank" rel="noopener" class="contact-icon" title="LinkedIn" style="--i:2">
-          <span class="contact-icon-circle">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </span>
-          <span class="contact-icon-label">LinkedIn</span>
-        </a>
-
-        <button type="button" class="contact-icon contact-icon-btn" title="WeChat · Public Account" style="--i:3" data-wechat="董寜寜">
-          <span class="contact-icon-circle">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .55-.012.82-.036-.27-.495-.42-1.058-.42-1.652 0-3.523 3.314-6.378 7.4-6.378.275 0 .547.013.815.038-.621-3.291-3.972-5.654-7.616-5.654zM5.785 5.991c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.323 0 1.16 1.16 0 0 1 1.161-1.16zm5.813 0c.642 0 1.162.519 1.162 1.16a1.16 1.16 0 0 1-2.324 0 1.16 1.16 0 0 1 1.162-1.16zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.001-.27-.02-.407-.022zm-2.51 3.184c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97zm4.844 0c.535 0 .969.434.969.97a.97.97 0 0 1-1.94 0 .97.97 0 0 1 .971-.97z"/>
-            </svg>
-          </span>
-          <span class="contact-icon-label">WeChat</span>
-        </button>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="gallery-footer">
-    <!--
-      Logo collection: drop logo files (SVG / PNG / JPG / WEBP — any web image format)
-      into the `icon/` folder, then add one <img class="org-logo" ...> below per logo.
-      They render in a centered row, wrap on small screens, and auto-scale to a uniform height.
-    -->
-    <div class="gallery-orgs">
-      <!-- Example (uncomment and edit once files are in icon/):
-      <img src="icon/shanghaitech.svg" alt="ShanghaiTech University" class="org-logo" />
-      <img src="icon/match-biotech.png" alt="Match Biotech" class="org-logo" />
+        {
+          "title": "Series Title",
+          "year": "2025",
+          "meta": "Designer · Series · 3 chapters",
+          "brief": "One-sentence summary of the whole series.",
+          "chapters": [
+            { "image": "Visual%20Design/ch1.png",
+              "alt": "Chapter 1",
+              "title": "Ch.01 — Subtitle",
+              "body": ["paragraph 1", "paragraph 2"] },
+            { "image": "Visual%20Design/ch2.png",
+              "alt": "Chapter 2",
+              "title": "Ch.02 — Subtitle",
+              "body": ["paragraph 1"] }
+          ]
+        }
       -->
     </div>
-    <div class="gallery-copyright">© 2026 RUNLIN DONG</div>
-  </footer>
+  </section>
 
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- 06 / GALLERY -->
+  <section class="chapter chapter-alt" id="gallery">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">06</p>
+        <p class="chapter-label">Gallery</p>
+      </header>
+      <h2 class="chapter-title">Through my lens.</h2>
+      <p class="chapter-lede">Moments through my lens — fragments of light, places, and stillness.</p>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-      <polyline points="18 15 12 9 6 15"/>
-    </svg>
-  </button>
+      <div class="gallery-grid">
+        <figure><img src="Gallery/DSC_1375.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/29-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/30-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/31-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/32-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/33-1.webp" alt="" loading="lazy" /></figure>
+      </div>
+
+      <p class="chapter-cta-row">
+        <a href="#" class="link-arrow">Open full gallery →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 07 / CONTACT -->
+  <section class="chapter chapter-contact" id="contact">
+    <div class="chapter-inner chapter-inner-narrow">
+      <header class="chapter-head">
+        <p class="chapter-num">07</p>
+        <p class="chapter-label">Contact</p>
+      </header>
+      <h2 class="chapter-title">Let's talk.</h2>
+      <p class="chapter-lede">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</p>
+
+      <ul class="contact-list">
+        <li><span class="contact-label">Email</span><a href="mailto:masondong@shanghaitech.edu.cn">masondong@shanghaitech.edu.cn</a></li>
+        <li><span class="contact-label">GitHub</span><a href="https://github.com/MasonTung" target="_blank" rel="noopener">github.com/MasonTung ↗</a></li>
+        <li>
+          <span class="contact-label">WeChat 公众号</span>
+          <button type="button" class="contact-link contact-wechat" data-wechat="董寜寜" title="Click to copy">
+            董寜寜 <span class="contact-copy-hint" aria-hidden="true">click to copy</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </section>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
         <polyline points="15 18 9 12 15 6"/>
       </svg>
     </button>
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
         <polyline points="9 18 15 12 9 6"/>
       </svg>
@@ -696,263 +481,30 @@
     <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
   </div>
 
-  <script>
-    // Theme + language: initial state is set inline in <head> to avoid FOUC.
-    // Here we just wire up the toggles.
-    const root = document.documentElement;
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Mason Dong</span>
+      <span class="footer-meta">© 2026 Runlin DONG · ShanghaiTech University</span>
+    </div>
+  </footer>
 
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.addEventListener('click', () => {
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
 
-    // Mobile nav drawer: hamburger toggles the grouped category menu
-    const menuBtn   = document.getElementById('nav-menu-btn');
-    const navGroups = document.getElementById('nav-groups');
-    if (menuBtn && navGroups) {
-      const setOpen = (open) => {
-        navGroups.classList.toggle('open', open);
-        menuBtn.setAttribute('aria-expanded', String(open));
-      };
-      menuBtn.addEventListener('click', () => setOpen(!navGroups.classList.contains('open')));
-      // Close drawer when a link is tapped
-      navGroups.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-      // Close drawer on resize-up (desktop layout reasserts itself)
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 980) setOpen(false);
-      }, { passive: true });
-    }
-
-    // Nav: scrolled class + scroll progress bar (RAF-throttled to avoid jank)
+    // Subtle nav background on scroll
     const nav = document.querySelector('.nav');
-    const progressBar = document.getElementById('scroll-progress');
-    let rafPending = false;
-    function onScroll() {
-      if (rafPending) return;
-      rafPending = true;
-      requestAnimationFrame(() => {
-        rafPending = false;
-        const y = window.scrollY;
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        nav.classList.toggle('scrolled', y > 40);
-        progressBar.style.width = max > 0 ? (y / max * 100) + '%' : '0%';
-        backToTop.classList.toggle('visible', max > 0 && y >= max - 40);
-      });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-    const backToTop = document.getElementById('back-to-top');
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Toast helper — shared transient notifier
-    const toast = (() => {
-      const el = document.getElementById('toast');
-      let tid;
-      return (msg) => {
-        if (!el) return;
-        el.textContent = msg;
-        el.classList.add('show');
-        clearTimeout(tid);
-        tid = setTimeout(() => el.classList.remove('show'), 2600);
-      };
-    })();
-
-    // WeChat public-account copy: click to copy the account name to clipboard
-    document.querySelectorAll('[data-wechat]').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const name = btn.dataset.wechat;
-        let ok = false;
-        try {
-          await navigator.clipboard.writeText(name);
-          ok = true;
-        } catch (_) {
-          // Clipboard API blocked (e.g. file:// or no permission) — fall back to legacy
-          const ta = document.createElement('textarea');
-          ta.value = name;
-          ta.style.position = 'fixed';
-          ta.style.opacity = '0';
-          document.body.appendChild(ta);
-          ta.select();
-          try { ok = document.execCommand('copy'); } catch (_) {}
-          document.body.removeChild(ta);
-        }
-        toast(ok
-          ? `Copied WeChat ID "${name}" · search it in WeChat`
-          : `WeChat ID "${name}" · search it in WeChat`);
-      });
-    });
-
-    // About tags: click to search (browsers don't expose the default
-    // search engine to web pages, so we use Google)
-    document.querySelectorAll('.about-tags .tag').forEach(tag => {
-      const text = tag.dataset.search || tag.textContent.trim();
-      const url  = `https://www.google.com/search?q=${encodeURIComponent(text)}`;
-      tag.setAttribute('role', 'link');
-      tag.setAttribute('tabindex', '0');
-      tag.setAttribute('title', `Search "${text}"`);
-      const open = () => window.open(url, '_blank', 'noopener');
-      tag.addEventListener('click', open);
-      tag.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
-      });
-    });
-
-    // Scroll fade-in for sections and cards
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Horizontal-scroll Work module: drive translateX from page scroll
-    (function () {
-      const section = document.querySelector('#work.work-horizontal');
-      if (!section) return;
-      const pin = section.querySelector('.work-pin');
-      const row = section.querySelector('.cards-row');
-      if (!pin || !row) return;
-
-      const mq = window.matchMedia('(max-width: 900px)');
-      let maxTranslate = 0;
-      let rafQueued = false;
-
-      function setup() {
-        if (mq.matches) {
-          section.style.height = '';
-          row.style.transform = '';
-          maxTranslate = 0;
-          return;
-        }
-        // Reset before measuring so scrollWidth reflects natural layout
-        row.style.transform = 'translateX(0)';
-        const rowWidth = row.scrollWidth;
-        const pinWidth = pin.offsetWidth;
-        maxTranslate = Math.max(0, rowWidth - pinWidth);
-        section.style.height = (window.innerHeight + maxTranslate) + 'px';
-        update();
-      }
-
-      function update() {
-        if (mq.matches || maxTranslate <= 0) return;
-        const rect = section.getBoundingClientRect();
-        const scrolled = -rect.top;
-        const progress = Math.max(0, Math.min(1, scrolled / maxTranslate));
-        row.style.transform = `translate3d(${-progress * maxTranslate}px, 0, 0)`;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (rafQueued) return;
-        rafQueued = true;
-        requestAnimationFrame(() => { rafQueued = false; update(); });
-      }, { passive: true });
-
-      let rt;
-      window.addEventListener('resize', () => {
-        clearTimeout(rt);
-        rt = setTimeout(setup, 150);
-      }, { passive: true });
-      mq.addEventListener('change', setup);
-
-      // Reveal all cards together once section enters viewport (cards beyond
-      // viewport width would otherwise never trigger the per-card observer)
-      const cardObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            section.querySelectorAll('.card.fade-in').forEach(c => c.classList.add('visible'));
-            cardObs.disconnect();
-          }
-        });
-      }, { threshold: 0.05 });
-      cardObs.observe(section);
-
-      setup();
-    })();
-
-    // Visual Design: click a thumb → inline expanded row with the case-study story
-    (function () {
-      const grid = document.getElementById('vd-grid');
-      if (!grid) return;
-
-      let openItem = null;
-      let panel = null;
-
-      function buildPanel(data, imgSrc, imgAlt) {
-        const el = document.createElement('div');
-        el.className = 'vd-panel';
-        const bodyHTML = (data.body || []).map(p => `<p>${p}</p>`).join('');
-        el.innerHTML = `
-          <div class="vd-panel-img">
-            <img src="${imgSrc}" alt="${imgAlt}" loading="lazy" decoding="async" />
-          </div>
-          <div class="vd-panel-body">
-            <button type="button" class="vd-panel-close" aria-label="Close">×</button>
-            <p class="vd-panel-meta">${data.year || ''}${data.meta ? ' · ' + data.meta : ''}</p>
-            <h3>${data.title || ''}</h3>
-            <p class="vd-panel-brief">${data.brief || ''}</p>
-            ${bodyHTML}
-          </div>
-        `;
-        return el;
-      }
-
-      function closePanel() {
-        if (panel && panel.parentNode) panel.parentNode.removeChild(panel);
-        if (openItem) {
-          openItem.querySelector('.vd-thumb').setAttribute('aria-expanded', 'false');
-          openItem = null;
-        }
-        panel = null;
-      }
-
-      grid.addEventListener('click', (e) => {
-        // Close button inside panel
-        if (e.target.closest('.vd-panel-close')) {
-          closePanel();
-          return;
-        }
-        const thumb = e.target.closest('.vd-thumb');
-        if (!thumb) return;
-        const item = thumb.closest('.vd-item');
-        if (!item) return;
-
-        // Clicking the same item again → toggle close
-        if (openItem === item) {
-          closePanel();
-          return;
-        }
-
-        // Parse data, build panel, insert after the clicked item
-        const dataEl = item.querySelector('.vd-data');
-        if (!dataEl) return;
-        let data;
-        try { data = JSON.parse(dataEl.textContent); }
-        catch (_) { return; }
-        const imgEl = thumb.querySelector('img');
-        const newPanel = buildPanel(data, imgEl.getAttribute('src'), imgEl.alt || '');
-
-        closePanel();
-        item.insertAdjacentElement('afterend', newPanel);
-        thumb.setAttribute('aria-expanded', 'true');
-        openItem = item;
-        panel = newPanel;
-
-        // Scroll the panel into comfortable view
-        newPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && openItem) closePanel();
-      });
-    })();
-
-    // Gallery: fade-in on load + lightbox with prev/next navigation, keyboard, and swipe
+    // Gallery lightbox with prev/next, keyboard, swipe
     (function () {
       const lightbox    = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightbox-img');
@@ -961,80 +513,50 @@
       const nextBtn     = document.getElementById('lightbox-next');
       const counter     = document.getElementById('lightbox-counter');
       if (!lightbox || !lightboxImg) return;
-
-      // Collect all gallery images in document order
-      const items = Array.from(document.querySelectorAll('.masonry-item img'));
+      const items = Array.from(document.querySelectorAll('.gallery-grid img'));
+      if (!items.length) return;
       let index = 0;
-
-      // Fade in each image once the browser has decoded it
-      items.forEach(img => {
-        if (img.complete && img.naturalHeight !== 0) {
-          img.classList.add('loaded');
-        } else {
-          img.addEventListener('load',  () => img.classList.add('loaded'), { once: true });
-          img.addEventListener('error', () => img.classList.add('loaded'), { once: true });
-        }
-      });
-
       function show(i) {
-        if (!items.length) return;
         index = (i + items.length) % items.length;
         const img = items[index];
         lightboxImg.classList.remove('ready');
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || '';
         counter.textContent = (index + 1) + ' / ' + items.length;
-        // Decode for smooth swap, then reveal
         const reveal = () => lightboxImg.classList.add('ready');
-        if (lightboxImg.decode) {
-          lightboxImg.decode().then(reveal).catch(reveal);
-        } else {
-          lightboxImg.addEventListener('load', reveal, { once: true });
-        }
-        // Preload neighbours so prev/next feels instant
+        if (lightboxImg.decode) lightboxImg.decode().then(reveal).catch(reveal);
+        else lightboxImg.addEventListener('load', reveal, { once: true });
         [-1, 1].forEach(d => {
           const n = items[(index + d + items.length) % items.length];
           if (n) { const p = new Image(); p.src = n.src; }
         });
       }
-
       function open(i) {
         show(i);
         lightbox.classList.add('active');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
-
       function close() {
         lightbox.classList.remove('active');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
-
-      items.forEach((img, i) => {
-        img.parentElement.addEventListener('click', () => open(i));
-      });
-
-      lightbox.addEventListener('click', (e) => {
-        // Click on the backdrop or the image itself closes; controls handle their own clicks
+      items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
+      lightbox.addEventListener('click', e => {
         if (e.target === lightbox || e.target === lightboxImg) close();
       });
       closeBtn.addEventListener('click', close);
-      prevBtn .addEventListener('click', (e) => { e.stopPropagation(); show(index - 1); });
-      nextBtn .addEventListener('click', (e) => { e.stopPropagation(); show(index + 1); });
-
-      document.addEventListener('keydown', (e) => {
+      prevBtn.addEventListener('click', e => { e.stopPropagation(); show(index - 1); });
+      nextBtn.addEventListener('click', e => { e.stopPropagation(); show(index + 1); });
+      document.addEventListener('keydown', e => {
         if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape')      close();
-        else if (e.key === 'ArrowLeft')  show(index - 1);
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') show(index - 1);
         else if (e.key === 'ArrowRight') show(index + 1);
       });
-
-      // Touch swipe (horizontal) for mobile
       let touchX = null;
-      lightbox.addEventListener('touchstart', e => {
-        touchX = e.touches[0].clientX;
-      }, { passive: true });
+      lightbox.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
       lightbox.addEventListener('touchend', e => {
         if (touchX === null) return;
         const dx = e.changedTouches[0].clientX - touchX;
@@ -1043,6 +565,216 @@
       }, { passive: true });
     })();
 
+    // Visual Design: click a card → animated inline expand with the case study.
+    // Supports two data shapes:
+    //   single piece: { title, year, meta, brief, body: [paragraphs] }
+    //   series:       { title, year, meta, brief, chapters: [{image, alt, title, body}] }
+    // Series cards automatically get the stacked-paper visual treatment.
+    (function () {
+      const grid = document.getElementById('vd-grid');
+      if (!grid) return;
+
+      // Tag series cards up-front so CSS can render the stack
+      grid.querySelectorAll('.vd-item').forEach(item => {
+        const dataEl = item.querySelector('.vd-data');
+        if (!dataEl) return;
+        try {
+          const d = JSON.parse(dataEl.textContent);
+          if (Array.isArray(d.chapters) && d.chapters.length > 1) {
+            item.classList.add('vd-item--stack');
+            item.style.setProperty('--vd-stack-count', Math.min(d.chapters.length, 4));
+          }
+        } catch (_) {}
+      });
+
+      let openItem = null;
+      let wrap = null;
+      let animating = false;
+
+      const escapeHTML = (s) => String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+      function chapterHTML(ch, idx) {
+        const body = (ch.body || []).map(p => `<p>${escapeHTML(p)}</p>`).join('');
+        return `
+          <article class="vd-chapter">
+            <div class="vd-chapter-num">Ch.${String(idx + 1).padStart(2, '0')}</div>
+            <div class="vd-chapter-img">
+              <img src="${ch.image}" alt="${escapeHTML(ch.alt || ch.title || '')}" loading="lazy" decoding="async" />
+            </div>
+            <div class="vd-chapter-body">
+              ${ch.title ? `<h4>${escapeHTML(ch.title)}</h4>` : ''}
+              ${body}
+            </div>
+          </article>`;
+      }
+
+      function buildWrap(data, fallbackImg, fallbackAlt) {
+        const w = document.createElement('div');
+        w.className = 'vd-panel-wrap';
+
+        const isSeries = Array.isArray(data.chapters) && data.chapters.length > 0;
+        const heroImg = isSeries ? data.chapters[0].image : fallbackImg;
+        const heroAlt = isSeries ? (data.chapters[0].alt || data.title) : fallbackAlt;
+
+        const meta = [data.year, data.meta].filter(Boolean).join(' · ');
+        const header = `
+          <header class="vd-panel-head">
+            <button type="button" class="vd-panel-close" aria-label="Close">×</button>
+            <p class="vd-panel-meta">${escapeHTML(meta)}${isSeries ? ` · <span class="vd-panel-count">${data.chapters.length} chapters</span>` : ''}</p>
+            <h3>${escapeHTML(data.title || '')}</h3>
+            ${data.brief ? `<p class="vd-panel-brief">${escapeHTML(data.brief)}</p>` : ''}
+          </header>`;
+
+        const main = isSeries
+          ? `<div class="vd-chapters">${data.chapters.map(chapterHTML).join('')}</div>`
+          : `
+            <div class="vd-panel-single">
+              <div class="vd-panel-img">
+                <img src="${heroImg}" alt="${escapeHTML(heroAlt || '')}" loading="lazy" decoding="async" />
+              </div>
+              <div class="vd-panel-body">
+                ${(data.body || []).map(p => `<p>${escapeHTML(p)}</p>`).join('')}
+              </div>
+            </div>`;
+
+        w.innerHTML = `<div class="vd-panel-inner"><div class="vd-panel">${header}${main}</div></div>`;
+        return w;
+      }
+
+      function closeOpen({ scrollToItem = false } = {}) {
+        if (!wrap || !openItem || animating) return Promise.resolve();
+        const closingWrap = wrap;
+        const closingItem = openItem;
+        animating = true;
+        closingWrap.classList.remove('is-open');
+        closingItem.querySelector('.vd-thumb').setAttribute('aria-expanded', 'false');
+        return new Promise(resolve => {
+          let resolved = false;
+          const done = () => {
+            if (resolved) return;
+            resolved = true;
+            closingWrap.removeEventListener('transitionend', onEnd);
+            if (closingWrap.parentNode) closingWrap.parentNode.removeChild(closingWrap);
+            if (wrap === closingWrap) { wrap = null; openItem = null; }
+            animating = false;
+            if (scrollToItem) {
+              closingItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            resolve();
+          };
+          const onEnd = (ev) => {
+            if (ev.target !== closingWrap) return;
+            if (ev.propertyName !== 'grid-template-rows' && ev.propertyName !== 'opacity') return;
+            done();
+          };
+          closingWrap.addEventListener('transitionend', onEnd);
+          setTimeout(done, 600);
+        });
+      }
+
+      async function openFor(item) {
+        if (animating) return;
+        const dataEl = item.querySelector('.vd-data');
+        if (!dataEl) return;
+        let data;
+        try { data = JSON.parse(dataEl.textContent); } catch (_) { return; }
+
+        if (openItem && openItem !== item) {
+          await closeOpen();
+        }
+
+        const thumb = item.querySelector('.vd-thumb');
+        const imgEl = thumb && thumb.querySelector('img');
+        const newWrap = buildWrap(
+          data,
+          imgEl ? imgEl.getAttribute('src') : '',
+          imgEl ? (imgEl.alt || '') : ''
+        );
+
+        item.insertAdjacentElement('afterend', newWrap);
+        wrap = newWrap;
+        openItem = item;
+        thumb.setAttribute('aria-expanded', 'true');
+
+        animating = true;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => newWrap.classList.add('is-open'));
+        });
+        const settle = () => {
+          animating = false;
+          const top = newWrap.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        };
+        const onEnd = (ev) => {
+          if (ev.target !== newWrap) return;
+          if (ev.propertyName !== 'grid-template-rows') return;
+          newWrap.removeEventListener('transitionend', onEnd);
+          settle();
+        };
+        newWrap.addEventListener('transitionend', onEnd);
+        setTimeout(() => { if (animating) settle(); }, 600);
+      }
+
+      grid.addEventListener('click', (e) => {
+        if (e.target.closest('.vd-panel-close')) {
+          closeOpen({ scrollToItem: true });
+          return;
+        }
+        const thumb = e.target.closest('.vd-thumb');
+        if (!thumb) return;
+        const item = thumb.closest('.vd-item');
+        if (!item) return;
+        if (openItem === item) {
+          closeOpen({ scrollToItem: true });
+          return;
+        }
+        openFor(item);
+      });
+
+      // The expand wrap lives outside .vd-grid in the DOM, so delegate
+      // close-button clicks from document level too.
+      document.addEventListener('click', (e) => {
+        if (!wrap) return;
+        if (e.target.closest('.vd-panel-close') && wrap.contains(e.target)) {
+          closeOpen({ scrollToItem: true });
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && openItem) closeOpen({ scrollToItem: true });
+      });
+    })();
+
+    // WeChat copy
+    (function () {
+      const toastEl = document.getElementById('toast');
+      let tid;
+      function toast(msg) {
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        clearTimeout(tid);
+        tid = setTimeout(() => toastEl.classList.remove('show'), 2600);
+      }
+      document.querySelectorAll('[data-wechat]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const name = btn.dataset.wechat;
+          let ok = false;
+          try { await navigator.clipboard.writeText(name); ok = true; }
+          catch (_) {
+            const ta = document.createElement('textarea');
+            ta.value = name; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { ok = document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          toast(ok ? `已复制公众号「${name}」· 请在微信中搜索`
+                   : `公众号「${name}」· 请在微信中搜索`);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
