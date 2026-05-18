@@ -632,3 +632,59 @@ sup {
 @media (prefers-reduced-motion: reduce) {
   .page-reveal { animation: none; display: none; }
 }
+
+/* ===========================
+   ® MARK — LOCKED TO NOAH ORIGINAL.
+   Do not edit. The exact glyph rendering (Inter at 70×70 box,
+   line-height 91, text-indent -5, rotate around center) requires
+   Inter — any font swap pushes the glyph off-center inside the box.
+=========================== */
+h1 span#r {
+  font-family: 'Inter', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-feature-settings: normal !important;
+  font-variant: normal !important;
+  /* Noah's exact placement — repeated here so any future override loses */
+  position: absolute !important;
+  top: 10px !important;
+  right: -80px !important;
+  width: 70px !important;
+  height: 70px !important;
+  line-height: 91px !important;
+  text-indent: -5px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+}
+h1 span#r.click {
+  transform-origin: center !important;
+  transform: rotate(360deg) !important;
+  transition: transform 550ms ease !important;
+}
+
+/* Match Noah's responsive ® positions verbatim */
+@media screen and (max-width: 1399px) {
+  h1 span#r { top: 10px !important; right: -80px !important;
+              width: 70px !important; height: 70px !important;
+              line-height: 91px !important; text-indent: -1px !important; }
+}
+@media screen and (max-width: 1299px) {
+  h1 span#r { right: -60px !important; top: 0 !important;
+              width: 54px !important; height: 54px !important;
+              line-height: 70px !important; text-indent: -2px !important; }
+}
+@media screen and (max-width: 1199px) {
+  h1 span#r { width: 40px !important; height: 40px !important;
+              line-height: 52px !important; }
+}
+@media screen and (max-width: 1140px) {
+  h1 span#r { right: -48px !important; top: 10px !important; }
+}
+@media screen and (max-width: 767px) {
+  h1 span#r { right: -47px !important; width: 40px !important;
+              height: 40px !important; line-height: 52px !important;
+              text-indent: -2px !important; }
+}
+@media screen and (max-width: 499px) {
+  h1 span#r { right: auto !important; top: auto !important;
+              width: 40px !important; height: 40px !important;
+              line-height: 52px !important; text-indent: -2px !important; }
+}

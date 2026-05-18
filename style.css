@@ -143,95 +143,83 @@ img { max-width: 100%; display: block; }
 }
 .nav-logo:hover { opacity: 0.6; }
 
-/* Mega-menu — hover the logo area to drop a 3-column panel */
-.nav-mega-wrap {
+/* Top-level nav items — inline; dropdown groups expand a small panel on hover */
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.nav-mega {
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+.nav-link:hover,
+.nav-item-dropdown:hover .nav-link,
+.nav-item-dropdown:focus-within .nav-link {
+  opacity: 0.65;
+}
+
+/* Sub-list popover — hidden by default; reveals on hover/focus */
+.nav-sublist {
   position: absolute;
   top: calc(100% + 0.65rem);
-  left: -1.25rem;
-  width: clamp(560px, 60vw, 820px);
-  padding: 2.25rem 2.5rem 2rem;
+  left: -0.75rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  padding: 0.55rem 0.85rem;
   background: var(--surface);
   border: 1px solid var(--border-soft);
-  border-radius: 14px;
-  box-shadow: 0 28px 60px -24px rgba(0, 0, 0, 0.55);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.55);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   pointer-events: none;
   z-index: 200;
 }
-[data-theme="light"] .nav-mega {
+[data-theme="light"] .nav-sublist {
   background: #FFFFFF;
-  box-shadow: 0 28px 60px -24px rgba(11, 13, 18, 0.18);
+  box-shadow: 0 14px 32px -16px rgba(11, 13, 18, 0.18);
 }
 
-/* Open on hover or keyboard focus anywhere inside the wrap */
-.nav-mega-wrap:hover .nav-mega,
-.nav-mega-wrap:focus-within .nav-mega {
+.nav-item-dropdown:hover .nav-sublist,
+.nav-item-dropdown:focus-within .nav-sublist {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.nav-mega-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 3rem;
-}
-
-.nav-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-column-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 1.1rem;
-  letter-spacing: -0.005em;
-  line-height: 1.2;
-}
-
-.nav-column-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-column-list a {
+.nav-sublist a {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.4;
-  transition: color 0.18s ease;
-}
-.nav-column-list a:hover {
+  height: 26px;
+  line-height: 26px;
   color: var(--text);
+  opacity: 0.6;
+  transition: opacity var(--transition);
 }
-
-/* Decorative mark, bottom-left of the panel */
-.nav-mega-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-top: 1.75rem;
-  color: var(--text);
-  opacity: 0.85;
+.nav-sublist a:hover {
+  opacity: 1;
 }
 
 .nav-actions {
@@ -1328,8 +1316,7 @@ a.meta-value:hover { color: var(--accent); }
 =========================== */
 @media (max-width: 1100px) {
   .nav-inner { gap: 2rem; padding: 1.25rem 1.75rem; }
-  .nav-mega { width: clamp(420px, 70vw, 640px); padding: 1.75rem 2rem; }
-  .nav-mega-grid { gap: 0 2rem; }
+  .nav-items { gap: 1.25rem; }
   .hero-grid {
     flex-direction: column;
     align-items: stretch;
@@ -1364,47 +1351,56 @@ a.meta-value:hover { color: var(--accent); }
   .nav-cta { display: none; }
   .nav-toggle { display: flex; }
 
-  /* Mobile mega-menu: disable desktop hover trigger; rely on hamburger to open.
-     Panel becomes a full-width drawer below the nav bar. */
-  .nav-mega-wrap:hover .nav-mega,
-  .nav-mega-wrap:focus-within .nav-mega {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-  .nav-mega {
+  /* Mobile nav: top-level items become a full-width drawer below the nav bar,
+     toggled by the hamburger. Sub-lists inline as stacked sections. */
+  .nav-items {
     position: fixed;
     top: 100%;
     left: 0;
     right: 0;
-    width: auto;
-    border-radius: 0;
-    border: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.1rem;
+    padding: 1.25rem 1.5rem 1.75rem;
+    background: var(--surface);
     border-bottom: 1px solid var(--border-soft);
     box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.45);
-    padding: 1.5rem 1.5rem 1.75rem;
+    opacity: 0;
+    visibility: hidden;
     transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
   }
-  body.nav-open .nav-mega {
+  body.nav-open .nav-items {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
   }
-  .nav-mega-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  /* On mobile dropdown groups display their sub-lists inline (no popover) */
+  .nav-item-dropdown {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .nav-column-title {
-    font-size: 0.95rem;
-    margin-bottom: 0.65rem;
+  .nav-item-dropdown .nav-sublist {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.4rem 0 0;
+    min-width: 0;
   }
-  .nav-column-list a {
+  .nav-sublist a {
     font-size: 1rem;
-    line-height: 1.4;
+    height: 32px;
+    line-height: 32px;
   }
-  .nav-mega-mark {
-    display: none;
+  .nav-link {
+    font-size: 1rem;
   }
 
   .hero { padding: 2rem 1.25rem 0; }
