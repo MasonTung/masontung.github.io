@@ -10,8 +10,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
   <script>
+    // Inline so it applies before <body> parses → no theme flash on load.
+    // Order: stored preference → system preference → default 'dark'.
     (function () {
-      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+      var stored;
+      try { stored = localStorage.getItem('theme'); } catch (_) {}
+      var theme = stored
+        || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 </head>
@@ -22,7 +28,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">Mason Dong</a>
 
-      <div class="nav-groups">
+      <div class="nav-groups" id="nav-groups">
         <div class="nav-group">
           <span class="nav-group-label">Work</span>
           <ul class="nav-group-links">
@@ -59,6 +65,10 @@
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" type="button"
+                aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-groups">
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
     </div>
@@ -489,292 +499,6 @@
     </div>
   </footer>
 
-  <script>
-    // Theme toggle
-    const root = document.documentElement;
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-
-    // Subtle nav background on scroll
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    // Gallery lightbox with prev/next, keyboard, swipe
-    (function () {
-      const lightbox    = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const closeBtn    = document.getElementById('lightbox-close');
-      const prevBtn     = document.getElementById('lightbox-prev');
-      const nextBtn     = document.getElementById('lightbox-next');
-      const counter     = document.getElementById('lightbox-counter');
-      if (!lightbox || !lightboxImg) return;
-      const items = Array.from(document.querySelectorAll('.gallery-grid img'));
-      if (!items.length) return;
-      let index = 0;
-      function show(i) {
-        index = (i + items.length) % items.length;
-        const img = items[index];
-        lightboxImg.classList.remove('ready');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt || '';
-        counter.textContent = (index + 1) + ' / ' + items.length;
-        const reveal = () => lightboxImg.classList.add('ready');
-        if (lightboxImg.decode) lightboxImg.decode().then(reveal).catch(reveal);
-        else lightboxImg.addEventListener('load', reveal, { once: true });
-        [-1, 1].forEach(d => {
-          const n = items[(index + d + items.length) % items.length];
-          if (n) { const p = new Image(); p.src = n.src; }
-        });
-      }
-      function open(i) {
-        show(i);
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-      items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
-      lightbox.addEventListener('click', e => {
-        if (e.target === lightbox || e.target === lightboxImg) close();
-      });
-      closeBtn.addEventListener('click', close);
-      prevBtn.addEventListener('click', e => { e.stopPropagation(); show(index - 1); });
-      nextBtn.addEventListener('click', e => { e.stopPropagation(); show(index + 1); });
-      document.addEventListener('keydown', e => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') close();
-        else if (e.key === 'ArrowLeft') show(index - 1);
-        else if (e.key === 'ArrowRight') show(index + 1);
-      });
-      let touchX = null;
-      lightbox.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-      lightbox.addEventListener('touchend', e => {
-        if (touchX === null) return;
-        const dx = e.changedTouches[0].clientX - touchX;
-        touchX = null;
-        if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
-      }, { passive: true });
-    })();
-
-    // Visual Design: click a card → animated inline expand with the case study.
-    // Supports two data shapes:
-    //   single piece: { title, year, meta, brief, body: [paragraphs] }
-    //   series:       { title, year, meta, brief, chapters: [{image, alt, title, body}] }
-    // Series cards automatically get the stacked-paper visual treatment.
-    (function () {
-      const grid = document.getElementById('vd-grid');
-      if (!grid) return;
-
-      // Tag series cards up-front so CSS can render the stack
-      grid.querySelectorAll('.vd-item').forEach(item => {
-        const dataEl = item.querySelector('.vd-data');
-        if (!dataEl) return;
-        try {
-          const d = JSON.parse(dataEl.textContent);
-          if (Array.isArray(d.chapters) && d.chapters.length > 1) {
-            item.classList.add('vd-item--stack');
-            item.style.setProperty('--vd-stack-count', Math.min(d.chapters.length, 4));
-          }
-        } catch (_) {}
-      });
-
-      let openItem = null;
-      let wrap = null;
-      let animating = false;
-
-      const escapeHTML = (s) => String(s == null ? '' : s)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-
-      function chapterHTML(ch, idx) {
-        const body = (ch.body || []).map(p => `<p>${escapeHTML(p)}</p>`).join('');
-        return `
-          <article class="vd-chapter">
-            <div class="vd-chapter-num">Ch.${String(idx + 1).padStart(2, '0')}</div>
-            <div class="vd-chapter-img">
-              <img src="${ch.image}" alt="${escapeHTML(ch.alt || ch.title || '')}" loading="lazy" decoding="async" />
-            </div>
-            <div class="vd-chapter-body">
-              ${ch.title ? `<h4>${escapeHTML(ch.title)}</h4>` : ''}
-              ${body}
-            </div>
-          </article>`;
-      }
-
-      function buildWrap(data, fallbackImg, fallbackAlt) {
-        const w = document.createElement('div');
-        w.className = 'vd-panel-wrap';
-
-        const isSeries = Array.isArray(data.chapters) && data.chapters.length > 0;
-        const heroImg = isSeries ? data.chapters[0].image : fallbackImg;
-        const heroAlt = isSeries ? (data.chapters[0].alt || data.title) : fallbackAlt;
-
-        const meta = [data.year, data.meta].filter(Boolean).join(' · ');
-        const header = `
-          <header class="vd-panel-head">
-            <button type="button" class="vd-panel-close" aria-label="Close">×</button>
-            <p class="vd-panel-meta">${escapeHTML(meta)}${isSeries ? ` · <span class="vd-panel-count">${data.chapters.length} chapters</span>` : ''}</p>
-            <h3>${escapeHTML(data.title || '')}</h3>
-            ${data.brief ? `<p class="vd-panel-brief">${escapeHTML(data.brief)}</p>` : ''}
-          </header>`;
-
-        const main = isSeries
-          ? `<div class="vd-chapters">${data.chapters.map(chapterHTML).join('')}</div>`
-          : `
-            <div class="vd-panel-single">
-              <div class="vd-panel-img">
-                <img src="${heroImg}" alt="${escapeHTML(heroAlt || '')}" loading="lazy" decoding="async" />
-              </div>
-              <div class="vd-panel-body">
-                ${(data.body || []).map(p => `<p>${escapeHTML(p)}</p>`).join('')}
-              </div>
-            </div>`;
-
-        w.innerHTML = `<div class="vd-panel-inner"><div class="vd-panel">${header}${main}</div></div>`;
-        return w;
-      }
-
-      function closeOpen({ scrollToItem = false } = {}) {
-        if (!wrap || !openItem || animating) return Promise.resolve();
-        const closingWrap = wrap;
-        const closingItem = openItem;
-        animating = true;
-        closingWrap.classList.remove('is-open');
-        closingItem.querySelector('.vd-thumb').setAttribute('aria-expanded', 'false');
-        return new Promise(resolve => {
-          let resolved = false;
-          const done = () => {
-            if (resolved) return;
-            resolved = true;
-            closingWrap.removeEventListener('transitionend', onEnd);
-            if (closingWrap.parentNode) closingWrap.parentNode.removeChild(closingWrap);
-            if (wrap === closingWrap) { wrap = null; openItem = null; }
-            animating = false;
-            if (scrollToItem) {
-              closingItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-            resolve();
-          };
-          const onEnd = (ev) => {
-            if (ev.target !== closingWrap) return;
-            if (ev.propertyName !== 'grid-template-rows' && ev.propertyName !== 'opacity') return;
-            done();
-          };
-          closingWrap.addEventListener('transitionend', onEnd);
-          setTimeout(done, 600);
-        });
-      }
-
-      async function openFor(item) {
-        if (animating) return;
-        const dataEl = item.querySelector('.vd-data');
-        if (!dataEl) return;
-        let data;
-        try { data = JSON.parse(dataEl.textContent); } catch (_) { return; }
-
-        if (openItem && openItem !== item) {
-          await closeOpen();
-        }
-
-        const thumb = item.querySelector('.vd-thumb');
-        const imgEl = thumb && thumb.querySelector('img');
-        const newWrap = buildWrap(
-          data,
-          imgEl ? imgEl.getAttribute('src') : '',
-          imgEl ? (imgEl.alt || '') : ''
-        );
-
-        item.insertAdjacentElement('afterend', newWrap);
-        wrap = newWrap;
-        openItem = item;
-        thumb.setAttribute('aria-expanded', 'true');
-
-        animating = true;
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => newWrap.classList.add('is-open'));
-        });
-        const settle = () => {
-          animating = false;
-          const top = newWrap.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        };
-        const onEnd = (ev) => {
-          if (ev.target !== newWrap) return;
-          if (ev.propertyName !== 'grid-template-rows') return;
-          newWrap.removeEventListener('transitionend', onEnd);
-          settle();
-        };
-        newWrap.addEventListener('transitionend', onEnd);
-        setTimeout(() => { if (animating) settle(); }, 600);
-      }
-
-      grid.addEventListener('click', (e) => {
-        if (e.target.closest('.vd-panel-close')) {
-          closeOpen({ scrollToItem: true });
-          return;
-        }
-        const thumb = e.target.closest('.vd-thumb');
-        if (!thumb) return;
-        const item = thumb.closest('.vd-item');
-        if (!item) return;
-        if (openItem === item) {
-          closeOpen({ scrollToItem: true });
-          return;
-        }
-        openFor(item);
-      });
-
-      // The expand wrap lives outside .vd-grid in the DOM, so delegate
-      // close-button clicks from document level too.
-      document.addEventListener('click', (e) => {
-        if (!wrap) return;
-        if (e.target.closest('.vd-panel-close') && wrap.contains(e.target)) {
-          closeOpen({ scrollToItem: true });
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && openItem) closeOpen({ scrollToItem: true });
-      });
-    })();
-
-    // WeChat copy
-    (function () {
-      const toastEl = document.getElementById('toast');
-      let tid;
-      function toast(msg) {
-        if (!toastEl) return;
-        toastEl.textContent = msg;
-        toastEl.classList.add('show');
-        clearTimeout(tid);
-        tid = setTimeout(() => toastEl.classList.remove('show'), 2600);
-      }
-      document.querySelectorAll('[data-wechat]').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const name = btn.dataset.wechat;
-          let ok = false;
-          try { await navigator.clipboard.writeText(name); ok = true; }
-          catch (_) {
-            const ta = document.createElement('textarea');
-            ta.value = name; ta.style.position = 'fixed'; ta.style.opacity = '0';
-            document.body.appendChild(ta); ta.select();
-            try { ok = document.execCommand('copy'); } catch (_) {}
-            document.body.removeChild(ta);
-          }
-          toast(ok ? `已复制公众号「${name}」· 请在微信中搜索`
-                   : `公众号「${name}」· 请在微信中搜索`);
-        });
-      });
-    })();
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
