@@ -11,10 +11,7 @@
       "Bash(ls ~/.ssh/*.pub)",
       "Bash(ssh:*)",
       "Bash(ssh-keygen:*)",
-      "Bash(grep -v -E '\\\\.\\(html|css|json\\)$|^\\\\.git$')",
-      "Bash(curl -s http://localhost:8765/index.html)",
-      "Bash(curl -s -I http://localhost:8765/index.html)",
-      "Bash(curl -s http://localhost:8765/)"
+      "Bash(grep -v -E '\\\\.\\(html|css|json\\)$|^\\\\.git$')"
     ]
   }
 }

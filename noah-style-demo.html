@@ -103,22 +103,27 @@
 		}, 50);
 	}
 
-	// Restore original theme-cycling on ® click
+	// ® click: trigger one-shot spin (CSS @keyframes handles the rotation),
+	// then pick a different body theme color than the current one.
+	const THEMES = ['purple', 'brown', 'green', 'blues', 'blue-gray'];
 	function theme() {
-		const r = document.getElementById('r');
-		r.classList.toggle('click');
-		setTimeout(function() {
-			const c = document.getElementById('r');
-			if (c) c.classList.remove('click');
-		}, 560);
-		const themes = ['purple', 'brown', 'green', 'blues', 'blue-gray'];
-		let random = Math.floor(Math.random() * themes.length);
-		const body = document.body;
-		while (body.classList.contains(themes[random])) {
-			random = Math.floor(Math.random() * themes.length);
+		const mark = document.getElementById('r');
+		if (mark) {
+			// Re-trigger the keyframe: remove first if already running, then re-add
+			mark.classList.remove('click');
+			// Force reflow so the browser registers the class removal before re-adding
+			void mark.offsetWidth;
+			mark.classList.add('click');
+			mark.addEventListener('animationend', () => {
+				mark.classList.remove('click');
+			}, { once: true });
 		}
-		themes.forEach(t => body.classList.remove(t));
-		body.classList.add(themes[random]);
+		const body = document.body;
+		const available = THEMES.filter(t => !body.classList.contains(t));
+		const pool = available.length ? available : THEMES;
+		const next = pool[Math.floor(Math.random() * pool.length)];
+		THEMES.forEach(t => body.classList.remove(t));
+		body.classList.add(next);
 	}
 
 	// WeChat 公众号 click-to-copy

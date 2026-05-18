@@ -33,7 +33,9 @@ html, body {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
-/* ® mark next to "Mason Dong" — click cycles body theme color */
+/* ® mark next to "Mason Dong" — click rotates once and cycles body theme color.
+   Uses a one-shot keyframe (not transition) so the element doesn't spin
+   backwards when the .click class is removed. */
 .r-link {
   display: inline-block;
   margin-left: 0.15em;
@@ -42,11 +44,21 @@ html, body {
   color: inherit;
   opacity: 0.7;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
   user-select: none;
+  transform-origin: center;
+  transition: opacity 0.2s ease;
 }
 .r-link:hover { opacity: 1; }
-.r-link.click { transform: rotate(360deg); }
+@keyframes r-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.r-link.click {
+  animation: r-spin 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .r-link.click { animation: none; }
+}
 
 /* "Mason Dong" name — click switches to full site (index.html) */
 .name-link {
@@ -250,26 +262,6 @@ h1 {
   margin: 0 0 42px -7px;
 }
 
-h1 span {
-  position: absolute;
-  top: 10px;
-  right: -80px;
-  cursor: pointer;
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  line-height: 91px;
-  text-indent: -5px;
-}
-
-h1 span.click {
-  transform-origin: center;
-  transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
-  transition: transform 550ms ease;
-  -webkit-transition: -webkit-transform 550ms ease;
-}
-
 h2 {
   font-size: 20px;
   line-height: 27px;
@@ -344,13 +336,10 @@ sup {
 
 @media screen and (max-width: 1399px) {
   h1 { font-size: 110px; line-height: 110px; }
-  h1 span { top: 10px; right: -80px; width: 70px; height: 70px; line-height: 91px; text-indent: -1px; }
 }
 
 @media screen and (max-width: 1299px) {
   h1 { font-size: 90px; line-height: 90px; }
-  h1 span { right: -60px; top: 0px; width: 54px; height: 54px; line-height: 70px; text-indent: -2px; }
-  h1 span.click { transform-origin: center; }
 }
 
 @media screen and (max-width: 1199px) {
@@ -372,13 +361,10 @@ sup {
     margin: 0 5px 0 0;
   }
   #footnotes ul li span { margin: 0 8px 0 0; }
-  h1 span { width: 40px; height: 40px; line-height: 52px; }
-  h1 span.click { transform-origin: center; }
 }
 
 @media screen and (max-width: 1140px) {
   h1 { font-size: 66px; line-height: 66px; }
-  h1 span { right: -48px; top: 10px; }
   #main { padding-right: 50px; }
   #notes img { float: none; margin-bottom: 40px; }
 }
@@ -417,10 +403,7 @@ sup {
   #roles { padding: 0 30px 60px 40px; }
   #footnotes { padding: 0 30px 90px 40px; }
   #footer p.copy { left: 40px; }
-  h1 span { right: -47px; width: 40px; height: 40px; line-height: 52px; text-indent: -2px; }
-  h1 span.click { transform-origin: center; }
 }
 
 @media screen and (max-width: 499px) {
-  h1 span { right: auto; top: auto; width: 40px; height: 40px; line-height: 52px; text-indent: -2px; }
 }
