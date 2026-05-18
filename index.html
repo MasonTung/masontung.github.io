@@ -23,35 +23,53 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation: hover the logo area to open a 3-column mega-menu panel -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="noah-style-demo.html" class="nav-logo" title="Switch to minimal view">Mason Dong</a>
+      <div class="nav-mega-wrap" id="nav-mega-wrap">
+        <a href="noah-style-demo.html" class="nav-logo" title="Switch to minimal view"
+           aria-haspopup="true" aria-expanded="false" aria-controls="nav-mega">Mason Dong</a>
 
-      <div class="nav-groups" id="nav-groups">
-        <div class="nav-group nav-dropdown">
-          <span class="nav-group-label" tabindex="0" aria-haspopup="true">Work</span>
-          <ul class="nav-group-links">
-            <li><a href="#work">Projects</a></li>
-            <li><a href="#visual-design">Visual Design</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-          </ul>
+        <div class="nav-mega" id="nav-mega" role="region" aria-label="Site navigation">
+          <div class="nav-mega-grid">
+            <div class="nav-column">
+              <h3 class="nav-column-title">Work</h3>
+              <ul class="nav-column-list">
+                <li><a href="#work">Projects</a></li>
+                <li><a href="#visual-design">Visual Design</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+              </ul>
+            </div>
+            <div class="nav-column">
+              <h3 class="nav-column-title">About</h3>
+              <ul class="nav-column-list">
+                <li><a href="#about">Bio</a></li>
+                <li><a href="#experience">Experience</a></li>
+              </ul>
+            </div>
+            <div class="nav-column">
+              <h3 class="nav-column-title">Connect</h3>
+              <ul class="nav-column-list">
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://matchbiotech.com/" target="_blank" rel="noopener">MatchBiotech</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Decorative mark in the bottom-left of the panel -->
+          <span class="nav-mega-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <path d="M16 4a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z" fill="currentColor"/>
+              <path d="M22 16l8-5v10l-8-5Z" fill="currentColor"/>
+            </svg>
+          </span>
         </div>
-        <div class="nav-group nav-dropdown">
-          <span class="nav-group-label" tabindex="0" aria-haspopup="true">About</span>
-          <ul class="nav-group-links">
-            <li><a href="#about">Bio</a></li>
-            <li><a href="#experience">Experience</a></li>
-          </ul>
-        </div>
-        <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="nav-toplink">MatchBiotech</a>
-        <a href="#contact" class="nav-toplink">Contact</a>
       </div>
 
       <div class="nav-actions">
         <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
         <button class="nav-toggle" id="nav-toggle" type="button"
-                aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-groups">
+                aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mega">
           <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
@@ -108,7 +126,7 @@
 
   <!-- OVERSIZE WORDMARK MOMENT -->
   <section class="wordmark-strip" aria-hidden="true">
-    <p class="wordmark"><span>Bridging</span> <em>design</em> <span>×</span> <em>biology</em></p>
+    <p class="wordmark"><span>Bridging</span><br/><em>design</em> <span>×</span> <em>biology</em></p>
   </section>
 
   <!-- 01 / OVERVIEW (About) -->
