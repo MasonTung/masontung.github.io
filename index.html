@@ -26,46 +26,33 @@
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Mason Dong</a>
+      <span class="nav-logo-wrap">
+        <a href="#" class="nav-logo">Mason Dong</a>
+        <a href="noah-style-demo.html" class="nav-r-link" title="Switch to minimal view" aria-label="Switch to minimal view">R</a>
+      </span>
 
       <div class="nav-groups" id="nav-groups">
-        <div class="nav-group">
-          <span class="nav-group-label">Work</span>
+        <div class="nav-group nav-dropdown">
+          <span class="nav-group-label" tabindex="0" aria-haspopup="true">Work</span>
           <ul class="nav-group-links">
             <li><a href="#work">Projects</a></li>
             <li><a href="#visual-design">Visual Design</a></li>
             <li><a href="#gallery">Gallery</a></li>
           </ul>
         </div>
-        <div class="nav-group">
-          <span class="nav-group-label">About</span>
+        <div class="nav-group nav-dropdown">
+          <span class="nav-group-label" tabindex="0" aria-haspopup="true">About</span>
           <ul class="nav-group-links">
             <li><a href="#about">Bio</a></li>
             <li><a href="#experience">Experience</a></li>
           </ul>
         </div>
-        <div class="nav-group">
-          <span class="nav-group-label">Connect</span>
-          <ul class="nav-group-links">
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://matchbiotech.com/" target="_blank" rel="noopener">MatchBiotech</a></li>
-          </ul>
-        </div>
+        <a href="#contact" class="nav-toplink">Contact</a>
+        <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="nav-toplink">MatchBiotech</a>
       </div>
 
       <div class="nav-actions">
         <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
-            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
-            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
-            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
         <button class="nav-toggle" id="nav-toggle" type="button"
                 aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-groups">
           <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -73,6 +60,12 @@
       </div>
     </div>
   </nav>
+
+  <!-- Pull-chain light switch — fixed top-right; click to toggle theme -->
+  <button class="pull-chain" id="theme-toggle" type="button" aria-label="Toggle day/night mode">
+    <span class="pull-chain-line" aria-hidden="true"></span>
+    <span class="pull-chain-bead" aria-hidden="true"></span>
+  </button>
 
   <!-- HERO: Asymmetric — left text dominant, right image bleed -->
   <section class="hero">
@@ -213,24 +206,30 @@
       <h2 class="chapter-title">Awards &amp;<br/>engagements.</h2>
 
       <!-- Awards -->
-      <div class="sub-block">
+      <div class="sub-block" data-auto-collapse>
         <p class="sub-label">Awards &amp; Honors</p>
-        <ul class="awards-list" id="awards-list">
+        <ul class="awards-list">
           <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">SensUs 2025 — Global Biosensing Competition</p><p class="award-meta">International Gold &middot; Detection Gold &middot; Innovation Silver</p></div></li>
           <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">iGEM 2025 — International Genetically Engineered Machine Competition</p><p class="award-meta">International Gold &middot; 3 single-track nominations</p></div></li>
           <li><span class="medal medal-first">Nat'l 1st</span><div class="award-body"><p class="award-name">4th National College Mental Health Knowledge Competition</p><p class="award-meta">National First Prize</p></div></li>
           <li><span class="medal medal-silver">Silver</span><div class="award-body"><p class="award-name">4th Synthetic Biology Innovation Competition</p><p class="award-meta">National Silver</p></div></li>
           <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">10th National Biomedical Engineering Innovation Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
           <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">18th Cesim Global Business Simulation Challenge (China)</p><p class="award-meta">National Second Prize</p></div></li>
-          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">2025 National Youth Cup Art &amp; Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
-          <li><span class="medal medal-second">2nd</span><div class="award-body"><p class="award-name">7th ShanghaiTech Innovation &amp; Entrepreneurship Competition</p><p class="award-meta">Second Prize + 2 &times; Honorable Mention</p></div></li>
-          <li><span class="medal medal-top">Top 3</span><div class="award-body"><p class="award-name">1st Qingyun National College Design Competition</p><p class="award-meta">Top 3 Finalist</p></div></li>
-          <li><span class="medal medal-other">5th</span><div class="award-body"><p class="award-name">2025 Shanghai Open Rowing</p><p class="award-meta">Men's 8+ 4.2 km Pursuit &middot; 5th place</p></div></li>
-          <li><span class="medal medal-other">Hon.</span><div class="award-body"><p class="award-name">ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition</p><p class="award-meta">Honorable Mention</p></div></li>
         </ul>
+        <div class="collapse awards-list-more" id="awards-more">
+          <div class="collapse-inner">
+            <ul class="awards-list awards-list--continued">
+              <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">2025 National Youth Cup Art &amp; Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
+              <li><span class="medal medal-second">2nd</span><div class="award-body"><p class="award-name">7th ShanghaiTech Innovation &amp; Entrepreneurship Competition</p><p class="award-meta">Second Prize + 2 &times; Honorable Mention</p></div></li>
+              <li><span class="medal medal-top">Top 3</span><div class="award-body"><p class="award-name">1st Qingyun National College Design Competition</p><p class="award-meta">Top 3 Finalist</p></div></li>
+              <li><span class="medal medal-other">5th</span><div class="award-body"><p class="award-name">2025 Shanghai Open Rowing</p><p class="award-meta">Men's 8+ 4.2 km Pursuit &middot; 5th place</p></div></li>
+              <li><span class="medal medal-other">Hon.</span><div class="award-body"><p class="award-name">ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition</p><p class="award-meta">Honorable Mention</p></div></li>
+            </ul>
+          </div>
+        </div>
         <div class="collapse-toggle-row">
           <button type="button" class="collapse-toggle" data-collapse-toggle
-                  aria-controls="awards-list" aria-expanded="false">
+                  aria-controls="awards-more" aria-expanded="false">
             <span data-label-collapsed>Show all 11 awards</span>
             <span data-label-expanded>Show fewer</span>
             <span class="collapse-toggle-chevron" aria-hidden="true">
@@ -241,24 +240,30 @@
       </div>
 
       <!-- Other Engagements -->
-      <div class="sub-block">
+      <div class="sub-block" data-auto-collapse>
         <p class="sub-label">Other Engagements</p>
-        <ul class="other-list" id="other-list">
+        <ul class="other-list">
           <li><span>Key Visual Designer</span> &middot; Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
           <li><span>Project Director</span> &middot; ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
           <li><span>Project Designer</span> &middot; Wenxing Village Rural Revitalization, Dali Prefecture</li>
           <li><span>Contracted Designer</span> &middot; Qingyun New Materials Co., Ltd.</li>
           <li><span>Industrial Design Intern</span> &middot; Yineng Radio (2024.09 – 2024.12)</li>
           <li><span>Team Designer</span> &middot; ShanghaiTech Rowing Team</li>
-          <li><span>League Branch Secretary</span> &middot; Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
-          <li><span>Research Grant Recipient</span> &middot; ShanghaiTech "Future Materials Innovation Class"</li>
-          <li><span>Future Catalyst Program · Participant</span> &middot; Shanghai Bank × ShanghaiTech Innovation Incubator</li>
-          <li><span>Public Speaking &amp; Executive Presentations</span> &middot; audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
-          <li><span>Student Representative</span> &middot; College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
         </ul>
+        <div class="collapse other-list-more" id="other-more">
+          <div class="collapse-inner">
+            <ul class="other-list other-list--continued">
+              <li><span>League Branch Secretary</span> &middot; Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
+              <li><span>Research Grant Recipient</span> &middot; ShanghaiTech "Future Materials Innovation Class"</li>
+              <li><span>Future Catalyst Program · Participant</span> &middot; Shanghai Bank × ShanghaiTech Innovation Incubator</li>
+              <li><span>Public Speaking &amp; Executive Presentations</span> &middot; audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
+              <li><span>Student Representative</span> &middot; College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
+            </ul>
+          </div>
+        </div>
         <div class="collapse-toggle-row">
           <button type="button" class="collapse-toggle" data-collapse-toggle
-                  aria-controls="other-list" aria-expanded="false">
+                  aria-controls="other-more" aria-expanded="false">
             <span data-label-collapsed>Show all 11 engagements</span>
             <span data-label-expanded>Show fewer</span>
             <span class="collapse-toggle-chevron" aria-hidden="true">
@@ -526,7 +531,7 @@
       <p class="chapter-lede">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</p>
 
       <ul class="contact-list">
-        <li><span class="contact-label">Email</span><a href="mailto:masondong@shanghaitech.edu.cn">masondong@shanghaitech.edu.cn</a></li>
+        <li><span class="contact-label">Email</span><a href="mailto:masondong418@gmail.com">masondong418@gmail.com</a></li>
         <li><span class="contact-label">GitHub</span><a href="https://github.com/MasonTung" target="_blank" rel="noopener">github.com/MasonTung ↗</a></li>
         <li>
           <span class="contact-label">WeChat 公众号</span>

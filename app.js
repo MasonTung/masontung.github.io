@@ -8,15 +8,25 @@
   const root = document.documentElement;
 
   // ---------------------------------------------------------------------------
-  // Theme: persist user choice; fall back to system preference on first visit
+  // Theme: persist user choice; fall back to system preference on first visit.
+  // The toggle is a "pull-chain" — clicking adds .is-pulling for a brief
+  // spring animation before the theme flips.
   // ---------------------------------------------------------------------------
   (function () {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
-    // The inline <head> script already applied any stored theme to avoid FOUC.
-    // Here we just react to clicks and persist the change.
+    let pullTimer = null;
+
     toggle.addEventListener('click', () => {
+      // Play the pull animation. Re-clicks during animation restart it.
+      toggle.classList.remove('is-pulling');
+      // Force reflow so re-adding the class restarts the transition
+      void toggle.offsetWidth;
+      toggle.classList.add('is-pulling');
+      clearTimeout(pullTimer);
+      pullTimer = setTimeout(() => toggle.classList.remove('is-pulling'), 380);
+
       const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (_) {}
@@ -368,6 +378,41 @@
         btn.setAttribute('aria-expanded', String(open));
       });
     });
+  })();
+
+  // ---------------------------------------------------------------------------
+  // Scroll-driven auto-expand — any container that has a child .collapse and
+  // is in the reader's focus band (middle ~55% of viewport) auto-opens it.
+  // Covers Selected Work projects and Recognition sub-blocks.
+  //   #work .project       → wrap is .collapse.project-detail-wrap, btn is .project-expand
+  //   [data-auto-collapse] → wrap is the first .collapse inside, btn is [data-collapse-toggle]
+  // The manual buttons still work for keyboard / explicit interaction.
+  // ---------------------------------------------------------------------------
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+
+    const targets = document.querySelectorAll(
+      '#work .project, [data-auto-collapse]'
+    );
+    if (!targets.length) return;
+
+    const sync = (container, open) => {
+      const wrap = container.querySelector('.collapse');
+      if (!wrap) return;
+      if (wrap.classList.contains('is-open') === open) return;
+      wrap.classList.toggle('is-open', open);
+      const btn =
+        container.querySelector('.project-expand') ||
+        container.querySelector('[data-collapse-toggle]');
+      if (btn) btn.setAttribute('aria-expanded', String(open));
+    };
+
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => sync(e.target, e.isIntersecting)),
+      { rootMargin: '-20% 0px -25% 0px', threshold: 0 }
+    );
+
+    targets.forEach((t) => obs.observe(t));
   })();
 
   // ---------------------------------------------------------------------------

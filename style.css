@@ -125,10 +125,17 @@ img { max-width: 100%; display: block; }
 .nav-inner {
   max-width: var(--w-wide);
   margin: 0 auto;
-  padding: 1.5rem 2.25rem 1.25rem;
+  padding: 1.25rem 2.25rem;
   display: flex;
-  align-items: flex-start;
-  gap: 4.5rem;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
 }
 
 .nav-logo {
@@ -138,42 +145,106 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.01em;
   line-height: 1;
   white-space: nowrap;
-  flex-shrink: 0;
+}
+
+/* Circular R-link badge — switches to minimal (Noah-style) view */
+.nav-r-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease,
+              background 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+.nav-r-link:hover {
+  opacity: 1;
+  transform: rotate(-10deg) scale(1.06);
+  background: var(--text);
+  color: var(--bg);
 }
 
 .nav-groups {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  align-items: start;
-  column-gap: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
 }
 
 .nav-group {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.nav-group-label {
+.nav-group-label,
+.nav-toplink {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.4;
-  margin-bottom: 0.4rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+.nav-toplink:hover,
+.nav-dropdown:hover .nav-group-label,
+.nav-dropdown:focus-within .nav-group-label {
+  opacity: 0.65;
 }
 
-.nav-group-links {
+/* Dropdown panel — hidden by default; pops down on hover/focus */
+.nav-dropdown .nav-group-links {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: -0.75rem;
   list-style: none;
   display: flex;
   flex-direction: column;
+  min-width: 160px;
+  padding: 0.55rem 0.85rem;
+  background: rgba(11, 13, 18, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  pointer-events: none;
+}
+[data-theme="light"] .nav-dropdown .nav-group-links {
+  background: rgba(250, 251, 253, 0.95);
+  box-shadow: 0 14px 32px -16px rgba(11, 13, 18, 0.18);
+}
+
+.nav-dropdown:hover .nav-group-links,
+.nav-dropdown:focus-within .nav-group-links {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .nav-group-links a {
   display: inline-block;
   font-size: 0.875rem;
-  height: 22px;
-  line-height: 22px;
+  height: 26px;
+  line-height: 26px;
   color: var(--text);
-  opacity: 0.42;
+  opacity: 0.6;
   transition: opacity var(--transition);
 }
 .nav-group-links a:hover { opacity: 1; }
@@ -206,7 +277,6 @@ img { max-width: 100%; display: block; }
 }
 .nav-cta span { margin-left: 0.4rem; }
 
-.theme-toggle,
 .nav-toggle {
   background: none;
   border: 1px solid var(--border);
@@ -220,13 +290,85 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   transition: color var(--transition), border-color var(--transition);
 }
-.theme-toggle:hover,
 .nav-toggle:hover { color: var(--text); border-color: var(--text-muted); }
-.theme-toggle svg { width: 16px; height: 16px; stroke: currentColor; }
 
-.icon-moon { display: none; }
-[data-theme="light"] .icon-sun { display: none; }
-[data-theme="light"] .icon-moon { display: block; }
+/* ===========================
+   Pull-chain light switch — hangs from the top-right of the viewport.
+   Click pulls the bead down with a spring bounce; theme toggles mid-animation.
+   In light mode the bead picks up a warm halo, suggesting the lamp is lit.
+=========================== */
+.pull-chain {
+  position: fixed;
+  top: 0;
+  right: 2.75rem;
+  z-index: 150;
+  width: 28px;
+  height: 118px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.pull-chain-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 96px;
+  background: var(--text-muted);
+  transform: translateX(-50%);
+  transform-origin: top center;
+  transition: height 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color var(--transition);
+}
+.pull-chain-bead {
+  position: absolute;
+  top: 98px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: #E4D27A;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  transition: top 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform var(--transition),
+              box-shadow 600ms ease;
+}
+.pull-chain:hover .pull-chain-bead {
+  transform: scale(1.18);
+}
+.pull-chain:hover .pull-chain-line {
+  background: var(--text);
+}
+/* Active pull — bead drops, line stretches, then springs back */
+.pull-chain.is-pulling .pull-chain-line { height: 116px; }
+.pull-chain.is-pulling .pull-chain-bead { top: 118px; }
+
+/* "Lamp on" in light mode — warm halo around the bead */
+[data-theme="light"] .pull-chain-bead {
+  box-shadow:
+    0 0 14px rgba(228, 210, 122, 0.85),
+    0 0 28px rgba(228, 210, 122, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+}
+.pull-chain:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 760px) {
+  .pull-chain {
+    right: 4.25rem;        /* clear the hamburger button */
+    height: 92px;
+  }
+  .pull-chain-line { height: 72px; }
+  .pull-chain-bead { top: 74px; }
+  .pull-chain.is-pulling .pull-chain-line { height: 90px; }
+  .pull-chain.is-pulling .pull-chain-bead { top: 92px; }
+}
 
 /* Hamburger — only visible on mobile (see breakpoint below) */
 .nav-toggle { display: none; }
@@ -267,13 +409,15 @@ img { max-width: 100%; display: block; }
 .hero-grid {
   max-width: var(--w-wide);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(2rem, 5vw, 6rem);
-  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
   min-height: 70vh;
   padding-bottom: clamp(4rem, 8vw, 8rem);
 }
+.hero-left  { flex: 0 1 auto; max-width: 54%; }
+.hero-right { flex: 0 1 auto; max-width: 38%; min-width: 240px; }
 
 .hero-left {
   display: flex;
@@ -384,8 +528,6 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface);
-  /* Edge-bleed to the right of viewport */
-  margin-right: clamp(-2.25rem, -2vw, 0px);
 }
 .hero-photo-frame img {
   width: 100%;
@@ -1192,14 +1334,15 @@ a.meta-value:hover { color: var(--accent); }
    Responsive — Opal-style breakpoints
 =========================== */
 @media (max-width: 1100px) {
-  .nav-inner { gap: 3rem; padding: 1.25rem 1.75rem 1rem; }
-  .nav-groups { column-gap: 2.5rem; }
+  .nav-inner { gap: 2rem; padding: 1.25rem 1.75rem; }
+  .nav-groups { gap: 1.75rem; }
   .hero-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     gap: 3rem;
   }
-  .hero-right { order: -1; max-width: 380px; }
-  .hero-photo-frame { margin-right: 0; }
+  .hero-left, .hero-right { max-width: 100%; }
+  .hero-right { order: -1; align-self: flex-start; max-width: 380px; }
   .chapter-body-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1236,9 +1379,9 @@ a.meta-value:hover { color: var(--accent); }
     right: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border-soft);
-    grid-template-columns: 1fr;
-    column-gap: 0;
-    row-gap: 1.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
     padding: 1.25rem 1.5rem 1.5rem;
     transform: translateY(-6px);
     opacity: 0;
@@ -1250,10 +1393,31 @@ a.meta-value:hover { color: var(--accent); }
     opacity: 1;
     pointer-events: auto;
   }
+  /* On mobile, dropdowns become normal stacked lists — no hover popover */
+  .nav-dropdown {
+    position: static;
+  }
+  .nav-dropdown .nav-group-links {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.4rem 0 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    min-width: 0;
+  }
   .nav-group-links a {
     opacity: 0.78;
     height: 32px;
     line-height: 32px;
+    font-size: 1rem;
+  }
+  .nav-toplink {
     font-size: 1rem;
   }
 
@@ -1338,12 +1502,11 @@ a.meta-value:hover { color: var(--accent); }
   margin-top: 1.5rem;
 }
 
-/* Show-more list pattern: hide items past N until parent gets .is-open.
-   No animation here — lists feel snappier appearing instantly. A soft
-   fade-out on the last visible item hints at "there's more below". */
-.awards-list:not(.is-open) > li:nth-child(n+6),
-.other-list:not(.is-open) > li:nth-child(n+6) {
-  display: none;
+/* Continued-list inside a .collapse — reads as one continuous list because
+   the wrapping <ul> sits flush against the visible list above it. */
+.awards-list--continued,
+.other-list--continued {
+  margin-top: 0;
 }
 
 /* ===========================

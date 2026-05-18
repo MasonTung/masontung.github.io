@@ -33,6 +33,34 @@ html, body {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
+/* Circular R-link badge next to "Mason Dong" — opens index.html (full site) */
+.r-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  margin-left: 0.25em;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  font-size: 0.42em;
+  vertical-align: 0.55em;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  text-shadow: none;
+}
+.r-link:hover {
+  opacity: 1;
+  transform: scale(1.08);
+  background: currentColor;
+  color: var(--bg, #0B0D12);
+}
+body.green .r-link:hover { color: #54AC77; }
+body.purple .r-link:hover { color: #5654AC; }
+body.brown .r-link:hover { color: #AC7954; }
+
 body {
   margin: 0;
   padding: 0;
