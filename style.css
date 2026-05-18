@@ -115,17 +115,19 @@ img { max-width: 100%; display: block; }
   transition: background 0.3s ease, border-color 0.3s ease;
   border-bottom: 1px solid transparent;
 }
-/* Make the nav plate opaque when scrolled OR a dropdown is open */
+/* Activate the nav plate when scrolled OR a dropdown is open.
+   Semi-transparent — the backdrop-filter blur on .nav and .nav::after
+   gives this a frosted-glass feel rather than a solid bar. */
 .nav.scrolled,
 .nav:has(.nav-item-dropdown:hover),
 .nav:has(.nav-item-dropdown:focus-within) {
-  --nav-plate: rgba(11, 13, 18, 0.92);
+  --nav-plate: rgba(11, 13, 18, 0.55);
   border-bottom-color: var(--border-soft);
 }
 [data-theme="light"] .nav.scrolled,
 [data-theme="light"] .nav:has(.nav-item-dropdown:hover),
 [data-theme="light"] .nav:has(.nav-item-dropdown:focus-within) {
-  --nav-plate: rgba(250, 251, 253, 0.96);
+  --nav-plate: rgba(250, 251, 253, 0.6);
 }
 
 /* Plate extension — grows downward when any dropdown opens, so the sub-items
@@ -176,11 +178,12 @@ img { max-width: 100%; display: block; }
 }
 .nav-logo:hover { opacity: 0.6; }
 
-/* Top-level nav items — inline; dropdown groups expand a small panel on hover */
+/* Top-level nav items — inline; dropdown groups expand a small panel on hover.
+   Wider gap so neighbouring sub-lists don't visually collide while one is open. */
 .nav-items {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 3rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -247,10 +250,10 @@ img { max-width: 100%; display: block; }
   height: 0.9rem;
 }
 
-/* Hovering ANY one dropdown reveals ALL sub-lists in sync (mega-menu feel).
-   The plate underneath also extends in the same beat, so all columns drop together. */
-.nav:has(.nav-item-dropdown:hover) .nav-sublist,
-.nav:has(.nav-item-dropdown:focus-within) .nav-sublist {
+/* Only the hovered/focused dropdown's own sub-list opens — keeps neighbouring
+   columns from overlapping. The plate underneath still tracks via .nav:has(). */
+.nav-item-dropdown:hover .nav-sublist,
+.nav-item-dropdown:focus-within .nav-sublist {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);

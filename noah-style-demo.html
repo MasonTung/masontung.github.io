@@ -10,7 +10,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#54AC77">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes">
-	<style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap'); </style>
+	<style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito+Sans:wght@400;500;600;700&display=swap'); </style>
 	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 	<link rel="stylesheet" href="noah-style-demo.css">
 </head>
@@ -20,7 +20,7 @@
 		<div id="content" class="container">
 			<div id="main">
 				<h1><a href="index.html" class="name-link" title="Switch to full site">Mason Dong</a><span id="r" onclick="theme()" class="">®</span></h1>
-				<h2>I am a junior at <strong>ShanghaiTech University</strong> majoring in <strong>Smart Design</strong>, working across <strong>healthcare</strong>, <strong>business</strong>, <strong>design</strong> &amp; <strong>AI</strong>. I live in Shanghai and run <a href="https://matchbiotech.com/" target="_blank"><strong>Match Biotech</strong></a> — a startup tackling Parkinson's disease. I love <strong>guitar</strong>, <strong>de novo design</strong>, <strong>Arknights</strong> &amp; <strong>Project Moon</strong>. I'm interested in using <strong>AI</strong> &amp; <strong>biology</strong> to bring <strong>health</strong>, <strong>help</strong> or <strong>hope</strong> to those who need it.</h2>
+				<h2>I am a junior at <strong>ShanghaiTech University</strong> majoring in <strong>Smart Design</strong>, working across <strong>healthcare</strong>, <strong>business</strong>, <strong>design</strong> &amp; <strong>AI</strong>. I live in Shanghai and run <a href="https://matchbiotech.com/" target="_blank" class="brand-link"><strong>Match Biotech</strong></a><span class="brand-cn">（上海火柴生物科技有限公司）</span> — a startup tackling Parkinson's disease. I love <strong>guitar</strong>, <strong>de novo design</strong>, <strong>Arknights</strong> &amp; <strong>Project Moon</strong>. I'm interested in using <strong>AI</strong> &amp; <strong>biology</strong> to bring <strong>health</strong>, <strong>help</strong> or <strong>hope</strong> to those who need it.</h2>
 				<div id="cols">
 					<div id="main-l">
 						<div id="elsewhere">
@@ -149,6 +149,21 @@
 			alert(ok ? `已复制公众号「${name}」· 请在微信中搜索`
 			         : `公众号「${name}」· 请在微信中搜索`);
 		});
+	})();
+
+	// On page load, spin the ® once timed to the page-reveal sweep.
+	// The sweep clears the R area within the first ~60ms of its 600ms run,
+	// so a small delay puts the R rotation right as it returns to full colour.
+	(function () {
+		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const r = document.getElementById('r');
+		if (!r) return;
+		const start = () => {
+			r.classList.add('intro-spin');
+			r.addEventListener('animationend', () => r.classList.remove('intro-spin'), { once: true });
+		};
+		// Wait for layout, then offset a touch so the spin syncs with the sweep
+		requestAnimationFrame(() => setTimeout(start, 80));
 	})();
 	</script>
 </body>
