@@ -14,10 +14,11 @@
 	<link rel="stylesheet" href="noah-style-demo.css">
 </head>
 <body class="green">
+	<div class="page-reveal" aria-hidden="true"></div>
 	<div id="ns">
 		<div id="content" class="container">
 			<div id="main">
-				<h1>Mason Dong<a href="index.html" id="r" class="r-link" title="Switch to full site">®</a></h1>
+				<h1><a href="index.html" class="name-link" title="Switch to full site">Mason Dong</a><span id="r" onclick="theme()" class="r-link" title="Click to shuffle colors">®</span></h1>
 				<h2>I am a junior at <strong>ShanghaiTech University</strong>, majoring in <strong>Smart Design</strong> and working across <strong>healthcare</strong>, <strong>business</strong>, <strong>design</strong> and <strong>AI</strong>. Three years, three roles: trend research at <strong>Covestro APAC</strong>, co-founder of an angel-funded fragrance startup, and now founder &amp; CEO of <strong>Match Biotech</strong> — building point-of-care molecular sensing for Parkinson's disease.</h2>
 				<div id="cols">
 					<div id="main-l">
@@ -101,6 +102,25 @@
 		setTimeout(function () {
 			footnotes.scrollIntoView({behavior: 'smooth'});
 		}, 50);
+	}
+
+	// Restore original theme-cycling on ® click
+	function theme() {
+		const r = document.getElementById('r');
+		r.classList.toggle('click');
+		setTimeout(function() {
+			const c = document.getElementById('r');
+			if (c) c.classList.remove('click');
+		}, 560);
+		const themes = ['purple', 'brown', 'green', 'blues', 'blue-gray'];
+		let random = Math.floor(Math.random() * themes.length);
+		const body = document.body;
+		while (body.classList.contains(themes[random])) {
+			random = Math.floor(Math.random() * themes.length);
+		}
+		// Preserve the page-reveal overlay state by only swapping the theme tokens
+		themes.forEach(t => body.classList.remove(t));
+		body.classList.add(themes[random]);
 	}
 
 	// WeChat 公众号 click-to-copy
