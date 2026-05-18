@@ -103,7 +103,9 @@ body.brown #main, body.brown #roles { border-left: 1px solid rgba(201, 160, 131,
   max-width: 240px;
   display: block;
   width: 100%;
+  height: 240px;
   object-fit: cover;
+  object-position: center 22%;
   aspect-ratio: 1 / 1;
 }
 
