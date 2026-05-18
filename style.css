@@ -131,13 +131,6 @@ img { max-width: 100%; display: block; }
   gap: 3rem;
 }
 
-.nav-logo-wrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  flex-shrink: 0;
-}
-
 .nav-logo {
   font-size: 1.65rem;
   font-weight: 600;
@@ -145,34 +138,31 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.01em;
   line-height: 1;
   white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
 }
+.nav-logo:hover { opacity: 0.6; }
 
-/* Circular R-link badge — switches to minimal (Noah-style) view */
-.nav-r-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1.5px solid var(--text);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: var(--text);
-  background: transparent;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease, transform 0.2s ease,
-              background 0.2s ease, color 0.2s ease;
-  line-height: 1;
+/* Page-load reveal: gray → color, top-down sweep */
+.page-reveal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #808080;
+  mix-blend-mode: saturation;
+  pointer-events: none;
+  z-index: 9999;
+  animation: pageRevealDown 1100ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
-.nav-r-link:hover {
-  opacity: 1;
-  transform: rotate(-10deg) scale(1.06);
-  background: var(--text);
-  color: var(--bg);
+@keyframes pageRevealDown {
+  0%   { top: 0%;   opacity: 1; }
+  85%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal { animation: none; display: none; }
 }
 
 .nav-groups {
