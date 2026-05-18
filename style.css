@@ -105,21 +105,54 @@ img { max-width: 100%; display: block; }
    Nav (Opal-style)
 =========================== */
 .nav {
+  --nav-plate: rgba(11, 13, 18, 0);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(11, 13, 18, 0);
+  background: var(--nav-plate);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: background 0.3s ease, border-color 0.3s ease;
   border-bottom: 1px solid transparent;
 }
-.nav.scrolled {
-  background: rgba(11, 13, 18, 0.78);
+/* Make the nav plate opaque when scrolled OR a dropdown is open */
+.nav.scrolled,
+.nav:has(.nav-item-dropdown:hover),
+.nav:has(.nav-item-dropdown:focus-within) {
+  --nav-plate: rgba(11, 13, 18, 0.92);
   border-bottom-color: var(--border-soft);
 }
-[data-theme="light"] .nav.scrolled {
-  background: rgba(250, 251, 253, 0.92);
+[data-theme="light"] .nav.scrolled,
+[data-theme="light"] .nav:has(.nav-item-dropdown:hover),
+[data-theme="light"] .nav:has(.nav-item-dropdown:focus-within) {
+  --nav-plate: rgba(250, 251, 253, 0.96);
+}
+
+/* Plate extension — grows downward when any dropdown opens, so the sub-items
+   sit on the same coloured band as the nav bar instead of floating over the page.
+   Tight to content height; slower natural ease-out for an organic drop. */
+.nav::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: var(--nav-plate);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition:
+    height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.32s ease,
+    background 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+.nav:has(.nav-item-dropdown:hover)::after,
+.nav:has(.nav-item-dropdown:focus-within)::after {
+  height: 5.25rem;          /* matches the tallest sub-list (3 items + gap) */
+  border-bottom-color: var(--border-soft);
 }
 
 .nav-inner {
@@ -174,34 +207,50 @@ img { max-width: 100%; display: block; }
   opacity: 0.65;
 }
 
-/* Sub-list popover — hidden by default; reveals on hover/focus */
+/* Sub-list — no card chrome; items just flow down from the label.
+   Drops down with the same easing curve as the plate so the motion feels unified. */
 .nav-sublist {
   position: absolute;
-  top: calc(100% + 0.65rem);
-  left: -0.75rem;
+  top: 100%;
+  left: 0;
+  margin-top: 0.9rem;       /* visible gap between label and first item */
   list-style: none;
   display: flex;
   flex-direction: column;
-  min-width: 160px;
-  padding: 0.55rem 0.85rem;
-  background: var(--surface);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius);
-  box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.55);
+  gap: 0.4rem;
+  min-width: 8rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.32s;
   pointer-events: none;
   z-index: 200;
 }
-[data-theme="light"] .nav-sublist {
-  background: #FFFFFF;
-  box-shadow: 0 14px 32px -16px rgba(11, 13, 18, 0.18);
+
+/* Invisible bridge between label and first sub-item so cursor doesn't
+   fall into a dead zone when crossing the visual gap. Active only when
+   the dropdown is open (pointer-events flip with the parent). */
+.nav-sublist::before {
+  content: '';
+  position: absolute;
+  top: -0.9rem;
+  left: 0;
+  right: 0;
+  height: 0.9rem;
 }
 
-.nav-item-dropdown:hover .nav-sublist,
-.nav-item-dropdown:focus-within .nav-sublist {
+/* Hovering ANY one dropdown reveals ALL sub-lists in sync (mega-menu feel).
+   The plate underneath also extends in the same beat, so all columns drop together. */
+.nav:has(.nav-item-dropdown:hover) .nav-sublist,
+.nav:has(.nav-item-dropdown:focus-within) .nav-sublist {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -212,14 +261,17 @@ img { max-width: 100%; display: block; }
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 400;
-  height: 26px;
-  line-height: 26px;
+  line-height: 1.4;
   color: var(--text);
-  opacity: 0.6;
-  transition: opacity var(--transition);
+  opacity: 0.5;             /* muted by default */
+  transition: opacity 0.18s ease, color 0.18s ease;
 }
-.nav-sublist a:hover {
+/* Hover / keyboard-focus / active: text snaps to full ink */
+.nav-sublist a:hover,
+.nav-sublist a:focus-visible,
+.nav-sublist a:active {
   opacity: 1;
+  color: var(--text);
 }
 
 .nav-actions {
