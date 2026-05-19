@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes">
 	<style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito+Sans:wght@400;500;600;700&display=swap'); </style>
 	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-	<link rel="stylesheet" href="noah-style-demo.css">
+	<link rel="stylesheet" href="CV.css">
 </head>
 <body class="purple">
 	<div class="page-reveal" aria-hidden="true"></div>
@@ -113,21 +113,26 @@
 		}, 50);
 	}
 
+	// Accumulating rotation — each click adds 360° to a running total.
+	// CSS transition smoothly chases the new target from the current state,
+	// so rapid clicks never restart or snap. The visual reads as one fluid spin
+	// that just keeps going as long as you keep clicking.
+	let rTotalDeg = 0;
 	function theme() {
 		const r = document.getElementById('r');
-		r.classList.toggle('click');
-		setTimeout(function() {
-			const c = document.getElementById('r');
-			if (c) c.classList.remove('click');
-		}, 560);
-		const theme = ['purple', 'brown', 'green'];
-		let random = Math.floor(Math.random() * theme.length);
+		rTotalDeg += 360;
+		// Force the transition path even if the previous one is mid-flight.
+		r.style.transition = 'transform 650ms cubic-bezier(0.22, 1, 0.36, 1)';
+		r.style.transform  = 'rotate(' + rTotalDeg + 'deg)';
+
+		const themes = ['purple', 'brown', 'green'];
+		let random = Math.floor(Math.random() * themes.length);
 		const body = document.body;
-		while (body.classList.contains(theme[random])) {
-			random = Math.floor(Math.random() * theme.length);
+		while (body.classList.contains(themes[random])) {
+			random = Math.floor(Math.random() * themes.length);
 		}
-		theme.forEach(t => body.classList.remove(t));
-		body.classList.add(theme[random]);
+		themes.forEach(t => body.classList.remove(t));
+		body.classList.add(themes[random]);
 	}
 
 	// WeChat 公众号 click-to-copy
