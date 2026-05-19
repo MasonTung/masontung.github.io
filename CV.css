@@ -125,7 +125,7 @@ body.brown #main, body.brown #roles { border-left: 1px solid rgba(201, 160, 131,
 
 #notes img {
   margin: 0;
-  border: 1px solid #40CC78;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50%;
   max-width: 240px;
   width: 100%;
@@ -144,9 +144,6 @@ body.brown #main, body.brown #roles { border-left: 1px solid rgba(201, 160, 131,
   grid-column: 2;
 }
 
-body.purple #notes img { border-color: #5654AC; }
-body.green #notes img { border-color: #54AC77; }
-body.brown #notes img { border-color: #AC7954; }
 
 #notes p {
   /* max-width: 400px; */

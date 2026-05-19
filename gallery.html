@@ -30,15 +30,18 @@
     ───────────────────────────────────────────────────────────────────────
   -->
 
-  <!-- Ambient blurred copy of the current photo — sits behind everything,
-       its background-image is set by JS whenever the centre image changes. -->
-  <div class="g-ambient" id="g-ambient" aria-hidden="true"></div>
+  <!-- Two ambient layers stacked behind the page. JS cross-fades between
+       them on every photo change so the colour shift glides instead of snapping.
+       A separate veil sits above both, providing a constant vignette + wash. -->
+  <div class="g-ambient is-active" id="g-ambient-a" aria-hidden="true"></div>
+  <div class="g-ambient"            id="g-ambient-b" aria-hidden="true"></div>
+  <div class="g-ambient-veil"       aria-hidden="true"></div>
 
   <main class="g-page">
     <!-- LEFT — static identity column -->
     <aside class="g-left">
       <p class="g-author">Mason Dong</p>
-      <a href="CV.html" class="g-menu">Menu</a>
+      <a href="CV.html" class="g-menu">Introduction</a>
     </aside>
 
     <!-- CENTER — single artwork stage -->
@@ -158,6 +161,13 @@
       const captEl   = document.getElementById('g-caption');
       const countEl  = document.getElementById('g-counter');
       const hintEl   = document.getElementById('g-hint');
+      // Two ambient layers — we ping-pong them so each photo change is a
+      // smooth opacity cross-fade rather than a hard background swap.
+      const ambientLayers = [
+        document.getElementById('g-ambient-a'),
+        document.getElementById('g-ambient-b')
+      ];
+      let ambientCursor = 0;     // which layer is currently visible
 
       let index = 0;
       let busy = false;
@@ -171,11 +181,34 @@
         el.style.display = t ? '' : 'none';
       }
 
+      // Cross-fade ambient: write the new photo into the *inactive* layer,
+      // pre-decode it so it's ready, then flip active/inactive. The CSS
+      // 0.9s opacity transition does the rest.
+      function setAmbient(src) {
+        if (!src || !ambientLayers[0]) return;
+        const next = ambientLayers[1 - ambientCursor];
+        const prev = ambientLayers[ambientCursor];
+        const url = `url("${src.replace(/"/g, '\\"')}")`;
+        // Decode first so the fade-in starts on a fully-loaded image
+        const preload = new Image();
+        preload.onload = () => {
+          next.style.backgroundImage = url;
+          // One frame to commit, then swap classes for the cross-fade
+          requestAnimationFrame(() => {
+            next.classList.add('is-active');
+            prev.classList.remove('is-active');
+            ambientCursor = 1 - ambientCursor;
+          });
+        };
+        preload.src = src;
+      }
+
       function paint(i) {
         const w = WORKS[i];
         if (!w) return;
         imgEl.src = w.src;
         imgEl.alt = w.alt || '';
+        setAmbient(w.src);
         setText(titleEl,  w.title);
         setText(locEl,    w.location);
         setText(yearEl,   w.year);
@@ -200,7 +233,7 @@
             stage.style.setProperty('--g-dir', dir < 0 ? '1' : '-1');
             requestAnimationFrame(() => stage.classList.remove('is-in'));
           });
-        }, 220);
+        }, 300);
       }
 
       function go(step) {
@@ -209,7 +242,7 @@
         if (next === index) return;
         busy = true;
         render(next, step);
-        setTimeout(() => { busy = false; }, 520);
+        setTimeout(() => { busy = false; }, 760);
         hideHint();
       }
 

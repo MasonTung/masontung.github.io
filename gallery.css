@@ -35,29 +35,39 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* ────────── Ambient layer — heavily-blurred copy of the current photo,
-   pinned behind everything. Brings background and foreground into the
-   same colour world without obscuring the photo. */
+/* ────────── Ambient layers — two stacked blurred copies of the photo.
+   Only one is `.is-active` at a time; the other waits with its background
+   already swapped to the next photo. On each step we flip which is active,
+   so the colour shift glides smoothly through opacity rather than snapping. */
 .g-ambient {
   position: fixed;
-  inset: -8vh -8vw;             /* over-bleed so blur edges never show */
+  inset: -8vh -8vw;
   z-index: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(90px) saturate(1.25) brightness(0.42);
-  transform: scale(1.12);        /* extra hide for blur fall-off */
+  filter: blur(90px) saturate(1.25) brightness(0.5);
+  transform: scale(1.12);
   pointer-events: none;
-  transition: opacity 0.5s ease;
+  opacity: 0;
+  /* Slow, organic colour cross-fade */
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Soft vignette + dark wash on top, keeps right/left text legible */
-.g-ambient::after {
-  content: '';
-  position: absolute;
+.g-ambient.is-active { opacity: 1; }
+
+/* Constant vignette + dark wash sitting above both ambient layers.
+   Decoupled so it doesn't double up during the cross-fade. */
+.g-ambient-veil {
+  position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse at center, rgba(20,22,27,0.35) 0%, rgba(20,22,27,0.75) 70%, rgba(20,22,27,0.92) 100%);
+  z-index: 1;
   pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 22, 27, 0.30) 0%,
+    rgba(20, 22, 27, 0.70) 65%,
+    rgba(20, 22, 27, 0.90) 100%
+  );
 }
 
 /* ────────── Layout ────────── */
@@ -115,9 +125,10 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Slower, more organic glide — matches the ambient cross-fade rhythm */
   transition:
-    transform 0.42s cubic-bezier(0.32, 0.72, 0.18, 1),
-    opacity   0.32s ease;
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   0.48s ease;
 }
 /* Sign flipped from earlier draft: scroll DOWN → old slides UP and out,
    new image enters from BELOW (matches the "feed" mental model). */
