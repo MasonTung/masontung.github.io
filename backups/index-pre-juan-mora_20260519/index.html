@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runlin DONG · Mason Dong</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Inline so it applies before <body> parses → no theme flash on load.
+    // Order: stored preference → system preference → default 'dark'.
+    (function () {
+      var stored;
+      try { stored = localStorage.getItem('theme'); } catch (_) {}
+      var theme = stored
+        || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation: flat top-level items; Work and About expand sub-lists on hover -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="CV.html" class="nav-logo" title="View CV">Mason Dong</a>
+
+      <ul class="nav-items" id="nav-items">
+        <li class="nav-item nav-item-dropdown">
+          <span class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">Work</span>
+          <ul class="nav-sublist">
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#visual-design">Visual Design</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-item-dropdown">
+          <span class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">About</span>
+          <ul class="nav-sublist">
+            <li><a href="#about">Bio</a></li>
+            <li><a href="#experience">Experience</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="https://matchbiotech.com/" target="_blank" rel="noopener" class="nav-link">MatchBiotech</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="nav-cta">Get in touch <span aria-hidden="true">→</span></a>
+        <button class="nav-toggle" id="nav-toggle" type="button"
+                aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-items">
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pull-chain light switch — fixed top-right; click to toggle theme -->
+  <button class="pull-chain" id="theme-toggle" type="button" aria-label="Toggle day/night mode">
+    <span class="pull-chain-line" aria-hidden="true"></span>
+    <span class="pull-chain-bead" aria-hidden="true"></span>
+  </button>
+
+  <!-- HERO: Asymmetric — left text dominant, right image bleed -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="eyebrow">Designer · Founder · Student</p>
+        <h1 class="hero-name">Runlin<br/>DONG<span class="hero-name-mark">.</span></h1>
+        <p class="hero-tagline">Love is the key.</p>
+        <p class="hero-sub">Junior at ShanghaiTech, working across healthcare, business, design and AI. Founder &amp; CEO of <a href="https://matchbiotech.com/" target="_blank" rel="noopener">Match Biotech</a>.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View My Work <span>→</span></a>
+          <a href="#contact" class="btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-photo-frame">
+          <img src="mason-tung-avatar.jpg" alt="Runlin DONG" loading="eager" />
+        </div>
+        <p class="hero-photo-caption">Shanghai · 2026</p>
+      </div>
+    </div>
+
+    <!-- Spec rail: real hard metrics -->
+    <aside class="spec-rail" aria-label="At a glance">
+      <div class="spec">
+        <span class="spec-value">2</span>
+        <span class="spec-label">Startups<br/><em>co-founded</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">3</span>
+        <span class="spec-label">International<br/><em>gold medals</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">70<sup>+</sup></span>
+        <span class="spec-label">Designers<br/><em>managed</em></span>
+      </div>
+      <div class="spec">
+        <span class="spec-value">1k<sup>+</sup></span>
+        <span class="spec-label">Audience<br/><em>at pitches</em></span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- OVERSIZE WORDMARK MOMENT -->
+  <section class="wordmark-strip" aria-hidden="true">
+    <p class="wordmark"><span>Bridging</span><br/><em>design</em> <span>×</span> <em>biology</em></p>
+  </section>
+
+  <!-- 01 / OVERVIEW (About) -->
+  <section class="chapter" id="about">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">01</p>
+        <p class="chapter-label">Overview</p>
+      </header>
+      <h2 class="chapter-title">Smart Design,<br/>building things that matter.</h2>
+      <div class="chapter-body-grid">
+        <div>
+          <p>I work across healthcare, business, design and AI — three years, three roles: trend-research intern at <strong>Covestro APAC Innovation Center</strong>, co-founder &amp; creative director of an angel-funded fragrance startup, and now founder &amp; CEO of <strong>Match Biotech</strong>, building point-of-care molecular sensing for Parkinson's disease.</p>
+          <p>SensUs 2025 <em>Gold · Detection Gold · Innovation Silver</em>, and iGEM 2025 <em>International Gold</em> with 3 single-track nominations. Founder of the MakeSense Society; Design &amp; Business Lead at Match Biotech for SensUs 2026; ART &amp; DESIGN Lead for iGEM 2025 ShanghaiTech.</p>
+          <p class="chapter-coda">What I care about: <strong>ownership</strong>, <strong>decisive judgment</strong>, and the bridge between research, product and people.</p>
+        </div>
+        <aside class="chapter-sidebar">
+          <p class="sidebar-label">Skills</p>
+          <ul class="sidebar-list">
+            <li>Strategic Design</li>
+            <li>Product Definition</li>
+            <li>Leadership</li>
+            <li>Stakeholder Mapping</li>
+            <li>MVP Testing</li>
+            <li>Industrial Design</li>
+            <li>Protein Design</li>
+            <li>Vibe Coding</li>
+          </ul>
+          <p class="sidebar-label">Tools</p>
+          <ul class="sidebar-list sidebar-list-mono">
+            <li>Rhino</li>
+            <li>Creo</li>
+            <li>Figma</li>
+            <li>Illustrator</li>
+            <li>Photoshop</li>
+            <li>Keyshot</li>
+            <li>PyTorch</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / EXPERIENCE -->
+  <section class="chapter chapter-alt" id="experience">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">02</p>
+        <p class="chapter-label">Prepare ideals for the world</p>
+      </header>
+      <h2 class="chapter-title">Three years,<br/>three roles.</h2>
+
+      <ol class="exp-timeline">
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2025.09 — Present</span>
+            <span class="exp-tag">Founder &amp; CEO</span>
+          </div>
+          <h3 class="exp-org">Match Biotech</h3>
+          <p class="exp-where">Biotech startup · Shanghai</p>
+          <p class="exp-desc">Led the strategic pivot in two weeks following the team's SensUs global championship — focusing on point-of-care molecular sensing for Parkinson's disease. Own end-to-end R&amp;D from clinical research and industrial design to interaction ecosystem. Tech route validated; prototype targeted for April 2026; animal trials in preparation.</p>
+        </li>
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2024.11 — 2025.09</span>
+            <span class="exp-tag">Co-founder &amp; Creative Director</span>
+          </div>
+          <h3 class="exp-org">Shanghai Oude Technology</h3>
+          <p class="exp-where">Angel-funded fragrance startup · Shanghai</p>
+          <p class="exp-desc">Co-led product definition and MVP market validation; shipped two market-tested fragrance products including a custom diffuser launched on the Shanghai Bund. Built a 70-designer pipeline through three rounds of team iteration; co-authored the business plan that closed the angel round.</p>
+        </li>
+        <li class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2024.07 — 2024.10</span>
+            <span class="exp-tag">Research Intern</span>
+          </div>
+          <h3 class="exp-org">Covestro Asia-Pacific Innovation Center</h3>
+          <p class="exp-where">Bayer Group · Color &amp; Design Trend Research</p>
+          <p class="exp-desc">Contributed to the <em>2025+ Global CMF Trend Handbook</em>, combining AI-assisted tooling with global market research to produce structured industry trend reports. Supported global color-trend launches and professional consulting engagements.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 / RECOGNITION (Awards + Other Engagements) -->
+  <section class="chapter" id="recognition">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">03</p>
+        <p class="chapter-label">Recognition</p>
+      </header>
+      <h2 class="chapter-title">Awards &amp;<br/>engagements.</h2>
+
+      <!-- Awards -->
+      <div class="sub-block" data-auto-collapse>
+        <p class="sub-label">Awards &amp; Honors</p>
+        <ul class="awards-list">
+          <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">SensUs 2025 — Global Biosensing Competition</p><p class="award-meta">International Gold &middot; Detection Gold &middot; Innovation Silver</p></div></li>
+          <li><span class="medal medal-gold">Gold</span><div class="award-body"><p class="award-name">iGEM 2025 — International Genetically Engineered Machine Competition</p><p class="award-meta">International Gold &middot; 3 single-track nominations</p></div></li>
+          <li><span class="medal medal-first">Nat'l 1st</span><div class="award-body"><p class="award-name">4th National College Mental Health Knowledge Competition</p><p class="award-meta">National First Prize</p></div></li>
+          <li><span class="medal medal-silver">Silver</span><div class="award-body"><p class="award-name">4th Synthetic Biology Innovation Competition</p><p class="award-meta">National Silver</p></div></li>
+          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">10th National Biomedical Engineering Innovation Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
+          <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">18th Cesim Global Business Simulation Challenge (China)</p><p class="award-meta">National Second Prize</p></div></li>
+        </ul>
+        <div class="collapse awards-list-more" id="awards-more">
+          <div class="collapse-inner">
+            <ul class="awards-list awards-list--continued">
+              <li><span class="medal medal-second">Nat'l 2nd</span><div class="award-body"><p class="award-name">2025 National Youth Cup Art &amp; Design Competition</p><p class="award-meta">National Second Prize</p></div></li>
+              <li><span class="medal medal-second">2nd</span><div class="award-body"><p class="award-name">7th ShanghaiTech Innovation &amp; Entrepreneurship Competition</p><p class="award-meta">Second Prize + 2 &times; Honorable Mention</p></div></li>
+              <li><span class="medal medal-top">Top 3</span><div class="award-body"><p class="award-name">1st Qingyun National College Design Competition</p><p class="award-meta">Top 3 Finalist</p></div></li>
+              <li><span class="medal medal-other">5th</span><div class="award-body"><p class="award-name">2025 Shanghai Open Rowing</p><p class="award-meta">Men's 8+ 4.2 km Pursuit &middot; 5th place</p></div></li>
+              <li><span class="medal medal-other">Hon.</span><div class="award-body"><p class="award-name">ShanghaiTech Innovation &amp; Entrepreneurship Sci-pop Competition</p><p class="award-meta">Honorable Mention</p></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="collapse-toggle-row">
+          <button type="button" class="collapse-toggle" data-collapse-toggle
+                  aria-controls="awards-more" aria-expanded="false">
+            <span data-label-collapsed>Show all 11 awards</span>
+            <span data-label-expanded>Show fewer</span>
+            <span class="collapse-toggle-chevron" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Other Engagements -->
+      <div class="sub-block" data-auto-collapse>
+        <p class="sub-label">Other Engagements</p>
+        <ul class="other-list">
+          <li><span>Key Visual Designer</span> &middot; Shanghai Philharmonic &amp; Philadelphia Orchestra Joint Concerts</li>
+          <li><span>Project Director</span> &middot; ShanghaiTech DreamBox 2024, School of Creativity &amp; Art</li>
+          <li><span>Project Designer</span> &middot; Wenxing Village Rural Revitalization, Dali Prefecture</li>
+          <li><span>Contracted Designer</span> &middot; Qingyun New Materials Co., Ltd.</li>
+          <li><span>Industrial Design Intern</span> &middot; Yineng Radio (2024.09 – 2024.12)</li>
+          <li><span>Team Designer</span> &middot; ShanghaiTech Rowing Team</li>
+        </ul>
+        <div class="collapse other-list-more" id="other-more">
+          <div class="collapse-inner">
+            <ul class="other-list other-list--continued">
+              <li><span>League Branch Secretary</span> &middot; Dadao College Joint 2023 Cohort (2024 Shanghai Outstanding League Branch)</li>
+              <li><span>Research Grant Recipient</span> &middot; ShanghaiTech "Future Materials Innovation Class"</li>
+              <li><span>Future Catalyst Program · Participant</span> &middot; Shanghai Bank × ShanghaiTech Innovation Incubator</li>
+              <li><span>Public Speaking &amp; Executive Presentations</span> &middot; audiences from dozens to 1,000+, top pitch score on multiple occasions</li>
+              <li><span>Student Representative</span> &middot; College of Creativity &amp; Art Opening Ceremony (2023, 2024)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="collapse-toggle-row">
+          <button type="button" class="collapse-toggle" data-collapse-toggle
+                  aria-controls="other-more" aria-expanded="false">
+            <span data-label-collapsed>Show all 11 engagements</span>
+            <span data-label-expanded>Show fewer</span>
+            <span class="collapse-toggle-chevron" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / SELECTED WORK — chapter format per project -->
+  <section class="chapter chapter-alt" id="work">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">04</p>
+        <p class="chapter-label">Prepare for an ideal world</p>
+      </header>
+      <h2 class="chapter-title">Selected projects.</h2>
+    </div>
+
+    <!-- Project 01: Match Biotech -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">01</p>
+        <p class="project-tags"><span>Bio</span><span>Sensing</span><span>AI/ML</span></p>
+        <h3 class="project-title">Match Biotech × SensUs 2026</h3>
+        <p class="project-lede">Point-of-care molecular sensing for Parkinson's L-Dopa therapy — AI-driven protein engineering paired with micropore-sensing hardware for real-time monitoring and personalized dosing.</p>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-01-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-01-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Founder &amp; CEO</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+              <div><span class="meta-label">Status</span><span class="meta-value">Prototype Apr 2026</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://matchbiotech.com/" target="_blank" rel="noopener">matchbiotech.com →</a></div>
+            </div>
+            <div class="project-gallery project-gallery-2">
+              <div class="proj-img proj-placeholder">
+                <span class="proj-placeholder-label">Prototype · placeholder</span>
+              </div>
+              <div class="proj-img proj-placeholder proj-placeholder-alt">
+                <span class="proj-placeholder-label">Team · placeholder</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 02: Project DOCTOR -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">02</p>
+        <p class="project-tags"><span>iGEM 2025</span><span>Synthetic Bio</span></p>
+        <h3 class="project-title">Project DOCTOR</h3>
+        <p class="project-lede">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis — a synthetic-biology project developed for iGEM 2025; awarded International Gold with 3 single-track nominations.</p>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-02-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-02-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">ART &amp; DESIGN Lead</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+              <div><span class="meta-label">Award</span><span class="meta-value">International Gold</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank" rel="noopener">2025.igem.wiki →</a></div>
+            </div>
+            <div class="project-gallery project-gallery-2">
+              <div class="proj-img proj-placeholder">
+                <span class="proj-placeholder-label">Wiki cover · placeholder</span>
+              </div>
+              <div class="proj-img proj-placeholder proj-placeholder-alt">
+                <span class="proj-placeholder-label">Team photo · placeholder</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 03: MakeSense Society -->
+    <article class="project">
+      <div class="project-inner">
+        <p class="project-num">03</p>
+        <p class="project-tags"><span>Community</span><span>Interdisciplinary</span></p>
+        <h3 class="project-title">MakeSense Society</h3>
+        <p class="project-lede">A compact, high-caliber, interdisciplinary innovation community at ShanghaiTech — bringing researchers and builders together on ambitious sci-tech projects.</p>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-03-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-03-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Founder</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025–</span></div>
+              <div><span class="meta-label">Members</span><span class="meta-value">Interdisciplinary</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="https://www.sohu.com/a/934091809_121124378" target="_blank" rel="noopener">Coverage →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 04: Handbook -->
+    <article class="project project-alt">
+      <div class="project-inner">
+        <p class="project-num">04</p>
+        <p class="project-tags"><span>iGEM</span><span>Outreach</span></p>
+        <h3 class="project-title">Handbook of Project DOCTOR</h3>
+        <p class="project-lede">Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.</p>
+        <button type="button" class="project-expand" data-collapse-toggle
+                aria-controls="proj-04-detail" aria-expanded="false">
+          <span data-label-collapsed>View details</span>
+          <span data-label-expanded>Hide details</span>
+          <span class="project-expand-chevron" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </span>
+        </button>
+        <div class="collapse project-detail-wrap" id="proj-04-detail">
+          <div class="collapse-inner">
+            <div class="project-meta">
+              <div><span class="meta-label">Role</span><span class="meta-value">Editorial &amp; Design</span></div>
+              <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+              <div><span class="meta-label">Format</span><span class="meta-value">PDF handbook</span></div>
+              <div><span class="meta-label">Link</span><a class="meta-value" href="#" target="_blank" rel="noopener">Read →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- 05 / VISUAL DESIGN -->
+  <section class="chapter" id="visual-design">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">05</p>
+        <p class="chapter-label">Visual Design</p>
+      </header>
+      <h2 class="chapter-title">Visual<br/>communication.</h2>
+      <p class="chapter-lede">A small collection of visual-communication pieces — click a card to read the story behind it. Series pieces are quietly stacked.</p>
+
+      <div class="vd-grid" id="vd-grid">
+        <article class="vd-item">
+          <button class="vd-thumb" type="button" aria-expanded="false">
+            <img src="Visual%20Design/%E8%85%8A%E5%85%AB%E8%8A%82%E5%BF%AB%E4%B9%90.png" alt="腊八节快乐"
+                 width="6871" height="8993" loading="lazy" decoding="async" />
+            <span class="vd-caption">
+              <span class="vd-title">腊八节快乐</span>
+              <span class="vd-year">2025</span>
+            </span>
+          </button>
+          <script type="application/json" class="vd-data">{
+            "title": "腊八节快乐",
+            "year": "2025",
+            "meta": "Designer · Self-initiated · Holiday Key Visual",
+            "brief": "A warm, traditional take on Laba Festival — a steamed-bowl typographic poster honoring the eight-grain harvest.",
+            "body": [
+              "Laba (腊八) is the eighth day of the twelfth lunar month, traditionally celebrated with a porridge of eight grains. The poster reframes that ritual as an editorial type composition: warm earthy palette, ceremonial centering, restrained ornament.",
+              "Goal was to feel both grounded and contemporary — modern Chinese typography that still nods to folk craft. Custom kerning on the title; small auxiliary marks reference steam, grain, and ladle."
+            ]
+          }</script>
+        </article>
+
+        <article class="vd-item">
+          <button class="vd-thumb" type="button" aria-expanded="false">
+            <img src="Visual%20Design/90_54-1.png" alt="Visual Design 90_54"
+                 width="2700" height="1620" loading="lazy" decoding="async" />
+            <span class="vd-caption">
+              <span class="vd-title">Untitled (90_54)</span>
+              <span class="vd-year">2025</span>
+            </span>
+          </button>
+          <script type="application/json" class="vd-data">{
+            "title": "Untitled (90_54)",
+            "year": "2025",
+            "meta": "Designer · Personal Study · Poster",
+            "brief": "Replace with a one-sentence summary of what this piece is about.",
+            "body": [
+              "First paragraph: context — what was the brief, the occasion, or the question that started this piece?",
+              "Second paragraph: process — references, iterations, what was tried and discarded.",
+              "Third paragraph: outcome — what the final piece does, where it lived, and how it was received."
+            ]
+          }</script>
+        </article>
+      </div>
+
+      <!--
+        TIP — to turn any piece into a multi-chapter series, replace its
+        <script type="application/json"> with the schema below. The card
+        automatically gets the stacked-paper effect and the expand panel
+        renders each chapter in turn:
+
+        {
+          "title": "Series Title",
+          "year": "2025",
+          "meta": "Designer · Series · 3 chapters",
+          "brief": "One-sentence summary of the whole series.",
+          "chapters": [
+            { "image": "Visual%20Design/ch1.png",
+              "alt": "Chapter 1",
+              "title": "Ch.01 — Subtitle",
+              "body": ["paragraph 1", "paragraph 2"] },
+            { "image": "Visual%20Design/ch2.png",
+              "alt": "Chapter 2",
+              "title": "Ch.02 — Subtitle",
+              "body": ["paragraph 1"] }
+          ]
+        }
+      -->
+    </div>
+  </section>
+
+  <!-- 06 / GALLERY -->
+  <section class="chapter chapter-alt" id="gallery">
+    <div class="chapter-inner">
+      <header class="chapter-head">
+        <p class="chapter-num">06</p>
+        <p class="chapter-label">Gallery</p>
+      </header>
+      <h2 class="chapter-title">Through my lens.</h2>
+      <p class="chapter-lede">Moments through my lens — fragments of light, places, and stillness.</p>
+
+      <div class="gallery-grid">
+        <figure><img src="Gallery/DSC_1375.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/29-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/30-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/31-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/32-1.webp" alt="" loading="lazy" /></figure>
+        <figure><img src="Gallery/33-1.webp" alt="" loading="lazy" /></figure>
+      </div>
+
+      <p class="chapter-cta-row">
+        <a href="#" class="link-arrow">Open full gallery →</a>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+    <figure class="lightbox-stage">
+      <img src="" alt="" class="lightbox-img" id="lightbox-img" />
+    </figure>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+  </div>
+
+  <!-- Footer — also acts as the Contact anchor (nav links to #contact land here) -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <ul class="footer-contacts" aria-label="Contact">
+        <li class="footer-contact">
+          <span class="footer-contact-label">Email</span>
+          <a href="mailto:masondong418@gmail.com" class="footer-contact-value">masondong418@gmail.com</a>
+        </li>
+        <li class="footer-contact">
+          <span class="footer-contact-label">GitHub</span>
+          <a href="https://github.com/MasonTung" target="_blank" rel="noopener" class="footer-contact-value">github.com/MasonTung ↗</a>
+        </li>
+        <li class="footer-contact">
+          <span class="footer-contact-label">WeChat 公众号</span>
+          <button type="button" class="footer-contact-value contact-wechat" data-wechat="董寜寜" title="Click to copy">
+            董寜寜<span class="contact-copy-hint" aria-hidden="true">click to copy</span>
+          </button>
+        </li>
+      </ul>
+      <div class="footer-bottom">
+        <span class="footer-logo">Mason Dong</span>
+        <span class="footer-meta">© 2026 Runlin DONG · ShanghaiTech · Match Biotech</span>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
