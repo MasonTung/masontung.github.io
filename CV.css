@@ -298,8 +298,9 @@ h1 {
   margin: 0 0 42px -7px;
 }
 
-/* Only the ® gets the absolute corner positioning — language content spans must NOT inherit it */
-h1 span:not([data-lang]):not(.name-link span) {
+/* Only the ® (#r) gets the absolute corner positioning — language content
+   spans inside .name-link must NOT inherit it. */
+h1 > span#r {
   position: absolute;
   top: 10px;
   right: -80px;
@@ -311,7 +312,7 @@ h1 span:not([data-lang]):not(.name-link span) {
   text-indent: -5px;
 }
 
-h1 span.click:not([data-lang]) {
+h1 > span#r.click {
   /* transform-origin: 40px 24px;
    */
    transform-origin: center;
@@ -780,9 +781,15 @@ html[lang="zh"] .lang-toggle [data-when="zh"] { display: inline; }
    Bilingual content visibility
    Default page lang is "en" (set on <html>). Switch via JS.
 =========================== */
+/* Hide inactive language variant. Active variant uses `display: contents` so
+   the span doesn't generate a box — its content flows as if it were a direct
+   child of the parent. This sidesteps every inherited rule that targets
+   `<span>` (e.g. `#footnotes li span { position: absolute }`,
+   `h1 span { position: absolute }`), which otherwise would mis-place the
+   bilingual content. */
 [data-lang]                     { display: none; }
-html[lang="en"] [data-lang="en"] { display: inline; }
-html[lang="zh"] [data-lang="zh"] { display: inline; }
+html[lang="en"] [data-lang="en"] { display: contents; }
+html[lang="zh"] [data-lang="zh"] { display: contents; }
 
 /* Block-level spans inside <p>/<h*> should still inline-flow */
 @media (max-width: 767px) {

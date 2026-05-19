@@ -25,7 +25,7 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 > I am a junior at **ShanghaiTech University** majoring in **Smart Design**, working across **healthcare**, **business**, **design** & **AI**. I live in Shanghai and run [**Match Biotech**](https://matchbiotech.com/) — a startup tackling Parkinson's disease. I love **guitar**, **de novo design**, **Arknights** & **Project Moon**. I'm interested in using **AI** & **biology** to bring **health**, **help** or **hope** to those who need it.
 
 **中**:
-> 上海科技大学 **智能设计** 专业大三，工作在 **医疗 · 商业 · 设计 · AI** 的交叉处。现居上海，创办 [**Match Biotech**](https://matchbiotech.com/) — 一家攻坚帕金森病的初创公司。爱好 **吉他**、**蛋白从头设计**、**明日方舟** 与 **Project Moon**。我希望用 **AI** 和 **生物** 给那些需要的人带去 **健康**、**帮助** 或 **希望**。
+> 上海科技大学·创意与艺术学院 **智能设计** 专业大三，身处**医疗 · 商业 · 设计 · AI** 的交叉处。现居上海，创办 [**Match Biotech**](https://new.matchbiotech.com/) — 分子检测的全栈生物传感器初创公司，目前正在攻克帕金森领域的关键检测问题。爱好 **摄影**(这里放我Gallery的链接)、**阅读各类书籍**、**表演艺术**、**公开研究**、**写作**、**长跑**、**拳击**、**架子鼓**、**蛋白从头设计**、**CS 2** 与 **各种交易**。
 
 ---
 
@@ -45,7 +45,7 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 | EN | 中 |
 |----|----|
 | **SensUs 2025 — International Gold** | **SensUs 2025 — 国际金奖** |
-| Detection Gold · Innovation Silver, 2025 | 检测金奖 · 创新银奖，2025 |
+| Analytic Performance 1st · Innovation 2st, 2025 | 金牌 · 检测分析性能冠军 · 创新亚军，2025 |
 | **iGEM 2025 — International Gold** | **iGEM 2025 — 国际金奖** |
 | 3 single-track nominations · Project DOCTOR, 2025 | 3 项单项提名 · Project DOCTOR，2025 |
 | **Founder & CEO — Match Biotech** | **创始人兼 CEO — Match Biotech** |
@@ -61,9 +61,9 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 |---|---|---|---|---|
 | Match Biotech × SensUs 2026 | POC molecular sensing for Parkinson's L-Dopa therapy | Match Biotech × SensUs 2026 | 帕金森病 L-Dopa 即时分子检测 | https://matchbiotech.com/ |
 | Project DOCTOR | Diagnostic Optimization & Chemical Treatment Of Rhinosinusitis | Project DOCTOR | 鼻窦炎诊断优化与化学治疗 | https://2025.igem.wiki/shanghaitech-china/index.html |
-| MakeSense Society | A compact, interdisciplinary sci-tech innovation community | MakeSense Society | 精而小的跨学科科创社群 | https://www.sohu.com/a/934091809_121124378 |
+| MakeSense Society | A compact, interdisciplinary sci-tech innovation community | MakeSense Society | 跨学科科创社群 | (no link) |
 | Handbook of Project DOCTOR | Science-outreach handbook for general audiences | Project DOCTOR 手册 | 面向大众的科普手册 | (no link) |
-| Shanghai Oude — Custom Diffuser | Market-tested fragrance product launched on the Shanghai Bund, 2025 | 上海欧得 — 定制香薰机 | 在上海外滩首发的市场验证产品，2025 | (no link) |
+| Shanghai Oude — Custom Diffuser | Market-tested fragrance product launched on the Shanghai Bund, 2025 | Olfano — 定制留香机 | 在上海外滩首发的市场验证产品，2025 | (no link) |
 | 2025+ Global CMF Trend Handbook | Contributor at Covestro APAC, 2024 | 2025+ 全球 CMF 趋势手册 | 科思创亚太创新中心参与撰写，2024 | (no link) |
 
 ---
@@ -73,14 +73,15 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 | EN | 中 | dates |
 |---|---|---|
 | Founder & CEO @ Match Biotech | 创始人兼 CEO @ Match Biotech | 2025 - Present |
-| Co-founder & Creative Director @ Shanghai Oude Technology | 联合创始人兼创意总监 @ 上海欧得科技 | 2024 - 2025 |
-| Research Intern @ Covestro APAC Innovation Center | 研究实习生 @ 科思创亚太创新中心 | 2024 - 2024 |
-| ART & DESIGN Lead @ iGEM 2025 ShanghaiTech | 美术与设计组长 @ iGEM 2025 上科大 | 2025 - 2025 |
-| Design & Business Lead @ SensUs MakeSense Team | 设计与商业负责人 @ SensUs MakeSense | 2024 - Present |
+| Co-founder & Creative Director @ Shanghai Oude Technology | 联合创始人兼创意总监 @ 上海偶的科技有限公司 | 2024 - 2025 |
+| Research Intern @ Covestro APAC Innovation Center | 趋势研究员实习生 @ 科思创亚太创新中心 | 2024.06 - 2024.09 |
+| | 工业设计实习生 @ 异能电台 | 2024.10 - 2024.12 |
+| ART & DESIGN Lead @ iGEM 2025 ShanghaiTech | Art&Design 组长 @ iGEM 2025 上科大 | 2025 - 2025 |
+| Design & Business Lead @ SensUs MakeSense Team | 设计与商业转化负责人 @ SensUs MakeSense | 2024 - Present |
 
 **Currently line:**
 - **EN**: Currently: Junior at ShanghaiTech University · Smart Design (2023 - 2027)
-- **中**: 现状：上海科技大学智能设计本科在读（2023 — 2027）
+- **中**: 现状：火柴生物科技有限公司 CEO
 
 ---
 
@@ -106,7 +107,7 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 > I've been incredibly lucky to find collaborators across healthcare, business, design and AI — much of my growth has come through a network of talented friends and mentors at ShanghaiTech and in the iGEM & SensUs communities. For them, I am grateful.
 
 **中**:
-> 我很幸运在医疗、商业、设计与 AI 的交叉处找到一群同行者 —— 我的成长大半来自上海科技大学的师友、iGEM 与 SensUs 社群里那些聪明而热情的人。感谢他们。
+> 我很幸运在的交叉处找到一群同行者 —— 我的成长大半来自上海科技大学的师友、iGEM 与 SensUs 社群里那些聪明而热情的人。感谢他们。
 
 ### "Speaking of..." heading
 **EN**: Speaking of collaboration...

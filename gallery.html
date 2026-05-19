@@ -44,14 +44,18 @@
       </figure>
     </div>
 
-    <!-- RIGHT — metadata + counter -->
+    <!-- RIGHT — title sits on the same row as the counter; metadata stacks
+         below in a tight column (location · year · caption). -->
     <aside class="g-right">
-      <div class="g-meta" id="g-meta">
+      <header class="g-headline">
         <h1 class="g-title" id="g-title"></h1>
-        <p class="g-sub" id="g-sub"></p>
-        <p class="g-caption" id="g-caption"></p>
+        <span class="g-counter" id="g-counter"></span>
+      </header>
+      <div class="g-stack">
+        <p class="g-fact" id="g-location"></p>
+        <p class="g-fact" id="g-year"></p>
+        <p class="g-fact g-fact-caption" id="g-caption"></p>
       </div>
-      <span class="g-counter" id="g-counter"></span>
     </aside>
   </main>
 
@@ -142,62 +146,66 @@
     // Navigation logic — wheel, click, keyboard all advance / retreat
     // ════════════════════════════════════════════════════════════════════
     (function () {
-      const stage   = document.getElementById('g-stage');
-      const imgEl   = document.getElementById('g-img');
-      const titleEl = document.getElementById('g-title');
-      const subEl   = document.getElementById('g-sub');
-      const captEl  = document.getElementById('g-caption');
-      const countEl = document.getElementById('g-counter');
-      const hintEl  = document.getElementById('g-hint');
+      const stage    = document.getElementById('g-stage');
+      const imgEl    = document.getElementById('g-img');
+      const titleEl  = document.getElementById('g-title');
+      const locEl    = document.getElementById('g-location');
+      const yearEl   = document.getElementById('g-year');
+      const captEl   = document.getElementById('g-caption');
+      const countEl  = document.getElementById('g-counter');
+      const hintEl   = document.getElementById('g-hint');
 
       let index = 0;
       let busy = false;
       const total = WORKS.length;
       const pad = n => String(n).padStart(2, '0');
 
-      // Render the work at `i`, animating in the direction given (+1 = next, -1 = prev)
-      function render(i, dir) {
+      // Fill a single text element + hide it when empty
+      function setText(el, text) {
+        const t = text || '';
+        el.textContent = t;
+        el.style.display = t ? '' : 'none';
+      }
+
+      function paint(i) {
         const w = WORKS[i];
         if (!w) return;
+        imgEl.src = w.src;
+        imgEl.alt = w.alt || '';
+        setText(titleEl,  w.title);
+        setText(locEl,    w.location);
+        setText(yearEl,   w.year);
+        setText(captEl,   w.caption);
+        countEl.innerHTML = `No.&nbsp;${pad(i + 1)} <span class="g-counter-of">of ${pad(total)}</span>`;
+      }
+
+      // Render the work at `i`, animating in the direction given (+1 = next, -1 = prev)
+      function render(i, dir) {
         index = i;
-
-        // Slide-out the current image, swap, slide-in
+        // Phase 1: slide-out current
         stage.classList.add('is-out');
-        stage.style.setProperty('--g-dir', dir < 0 ? '1' : '-1');
+        stage.style.setProperty('--g-dir', dir < 0 ? '-1' : '1');
 
-        // After the slide-out finishes, swap content + slide back in
-        const swap = () => {
-          imgEl.src = w.src;
-          imgEl.alt = w.alt || '';
-
-          titleEl.textContent = w.title || '';
-          const subBits = [w.year, w.location].filter(Boolean).join(' · ');
-          subEl.textContent = subBits;
-          subEl.style.display = subBits ? '' : 'none';
-          captEl.textContent = w.caption || '';
-          captEl.style.display = (w.caption ? '' : 'none');
-          countEl.innerHTML = `No.&nbsp;${pad(i + 1)} <span class="g-counter-of">of ${pad(total)}</span>`;
-
-          // Wait one frame, then animate in from opposite side
+        // Phase 2: after slide-out, swap content + prime entry from opposite side
+        setTimeout(() => {
+          paint(i);
           requestAnimationFrame(() => {
             stage.classList.remove('is-out');
             stage.classList.add('is-in');
-            stage.style.setProperty('--g-dir', dir < 0 ? '-1' : '1');
+            // entry side is opposite of exit side
+            stage.style.setProperty('--g-dir', dir < 0 ? '1' : '-1');
             requestAnimationFrame(() => stage.classList.remove('is-in'));
           });
-        };
-
-        // 220ms matches the CSS .g-stage transition
-        setTimeout(swap, 220);
+        }, 220);
       }
 
       function go(step) {
         if (busy) return;
-        const next = ((index + step) % total + total) % total;  // wrap both directions
+        const next = ((index + step) % total + total) % total;
         if (next === index) return;
         busy = true;
         render(next, step);
-        setTimeout(() => { busy = false; }, 480);
+        setTimeout(() => { busy = false; }, 520);
         hideHint();
       }
 
@@ -205,31 +213,34 @@
         if (hintEl) hintEl.classList.add('is-hidden');
       }
 
-      // Initial paint — no animation
-      function paintFirst() {
-        const w = WORKS[0];
-        if (!w) return;
-        imgEl.src = w.src;
-        imgEl.alt = w.alt || '';
-        titleEl.textContent = w.title || '';
-        const subBits = [w.year, w.location].filter(Boolean).join(' · ');
-        subEl.textContent = subBits;
-        subEl.style.display = subBits ? '' : 'none';
-        captEl.textContent = w.caption || '';
-        captEl.style.display = (w.caption ? '' : 'none');
-        countEl.innerHTML = `No.&nbsp;${pad(1)} <span class="g-counter-of">of ${pad(total)}</span>`;
+      // ── Inputs ──────────────────────────────────────────────────────
+      // Wheel — inertia-aware throttle: a single trackpad / scroll gesture
+      // advances exactly one image. The lock stays set until wheel events
+      // have been silent for ~280ms (i.e. the gesture + its inertia tail
+      // have both ended), so a long fast scroll won't burn through cards.
+      let wheelLock = false;
+      let lastWheelAt = 0;
+      const QUIET_MS = 280;
+
+      function wheelUnlockWhenQuiet() {
+        const elapsed = Date.now() - lastWheelAt;
+        if (elapsed >= QUIET_MS) {
+          wheelLock = false;
+        } else {
+          setTimeout(wheelUnlockWhenQuiet, QUIET_MS - elapsed + 20);
+        }
       }
 
-      // ── Inputs ──────────────────────────────────────────────────────
-      // Wheel — throttle: one advance per gesture / 480ms
-      let wheelLock = false;
       window.addEventListener('wheel', e => {
         e.preventDefault();
+        lastWheelAt = Date.now();
         if (wheelLock) return;
         if (Math.abs(e.deltaY) < 6) return;
         wheelLock = true;
         go(e.deltaY > 0 ? 1 : -1);
-        setTimeout(() => { wheelLock = false; }, 480);
+        // After the animation finishes (~520ms) and the wheel has been
+        // quiet for QUIET_MS, release the lock so the next gesture can fire.
+        setTimeout(wheelUnlockWhenQuiet, 520);
       }, { passive: false });
 
       // Click — anywhere except real links / buttons
@@ -282,7 +293,7 @@
         });
       }
 
-      paintFirst();
+      paint(0);
       preloadNeighbours();
 
       // Re-preload after each step
