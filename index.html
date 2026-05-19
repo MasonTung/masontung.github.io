@@ -521,30 +521,6 @@
     </div>
   </section>
 
-  <!-- 07 / CONTACT -->
-  <section class="chapter chapter-contact" id="contact">
-    <div class="chapter-inner chapter-inner-narrow">
-      <header class="chapter-head">
-        <p class="chapter-num">07</p>
-        <p class="chapter-label">Contact</p>
-      </header>
-      <h2 class="chapter-title">Let's talk.</h2>
-      <p class="chapter-lede">Whether it's research, collaboration, or just a good conversation — feel free to reach out.</p>
-
-      <ul class="contact-list">
-        <li><span class="contact-label">Email</span><a href="mailto:masondong418@gmail.com">masondong418@gmail.com</a></li>
-        <li><span class="contact-label">GitHub</span><a href="https://github.com/MasonTung" target="_blank" rel="noopener">github.com/MasonTung ↗</a></li>
-        <li>
-          <span class="contact-label">WeChat 公众号</span>
-          <button type="button" class="contact-link contact-wechat" data-wechat="董寜寜" title="Click to copy">
-            董寜寜 <span class="contact-copy-hint" aria-hidden="true">click to copy</span>
-          </button>
-        </li>
-      </ul>
-
-      <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    </div>
-  </section>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -565,12 +541,31 @@
     <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- Footer — also acts as the Contact anchor (nav links to #contact land here) -->
+  <footer class="footer" id="contact">
     <div class="footer-inner">
-      <span class="footer-logo">Mason Dong</span>
-      <span class="footer-meta">© 2026 Runlin DONG · ShanghaiTech University</span>
+      <ul class="footer-contacts" aria-label="Contact">
+        <li class="footer-contact">
+          <span class="footer-contact-label">Email</span>
+          <a href="mailto:masondong418@gmail.com" class="footer-contact-value">masondong418@gmail.com</a>
+        </li>
+        <li class="footer-contact">
+          <span class="footer-contact-label">GitHub</span>
+          <a href="https://github.com/MasonTung" target="_blank" rel="noopener" class="footer-contact-value">github.com/MasonTung ↗</a>
+        </li>
+        <li class="footer-contact">
+          <span class="footer-contact-label">WeChat 公众号</span>
+          <button type="button" class="footer-contact-value contact-wechat" data-wechat="董寜寜" title="Click to copy">
+            董寜寜<span class="contact-copy-hint" aria-hidden="true">click to copy</span>
+          </button>
+        </li>
+      </ul>
+      <div class="footer-bottom">
+        <span class="footer-logo">Mason Dong</span>
+        <span class="footer-meta">© 2026 Runlin DONG · ShanghaiTech · Match Biotech</span>
+      </div>
     </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </footer>
 
   <script src="app.js" defer></script>
