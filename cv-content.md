@@ -22,10 +22,10 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 
 ### Intro paragraph (h2 — long sentence, max ~4 sentences)
 **EN**:
-> I am a junior at **ShanghaiTech University** majoring in **Smart Design**, working across **healthcare**, **business**, **design** & **AI**. I live in Shanghai and run [**Match Biotech**](https://matchbiotech.com/) — a startup tackling Parkinson's disease. I love **guitar**, **de novo design**, **Arknights** & **Project Moon**. I'm interested in using **AI** & **biology** to bring **health**, **help** or **hope** to those who need it.
+> Junior at **ShanghaiTech University · College of Creativity & Art**, majoring in **Smart Design** and working at the intersection of **healthcare · business · design · AI**. Based in Shanghai; running [**Match Biotech**](https://new.matchbiotech.com/) — a full-stack biosensor startup for molecular detection, currently tackling key sensing problems in Parkinson's care. Off the clock: [**photography**](gallery.html), **reading widely**, **performing arts**, **open research**, **writing**, **distance running**, **boxing**, **drums**, **de novo protein design**, **CS 2**, and **trading of all kinds**.
 
 **中**:
-> 上海科技大学·创意与艺术学院 **智能设计** 专业大三，身处**医疗 · 商业 · 设计 · AI** 的交叉处。现居上海，创办 [**Match Biotech**](https://new.matchbiotech.com/) — 分子检测的全栈生物传感器初创公司，目前正在攻克帕金森领域的关键检测问题。爱好 **摄影**(这里放我Gallery的链接)、**阅读各类书籍**、**表演艺术**、**公开研究**、**写作**、**长跑**、**拳击**、**架子鼓**、**蛋白从头设计**、**CS 2** 与 **各种交易**。
+> 上海科技大学·创意与艺术学院 **智能设计** 专业大三，身处 **医疗 · 商业 · 设计 · AI** 的交叉处。现居上海，创办 [**Match Biotech**](https://new.matchbiotech.com/) — 分子检测的全栈生物传感器初创公司，目前正在攻克帕金森领域的关键检测问题。爱好 [**摄影**](gallery.html)、**阅读各类书籍**、**表演艺术**、**公开研究**、**写作**、**长跑**、**拳击**、**架子鼓**、**蛋白从头设计**、**CS 2** 与 **各种交易**。
 
 ---
 
@@ -33,10 +33,11 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 
 | 项 | EN label | 中 label | URL |
 |---|---|---|---|
-| GitHub  | On GitHub @MasonTung | GitHub @MasonTung | https://github.com/MasonTung |
 | Company | Visit matchbiotech.com | 访问 matchbiotech.com | https://matchbiotech.com/ |
 | WeChat  | Find me on WeChat 公众号 董寜寜 | 微信公众号 董寜寜（点击复制） | (copy-only) |
 | Email   | Drop me a line at masondong@shanghaitech.edu.cn | 邮件 masondong@shanghaitech.edu.cn | masondong@shanghaitech.edu.cn |
+
+(GitHub row deleted by user 2026-05-19. Gallery row removed — Gallery is now linked from the "photography / 摄影" word in the hero intro paragraph.)
 
 ---
 
@@ -45,7 +46,7 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 | EN | 中 |
 |----|----|
 | **SensUs 2025 — International Gold** | **SensUs 2025 — 国际金奖** |
-| Analytic Performance 1st · Innovation 2st, 2025 | 金牌 · 检测分析性能冠军 · 创新亚军，2025 |
+| Gold · Analytical Performance Champion · Innovation Runner-up, 2025 | 金牌 · 检测分析性能冠军 · 创新亚军，2025 |
 | **iGEM 2025 — International Gold** | **iGEM 2025 — 国际金奖** |
 | 3 single-track nominations · Project DOCTOR, 2025 | 3 项单项提名 · Project DOCTOR，2025 |
 | **Founder & CEO — Match Biotech** | **创始人兼 CEO — Match Biotech** |

@@ -14,8 +14,7 @@
   --ink-faint: #4A453E;        /* very faint accent */
   --serif:     'Cormorant Garamond', 'EB Garamond', Georgia, serif;
   --frame-x:   clamp(1.5rem, 3.5vw, 4.5rem);
-  --col-left:  clamp(280px, 30vw, 460px);    /* wider — hosts artist + Menu side-by-side */
-  --col-right: clamp(180px, 22vw, 300px);
+  --col-side:  clamp(240px, 26vw, 380px);    /* same on both sides → image truly centred */
   --stage-h:   min(82vh, 820px);             /* centre image height cap */
 }
 
@@ -36,16 +35,43 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+/* ────────── Ambient layer — heavily-blurred copy of the current photo,
+   pinned behind everything. Brings background and foreground into the
+   same colour world without obscuring the photo. */
+.g-ambient {
+  position: fixed;
+  inset: -8vh -8vw;             /* over-bleed so blur edges never show */
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(90px) saturate(1.25) brightness(0.42);
+  transform: scale(1.12);        /* extra hide for blur fall-off */
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+/* Soft vignette + dark wash on top, keeps right/left text legible */
+.g-ambient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(20,22,27,0.35) 0%, rgba(20,22,27,0.75) 70%, rgba(20,22,27,0.92) 100%);
+  pointer-events: none;
+}
+
 /* ────────── Layout ────────── */
 .g-page {
   display: grid;
-  grid-template-columns: var(--col-left) 1fr var(--col-right);
-  align-items: center;       /* item centred in its cell */
-  align-content: center;     /* the single row centred in the container */
+  grid-template-columns: var(--col-side) 1fr var(--col-side);
+  align-items: center;
+  align-content: center;
   justify-content: center;
-  height: 100vh;             /* fixed, not min — body has overflow:hidden */
+  height: 100vh;
   padding: 2.25rem var(--frame-x);
   gap: clamp(2rem, 4vw, 5rem);
+  position: relative;        /* sits above the ambient layer */
+  z-index: 1;
 }
 
 /* ────────── Left column — Mason Dong + Menu on the same baseline ────────── */
