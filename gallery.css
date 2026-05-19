@@ -1,0 +1,202 @@
+/* ════════════════════════════════════════════════════════════════════
+   Gallery — single-focus 3-column editorial layout.
+   Left column: static identity (name + menu link)
+   Centre column: current artwork
+   Right column: artwork metadata + auto counter
+   ════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #F4EFE5;        /* warm paper */
+  --ink:       #1B1B17;        /* near-black text */
+  --ink-soft:  #6A6358;        /* muted brown for italics */
+  --ink-faint: #B9B0A0;        /* very faint for counter accent */
+  --serif:     'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --frame-x:   clamp(1.5rem, 3.5vw, 4.5rem);
+  --col-side:  clamp(150px, 18vw, 260px);   /* width of left / right columns */
+  --stage-h:   min(82vh, 820px);             /* centre image height cap */
+}
+
+html { font-size: 112.5%; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;            /* the page does not actually scroll —
+                                  scroll wheel is intercepted by JS */
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ────────── Layout ────────── */
+.g-page {
+  display: grid;
+  grid-template-columns: var(--col-side) 1fr var(--col-side);
+  align-items: center;
+  min-height: 100vh;
+  padding: 2.25rem var(--frame-x);
+  gap: clamp(2rem, 4vw, 5rem);
+}
+
+/* ────────── Left column ────────── */
+.g-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.g-author {
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+.g-menu {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  display: inline-block;
+  width: max-content;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.g-menu:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+/* ────────── Centre — image stage ────────── */
+.g-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.g-stage {
+  --g-dir: 1;                   /* +1 advancing, -1 retreating */
+  position: relative;
+  height: var(--stage-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.42s cubic-bezier(0.32, 0.72, 0.18, 1),
+    opacity   0.32s ease;
+}
+.g-stage.is-out {
+  /* slide out in the travel direction */
+  transform: translateY(calc(var(--g-dir) * -36px));
+  opacity: 0;
+}
+.g-stage.is-in {
+  /* primed to slide in from the opposite side */
+  transform: translateY(calc(var(--g-dir) * 36px));
+  opacity: 0;
+  transition: none;
+}
+.g-img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 14px 36px -22px rgba(27, 27, 23, 0.35);
+}
+
+/* ────────── Right column ────────── */
+.g-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  padding: 2.25rem 0;
+  min-height: var(--stage-h);
+}
+.g-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 22ch;
+}
+.g-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+  font-style: normal;
+}
+.g-sub {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.4;
+}
+.g-caption {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 0.45rem;
+}
+.g-counter {
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  align-self: flex-end;
+  letter-spacing: 0.01em;
+}
+.g-counter-of {
+  color: var(--ink-faint);
+}
+
+/* ────────── On-screen hint (auto-hides) ────────── */
+.g-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.6s ease 1.5s;
+}
+.g-hint.is-hidden { opacity: 0; transition: opacity 0.4s ease; }
+
+/* ────────── Responsive ────────── */
+@media (max-width: 900px) {
+  body { overflow: auto; }   /* allow regular scroll on narrow viewports */
+  .g-page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "center"
+      "right"
+      "left";
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem 4rem;
+    min-height: auto;
+  }
+  .g-center { grid-area: center; }
+  .g-right  { grid-area: right; min-height: auto; padding: 0; }
+  .g-left   { grid-area: left;  flex-direction: row; gap: 1.5rem; }
+  .g-stage  { height: 68vh; }
+  .g-right {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .g-meta { max-width: none; flex: 1 1 60%; }
+  .g-counter { align-self: flex-start; }
+  .g-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-stage { transition: opacity 0.15s ease; }
+  .g-stage.is-out { transform: none; }
+  .g-stage.is-in { transform: none; }
+}

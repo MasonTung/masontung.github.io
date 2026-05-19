@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — Mason Dong</title>
+  <meta name="description" content="Photography by Mason Dong — single-focus gallery, navigate with scroll, click, or arrow keys." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+
+  <!--
+    ───────────────────────────────────────────────────────────────────────
+    MAINTENANCE NOTE — how to add / edit a photo:
+      1. Drop the image file into ./Gallery/
+      2. Add an object to the WORKS array near the bottom of this file
+         (or remove / reorder entries to taste).
+      3. Field reference (all strings, all optional except `src`):
+            src       image path, relative to this file
+            alt       short description for screen readers
+            title     headline shown large on the right column
+            year      e.g. "2024"
+            location  e.g. "Shanghai · The Bund"
+            caption   one or two sentences of context
+      4. The "No. X of Y" counter on the right is generated automatically.
+    ───────────────────────────────────────────────────────────────────────
+  -->
+
+  <main class="g-page">
+    <!-- LEFT — static identity column -->
+    <aside class="g-left">
+      <p class="g-author">Mason Dong</p>
+      <a href="CV.html" class="g-menu">Menu</a>
+    </aside>
+
+    <!-- CENTER — single artwork stage -->
+    <div class="g-center">
+      <figure class="g-stage" id="g-stage" aria-live="polite">
+        <img id="g-img" class="g-img" src="" alt="" />
+      </figure>
+    </div>
+
+    <!-- RIGHT — metadata + counter -->
+    <aside class="g-right">
+      <div class="g-meta" id="g-meta">
+        <h1 class="g-title" id="g-title"></h1>
+        <p class="g-sub" id="g-sub"></p>
+        <p class="g-caption" id="g-caption"></p>
+      </div>
+      <span class="g-counter" id="g-counter"></span>
+    </aside>
+  </main>
+
+  <!-- Bottom hint — tells visitors what to do; auto-hides after first interaction -->
+  <p class="g-hint" id="g-hint">Scroll · click · ←/→ to navigate</p>
+
+  <script>
+    // ════════════════════════════════════════════════════════════════════
+    // WORKS — edit this list to add, remove, or reorder photos.
+    // See the comment block at the top of the file for field descriptions.
+    // ════════════════════════════════════════════════════════════════════
+    const WORKS = [
+      {
+        src: "Gallery/DSC_1375.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/30-1.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/29-1.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/31-1.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/32-1.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/33-1.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/22-1 (1).webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/8c72a5fccad7493e5d95bb5bd60ae204.webp",
+        alt: "Photograph by Mason Dong",
+        title: "Placeholder Title",
+        year: "2024",
+        location: "Shanghai",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      },
+      {
+        src: "Gallery/车里的狗.webp",
+        alt: "Dog in the car",
+        title: "车里的狗",
+        year: "2024",
+        location: "—",
+        caption: "Replace this with a short description of the moment, frame, or story."
+      }
+    ];
+
+    // ════════════════════════════════════════════════════════════════════
+    // Navigation logic — wheel, click, keyboard all advance / retreat
+    // ════════════════════════════════════════════════════════════════════
+    (function () {
+      const stage   = document.getElementById('g-stage');
+      const imgEl   = document.getElementById('g-img');
+      const titleEl = document.getElementById('g-title');
+      const subEl   = document.getElementById('g-sub');
+      const captEl  = document.getElementById('g-caption');
+      const countEl = document.getElementById('g-counter');
+      const hintEl  = document.getElementById('g-hint');
+
+      let index = 0;
+      let busy = false;
+      const total = WORKS.length;
+      const pad = n => String(n).padStart(2, '0');
+
+      // Render the work at `i`, animating in the direction given (+1 = next, -1 = prev)
+      function render(i, dir) {
+        const w = WORKS[i];
+        if (!w) return;
+        index = i;
+
+        // Slide-out the current image, swap, slide-in
+        stage.classList.add('is-out');
+        stage.style.setProperty('--g-dir', dir < 0 ? '1' : '-1');
+
+        // After the slide-out finishes, swap content + slide back in
+        const swap = () => {
+          imgEl.src = w.src;
+          imgEl.alt = w.alt || '';
+
+          titleEl.textContent = w.title || '';
+          const subBits = [w.year, w.location].filter(Boolean).join(' · ');
+          subEl.textContent = subBits;
+          subEl.style.display = subBits ? '' : 'none';
+          captEl.textContent = w.caption || '';
+          captEl.style.display = (w.caption ? '' : 'none');
+          countEl.innerHTML = `No.&nbsp;${pad(i + 1)} <span class="g-counter-of">of ${pad(total)}</span>`;
+
+          // Wait one frame, then animate in from opposite side
+          requestAnimationFrame(() => {
+            stage.classList.remove('is-out');
+            stage.classList.add('is-in');
+            stage.style.setProperty('--g-dir', dir < 0 ? '-1' : '1');
+            requestAnimationFrame(() => stage.classList.remove('is-in'));
+          });
+        };
+
+        // 220ms matches the CSS .g-stage transition
+        setTimeout(swap, 220);
+      }
+
+      function go(step) {
+        if (busy) return;
+        const next = ((index + step) % total + total) % total;  // wrap both directions
+        if (next === index) return;
+        busy = true;
+        render(next, step);
+        setTimeout(() => { busy = false; }, 480);
+        hideHint();
+      }
+
+      function hideHint() {
+        if (hintEl) hintEl.classList.add('is-hidden');
+      }
+
+      // Initial paint — no animation
+      function paintFirst() {
+        const w = WORKS[0];
+        if (!w) return;
+        imgEl.src = w.src;
+        imgEl.alt = w.alt || '';
+        titleEl.textContent = w.title || '';
+        const subBits = [w.year, w.location].filter(Boolean).join(' · ');
+        subEl.textContent = subBits;
+        subEl.style.display = subBits ? '' : 'none';
+        captEl.textContent = w.caption || '';
+        captEl.style.display = (w.caption ? '' : 'none');
+        countEl.innerHTML = `No.&nbsp;${pad(1)} <span class="g-counter-of">of ${pad(total)}</span>`;
+      }
+
+      // ── Inputs ──────────────────────────────────────────────────────
+      // Wheel — throttle: one advance per gesture / 480ms
+      let wheelLock = false;
+      window.addEventListener('wheel', e => {
+        e.preventDefault();
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 6) return;
+        wheelLock = true;
+        go(e.deltaY > 0 ? 1 : -1);
+        setTimeout(() => { wheelLock = false; }, 480);
+      }, { passive: false });
+
+      // Click — anywhere except real links / buttons
+      document.addEventListener('click', e => {
+        if (e.target.closest('a, button')) return;
+        go(1);
+      });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          go(1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          go(-1);
+        } else if (e.key === 'Home') {
+          go(-index);
+        } else if (e.key === 'End') {
+          go(total - 1 - index);
+        }
+      });
+
+      // Touch swipe (vertical or horizontal)
+      let touchStart = null;
+      window.addEventListener('touchstart', e => {
+        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+      }, { passive: true });
+      window.addEventListener('touchend', e => {
+        if (!touchStart) return;
+        const dx = e.changedTouches[0].clientX - touchStart.x;
+        const dy = e.changedTouches[0].clientY - touchStart.y;
+        const dt = Date.now() - touchStart.t;
+        touchStart = null;
+        if (dt > 600) return;
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 40) return;
+        // Choose the dominant axis
+        const delta = Math.abs(dx) > Math.abs(dy) ? -dx : -dy;
+        go(delta < 0 ? 1 : -1);
+      }, { passive: true });
+
+      // Preload neighbours so prev/next feels instant
+      function preloadNeighbours() {
+        [-1, 1].forEach(d => {
+          const n = WORKS[((index + d) % total + total) % total];
+          if (n && n.src) {
+            const i = new Image();
+            i.src = n.src;
+          }
+        });
+      }
+
+      paintFirst();
+      preloadNeighbours();
+
+      // Re-preload after each step
+      const _origGo = go;
+      window.__galleryGo = step => { _origGo(step); preloadNeighbours(); };
+    })();
+  </script>
+</body>
+</html>

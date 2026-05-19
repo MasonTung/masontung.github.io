@@ -172,11 +172,12 @@ body.brown #notes img { border-color: #AC7954; }
   font-weight: 600;
 }
 
-#footnotes li span {
+/* Only the number badge gets the absolute corner — exclude data-lang content spans */
+#footnotes li span:not([data-lang]) {
   position: absolute;
   top: 0;
   left: 0;
-  display: inline-block;;
+  display: inline-block;
   margin: 0 20px 0 0;
   font-style: italic;
   font-weight: 500;
@@ -297,7 +298,8 @@ h1 {
   margin: 0 0 42px -7px;
 }
 
-h1 span {
+/* Only the ® gets the absolute corner positioning — language content spans must NOT inherit it */
+h1 span:not([data-lang]):not(.name-link span) {
   position: absolute;
   top: 10px;
   right: -80px;
@@ -309,7 +311,7 @@ h1 span {
   text-indent: -5px;
 }
 
-h1 span.click {
+h1 span.click:not([data-lang]) {
   /* transform-origin: 40px 24px;
    */
    transform-origin: center;
@@ -733,4 +735,56 @@ h1 span#r.click {
   h1 span#r { right: auto !important; top: auto !important;
               width: 40px !important; height: 40px !important;
               line-height: 52px !important; text-indent: -2px !important; }
+}
+
+/* ===========================
+   Language toggle — top right, fixed.
+   EN ↔ 中 cycling.
+=========================== */
+.lang-toggle {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 1000;
+  background: rgba(20, 17, 13, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #FFF8DE;
+  border: 1px solid rgba(255, 248, 222, 0.35);
+  border-radius: 100px;
+  padding: 0.55rem 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.lang-toggle:hover {
+  transform: scale(1.05);
+  background: rgba(255, 248, 222, 0.18);
+  border-color: rgba(255, 248, 222, 0.6);
+}
+
+/* Theme-aware toggle color */
+body.purple .lang-toggle:hover  { border-color: #8B90BD; }
+body.green  .lang-toggle:hover  { border-color: #40CC78; }
+body.brown  .lang-toggle:hover  { border-color: #C9A083; }
+
+/* Show only the indicator for "what you'd switch TO" */
+.lang-toggle [data-when]       { display: none; }
+html[lang="en"] .lang-toggle [data-when="en"] { display: inline; }
+html[lang="zh"] .lang-toggle [data-when="zh"] { display: inline; }
+
+/* ===========================
+   Bilingual content visibility
+   Default page lang is "en" (set on <html>). Switch via JS.
+=========================== */
+[data-lang]                     { display: none; }
+html[lang="en"] [data-lang="en"] { display: inline; }
+html[lang="zh"] [data-lang="zh"] { display: inline; }
+
+/* Block-level spans inside <p>/<h*> should still inline-flow */
+@media (max-width: 767px) {
+  .lang-toggle { top: 16px; right: 16px; padding: 0.4rem 0.9rem; font-size: 0.78rem; }
 }
