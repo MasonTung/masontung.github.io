@@ -42,6 +42,11 @@
 					</a><span id="r" onclick="theme()" class="">®</span>
 				</h1>
 
+				<div id="current-titles">
+					<p class="current-primary"><span data-lang="en">Founder &amp; CEO <span>@</span> Match Biotech</span><span data-lang="zh">创始人兼 CEO <span>@</span> Match Biotech</span> <sup onclick="go()">3</sup></p>
+					<p class="sm current-secondary"><span data-lang="en">Founder <span>@</span> MakeSense Society<span class="sep"> · </span>Undergrad <span>@</span> ShanghaiTech University</span><span data-lang="zh">创始人 <span>@</span> MakeSense Society<span class="sep"> · </span>智能设计本科生 <span>@</span> 上海科技大学</span></p>
+				</div>
+
 				<h2>
 					<span data-lang="en">Junior at <strong>ShanghaiTech University · College of Creativity &amp; Art</strong>, majoring in <strong>Smart Design</strong> and working at the intersection of <strong>healthcare · business · design · AI</strong>. Based in Shanghai; running <a href="https://new.matchbiotech.com/" target="_blank"><strong>Match Biotech</strong></a> — a full-stack biosensor startup for molecular detection, currently tackling key sensing problems in Parkinson's care. Off the clock: <a href="gallery.html"><strong>photography</strong></a>, <strong>reading widely</strong>, <strong>performing arts</strong>, <strong>open research</strong>, <strong>writing</strong>, <strong>distance running</strong>, <strong>boxing</strong>, <strong>drums</strong>, <strong>de novo protein design</strong>, <strong>CS 2</strong>, and <strong>trading of all kinds</strong>.</span>
 					<span data-lang="zh">上海科技大学·创意与艺术学院 <strong>智能设计</strong> 专业大三，身处 <strong>医疗 · 商业 · 设计 · AI</strong> 的交叉处。现居上海，创办 <a href="https://new.matchbiotech.com/" target="_blank"><strong>Match Biotech</strong></a> — 分子检测的全栈生物传感器初创公司，目前正在攻克帕金森领域的关键检测问题。爱好 <a href="gallery.html"><strong>摄影</strong></a>、<strong>阅读各类书籍</strong>、<strong>表演艺术</strong>、<strong>公开研究</strong>、<strong>写作</strong>、<strong>长跑</strong>、<strong>拳击</strong>、<strong>架子鼓</strong>、<strong>蛋白从头设计</strong>、<strong>CS 2</strong> 与 <strong>各种交易</strong>。</span>
@@ -85,9 +90,7 @@
 			</div>
 
 			<div id="roles">
-				<h3><span data-lang="en">Roles</span><span data-lang="zh">履历</span></h3>
-				<p><span data-lang="en">Founder &amp; CEO <span>@</span> Match Biotech</span><span data-lang="zh">创始人兼 CEO <span>@</span> Match Biotech</span> <sup onclick="go()">3</sup></p>
-				<p class="sm">2025 - Present</p>
+				<h3><span data-lang="en">Past Roles</span><span data-lang="zh">过往履历</span></h3>
 				<p><span data-lang="en">Co-founder &amp; Creative Director <span>@</span> Shanghai Oude Technology Co., Ltd.</span><span data-lang="zh">联合创始人兼创意总监 <span>@</span> 上海偶的科技有限公司</span></p>
 				<p class="sm">2024 - 2025</p>
 				<p><span data-lang="en">Trend Research Intern <span>@</span> Covestro APAC Innovation Center</span><span data-lang="zh">趋势研究员实习生 <span>@</span> 科思创亚太创新中心</span></p>
@@ -97,15 +100,9 @@
 				<p><span data-lang="en">Art &amp; Design Lead <span>@</span> iGEM 2025 ShanghaiTech</span><span data-lang="zh">Art &amp; Design 组长 <span>@</span> iGEM 2025 上科大</span></p>
 				<p class="sm">2025 - 2025</p>
 				<p><span data-lang="en">Design &amp; Commercialization Lead <span>@</span> SensUs MakeSense Team</span><span data-lang="zh">设计与商业转化负责人 <span>@</span> SensUs MakeSense</span></p>
-				<p class="sm">2024 - Present</p>
-				<p id="prev">
-					<span data-lang="en">Currently: CEO @ Match Biotech Inc.</span>
-					<span data-lang="zh">现状：火柴生物科技有限公司 CEO</span>
-				</p>
+				<p class="sm l">2024 - Present</p>
 
 				<h3><span data-lang="en">Odds &amp; Ends</span><span data-lang="zh">其他角色</span></h3>
-				<p><span data-lang="en">Founder, MakeSense Society</span><span data-lang="zh">创始人，MakeSense Society</span></p>
-				<p class="sm m"><span data-lang="en">Interdisciplinary sci-tech innovation community</span><span data-lang="zh">跨学科科创社群</span></p>
 				<p><span data-lang="en">Key Visual Designer</span><span data-lang="zh">主视觉设计师</span></p>
 				<p class="sm m"><span data-lang="en">Shanghai Philharmonic × Philadelphia Orchestra concerts</span><span data-lang="zh">上海爱乐 × 费城交响乐团音乐会</span></p>
 				<p><span data-lang="en">Project Director, ShanghaiTech DreamBox 2024</span><span data-lang="zh">项目负责人，上科大 DreamBox 2024</span></p>
@@ -164,11 +161,7 @@
 	}
 
 	// ---- THEME CYCLE (R ®) ----------------------------------------
-	const ALL_THEMES = [
-		'purple', 'brown', 'green',
-		'blues', 'blue-gray',
-		'purple-yellow', 'purple-pink'
-	];
+	const ALL_THEMES = ['purple', 'brown', 'green'];
 
 	// Rotation accumulator — every click adds 360°, CSS transition smoothly
 	// chases the new target. No interrupt, no snap on rapid clicks.
@@ -206,6 +199,25 @@
 				if (browser.startsWith('zh')) apply('zh');
 			}
 		} catch (_) {}
+	})();
+
+	// ---- PAGE TRANSITION (CV ↔ Gallery / Index) -------------------
+	// Intercept internal navigations and play a brief fade-out before
+	// the actual hop so the swap doesn't feel like a hard reload.
+	(function () {
+		const INTERNAL = /^(gallery\.html|CV\.html|index\.html)(\?|#|$)/i;
+		const DURATION = 240;
+		document.addEventListener('click', function (e) {
+			const a = e.target.closest('a');
+			if (!a) return;
+			if (a.target === '_blank') return;
+			const href = a.getAttribute('href');
+			if (!href || !INTERNAL.test(href)) return;
+			if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+			e.preventDefault();
+			document.body.classList.add('is-leaving');
+			setTimeout(function () { window.location.href = href; }, DURATION);
+		});
 	})();
 
 	// ---- WECHAT COPY ----------------------------------------------

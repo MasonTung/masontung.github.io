@@ -70,6 +70,24 @@
   <p class="g-hint" id="g-hint">Scroll · click · ←/→ to navigate</p>
 
   <script>
+    // ─── Page transition — fade out before hopping to CV / index, so the
+    //     swap doesn't snap. Destination page handles its own fade-in.
+    (function () {
+      const INTERNAL = /^(CV\.html|index\.html|gallery\.html)(\?|#|$)/i;
+      const DURATION = 240;
+      document.addEventListener('click', function (e) {
+        const a = e.target.closest('a');
+        if (!a) return;
+        if (a.target === '_blank') return;
+        const href = a.getAttribute('href');
+        if (!href || !INTERNAL.test(href)) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        document.body.classList.add('is-leaving');
+        setTimeout(function () { window.location.href = href; }, DURATION);
+      });
+    })();
+
     // ════════════════════════════════════════════════════════════════════
     // WORKS — edit this list to add, remove, or reorder photos.
     // See the comment block at the top of the file for field descriptions.
