@@ -1,0 +1,272 @@
+/* ════════════════════════════════════════════════════════════════════
+   Gallery — single-focus 3-column editorial layout.
+   Left column: static identity (name + menu link)
+   Centre column: current artwork
+   Right column: artwork metadata + auto counter
+   ════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #14161B;        /* deep gray, near-black */
+  --ink:       #F2F0EA;        /* warm white text */
+  --ink-soft:  #9A958A;        /* muted warm gray for italics */
+  --ink-faint: #4A453E;        /* very faint accent */
+  --serif:     'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --frame-x:   clamp(1.5rem, 3.5vw, 4.5rem);
+  --col-side:  clamp(240px, 26vw, 380px);    /* same on both sides → image truly centred */
+  --stage-h:   min(82vh, 820px);             /* centre image height cap */
+}
+
+html { font-size: 112.5%; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;            /* the page does not actually scroll —
+                                  scroll wheel is intercepted by JS */
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ────────── Ambient layers — two stacked blurred copies of the photo.
+   Only one is `.is-active` at a time; the other waits with its background
+   already swapped to the next photo. On each step we flip which is active,
+   so the colour shift glides smoothly through opacity rather than snapping. */
+.g-ambient {
+  position: fixed;
+  inset: -8vh -8vw;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(90px) saturate(1.25) brightness(0.5);
+  transform: scale(1.12);
+  pointer-events: none;
+  opacity: 0;
+  /* Slow, organic colour cross-fade */
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.g-ambient.is-active { opacity: 1; }
+
+/* Constant vignette + dark wash sitting above both ambient layers.
+   Decoupled so it doesn't double up during the cross-fade. */
+.g-ambient-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 22, 27, 0.30) 0%,
+    rgba(20, 22, 27, 0.70) 65%,
+    rgba(20, 22, 27, 0.90) 100%
+  );
+}
+
+/* ────────── Layout ────────── */
+.g-page {
+  display: grid;
+  grid-template-columns: var(--col-side) 1fr var(--col-side);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2.25rem var(--frame-x);
+  gap: clamp(2rem, 4vw, 5rem);
+  position: relative;        /* sits above the ambient layer */
+  z-index: 1;
+}
+
+/* ────────── Left column — Mason Dong + Menu on the same baseline ────────── */
+.g-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.g-author {
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+.g-menu {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.g-menu:hover { color: var(--ink-soft); border-color: var(--ink-soft); }
+
+/* ────────── Centre — image stage (WIDTH-bound) ──────────
+   Image fills its grid cell's width; height follows from the image's
+   intrinsic aspect ratio. A soft viewport cap keeps very-tall portraits
+   from pushing past the screen. */
+.g-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;             /* allow grid 1fr to actually shrink */
+}
+.g-stage {
+  --g-dir: 1;               /* +1 advancing, -1 retreating */
+  position: relative;
+  width: 100%;              /* take the full centre cell */
+  max-height: var(--stage-h);  /* safety cap for tall portrait shots */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Snappy, symmetric in/out. Timings are paired with the JS sequencer:
+     out phase ≈ 300ms, then content swap, then in phase ≈ 300ms. */
+  transition:
+    transform 0.30s cubic-bezier(0.32, 0.72, 0, 1),
+    opacity   0.26s ease-out;
+  will-change: transform, opacity;
+}
+/* Sign flipped from earlier draft: scroll DOWN → old slides UP and out,
+   new image enters from BELOW (matches the "feed" mental model). */
+.g-stage.is-out {
+  transform: translateY(calc(var(--g-dir) * 24px));
+  opacity: 0;
+}
+.g-stage.is-in {
+  /* primed at the opposite side so it slides toward 0 when class is removed */
+  transform: translateY(calc(var(--g-dir) * 24px));
+  opacity: 0;
+  transition: none;
+}
+.g-img {
+  width: 100%;
+  height: auto;
+  max-height: var(--stage-h);    /* still respect viewport for very tall ones */
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 14px 36px -22px rgba(0, 0, 0, 0.55);
+}
+
+/* ────────── Right column — title + counter share one row,
+                              facts stack tightly below ────────── */
+.g-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-self: center;
+}
+.g-headline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.g-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0;
+}
+.g-counter {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.g-counter-of {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.g-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;             /* line-height handles vertical rhythm — tight stack */
+  max-width: 28ch;
+}
+.g-fact {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+  font-style: normal;
+  margin: 0;
+}
+.g-fact:empty { display: none; }
+.g-fact-caption {
+  margin-top: 0.55rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ────────── On-screen hint (auto-hides) ────────── */
+.g-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.6s ease 1.5s;
+}
+.g-hint.is-hidden { opacity: 0; transition: opacity 0.4s ease; }
+
+/* ────────── Responsive ────────── */
+@media (max-width: 900px) {
+  body { overflow: auto; }   /* allow regular scroll on narrow viewports */
+  .g-page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "center"
+      "right"
+      "left";
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem 4rem;
+    min-height: auto;
+  }
+  .g-center { grid-area: center; }
+  .g-right  { grid-area: right; align-self: stretch; }
+  .g-left   { grid-area: left;  gap: 1.5rem; }
+  .g-stage  { height: 68vh; }
+  .g-stack  { max-width: none; }
+  .g-hint   { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-stage { transition: opacity 0.15s ease; }
+  .g-stage.is-out { transform: none; }
+  .g-stage.is-in { transform: none; }
+}
+
+/* ────────── Page transition — fade in on load, fade out before hopping
+   between gallery and CV. Keeps cross-page navigation feeling continuous. */
+@keyframes galleryEnter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes galleryExit {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+body {
+  animation: galleryEnter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+body.is-leaving {
+  animation: galleryExit 240ms ease forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  body.is-leaving { animation: none; opacity: 0; }
+}

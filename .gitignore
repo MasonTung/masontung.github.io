@@ -1,0 +1,6 @@
+# Local-only folders — never publish
+个人资料/
+参考网页/
+.DS_Store
+**/.DS_Store
+.claude/launch.json

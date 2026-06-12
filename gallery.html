@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — Mason Dong</title>
+  <meta name="description" content="Photography by Mason Dong — single-focus gallery, navigate with scroll, click, or arrow keys." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+
+  <!--
+    ───────────────────────────────────────────────────────────────────────
+    MAINTENANCE NOTE — how to add / edit a photo:
+      1. Drop the image file into ./Gallery/
+      2. Add an object to the WORKS array near the bottom of this file
+         (or remove / reorder entries to taste).
+      3. Field reference (all strings, all optional except `src`):
+            src       image path, relative to this file
+            alt       short description for screen readers
+            title     headline shown large on the right column
+            year      e.g. "2024"
+            location  e.g. "Shanghai · The Bund"
+            caption   one or two sentences of context
+      4. The "No. X of Y" counter on the right is generated automatically.
+    ───────────────────────────────────────────────────────────────────────
+  -->
+
+  <!-- Two ambient layers stacked behind the page. JS cross-fades between
+       them on every photo change so the colour shift glides instead of snapping.
+       A separate veil sits above both, providing a constant vignette + wash. -->
+  <div class="g-ambient is-active" id="g-ambient-a" aria-hidden="true"></div>
+  <div class="g-ambient"            id="g-ambient-b" aria-hidden="true"></div>
+  <div class="g-ambient-veil"       aria-hidden="true"></div>
+
+  <main class="g-page">
+    <!-- LEFT — static identity column -->
+    <aside class="g-left">
+      <p class="g-author">Mason Dong</p>
+      <a href="CV.html" class="g-menu">Introduction</a>
+    </aside>
+
+    <!-- CENTER — single artwork stage -->
+    <div class="g-center">
+      <figure class="g-stage" id="g-stage" aria-live="polite">
+        <img id="g-img" class="g-img" src="" alt="" />
+      </figure>
+    </div>
+
+    <!-- RIGHT — title sits on the same row as the counter; metadata stacks
+         below in a tight column (location · year · caption). -->
+    <aside class="g-right">
+      <header class="g-headline">
+        <h1 class="g-title" id="g-title"></h1>
+        <span class="g-counter" id="g-counter"></span>
+      </header>
+      <div class="g-stack">
+        <p class="g-fact" id="g-location"></p>
+        <p class="g-fact" id="g-year"></p>
+        <p class="g-fact g-fact-caption" id="g-caption"></p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Bottom hint — tells visitors what to do; auto-hides after first interaction -->
+  <p class="g-hint" id="g-hint">Scroll · click · ←/→ to navigate</p>
+
+  <script>
+    // ─── Page transition — fade out before hopping to CV / index, so the
+    //     swap doesn't snap. Destination page handles its own fade-in.
+    (function () {
+      const INTERNAL = /^(CV\.html|index\.html|gallery\.html)(\?|#|$)/i;
+      const DURATION = 240;
+      document.addEventListener('click', function (e) {
+        const a = e.target.closest('a');
+        if (!a) return;
+        if (a.target === '_blank') return;
+        const href = a.getAttribute('href');
+        if (!href || !INTERNAL.test(href)) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        document.body.classList.add('is-leaving');
+        setTimeout(function () { window.location.href = href; }, DURATION);
+      });
+    })();
+
+    // ════════════════════════════════════════════════════════════════════
+    // WORKS — edit this list to add, remove, or reorder photos.
+    // See the comment block at the top of the file for field descriptions.
+    // ════════════════════════════════════════════════════════════════════
+    const WORKS = [
+      // ── 01 城市与建筑 · Cityscape & Architecture ──────────────────
+      { src: "Gallery/01_城市与建筑/22-1.webp",                alt: "Photograph by Mason Dong", title: "Cangshan & Erhai" },
+      { src: "Gallery/01_城市与建筑/上海陆家嘴_车窗.webp",       alt: "Photograph by Mason Dong", title: "Lujiazui · Through Glass" },
+      { src: "Gallery/01_城市与建筑/校园晚霞.webp",             alt: "Photograph by Mason Dong", title: "Campus at Dusk" },
+      { src: "Gallery/01_城市与建筑/上海暮色天际线.webp",        alt: "Photograph by Mason Dong", title: "Shanghai Twilight" },
+      { src: "Gallery/01_城市与建筑/紫色暮光.webp",             alt: "Photograph by Mason Dong", title: "Purple Hour" },
+      { src: "Gallery/01_城市与建筑/远山与城.webp",             alt: "Photograph by Mason Dong", title: "City Beneath Mountains" },
+      { src: "Gallery/01_城市与建筑/工地黄昏.webp",             alt: "Photograph by Mason Dong", title: "Crane at Sundown" },
+
+      // ── 02 动物 · Animals ───────────────────────────────────────
+      { src: "Gallery/02_动物/猫/白猫.webp",        alt: "White cat",         title: "The White One" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_01.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · I" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_02.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · II" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_03.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · III" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_04.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · IV" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_05.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · V" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_06.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · VI" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_07.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · VII" },
+      { src: "Gallery/02_动物/猫/玳瑁猫_08.webp",   alt: "Tortoiseshell cat", title: "Tortoiseshell · VIII" },
+      { src: "Gallery/02_动物/狗/车里的狗.webp",    alt: "Dog behind glass",  title: "Dog Behind Glass" },
+      { src: "Gallery/02_动物/鸟/海鸥_游.webp",     alt: "Seagulls drifting", title: "Gulls Adrift" },
+      { src: "Gallery/02_动物/鸟/海鸥_溅.webp",     alt: "Seagull splashing", title: "A Splash" },
+
+      // ── 03 天空与月 · Sky & Moon ─────────────────────────────────
+      { src: "Gallery/03_天空与月/月亮_02.webp",     alt: "Full moon",        title: "Moon" },
+      { src: "Gallery/03_天空与月/航迹与日.webp",     alt: "Contrail and sun", title: "Vapor Trail" },
+
+      // ── 04 街拍与人物 · Street & People ──────────────────────────
+      { src: "Gallery/04_街拍与人物/集市午憩_黑白.webp", alt: "Market scene",     title: "Midday Rest" },
+      { src: "Gallery/04_街拍与人物/白帽少年.webp",     alt: "Boy on steps",     title: "White Cap" },
+      { src: "Gallery/04_街拍与人物/马拉松存衣车.webp", alt: "Marathon runner",  title: "Bag Drop · Marathon" },
+      { src: "Gallery/04_街拍与人物/山岗剪影.webp",     alt: "Silhouette",       title: "Silhouette on the Hill" },
+      { src: "Gallery/04_街拍与人物/自拍_吸血鬼.webp",  alt: "Self portrait",    title: "Self · Hasselblad" },
+
+      // ── 05 夜与动 · Night & Motion ───────────────────────────────
+      { src: "Gallery/05_夜与动/光轨大街.webp",      alt: "Long exposure",     title: "Light Trails" },
+      { src: "Gallery/05_夜与动/出租车追拍.webp",     alt: "Motion blur taxi",  title: "Taxi · Pan" },
+      { src: "Gallery/05_夜与动/小巴追拍.webp",       alt: "Motion blur van",   title: "Van · Pan" },
+      { src: "Gallery/05_夜与动/SUV追拍.webp",       alt: "Motion blur car",   title: "SUV · Pan" },
+      { src: "Gallery/05_夜与动/字母光影.webp",       alt: "Letter shadows",    title: "Letters & Light" },
+      { src: "Gallery/05_夜与动/雾夜街道.webp",       alt: "Foggy street",      title: "Foggy Street" },
+      { src: "Gallery/05_夜与动/生院的大雾.webp",     alt: "Foggy campus",      title: "Campus in Fog" },
+      { src: "Gallery/05_夜与动/紫色塔顶_01.webp",   alt: "Tower at night",    title: "Purple Tower · I" },
+      { src: "Gallery/05_夜与动/紫色塔顶_02.webp",   alt: "Tower at night",    title: "Purple Tower · II" },
+
+      // ── 06 自然与植物 · Nature & Plants ──────────────────────────
+      { src: "Gallery/06_自然与植物/松枝黑白.webp",    alt: "Pine branches",     title: "Pine · Mono" },
+      { src: "Gallery/06_自然与植物/樱花.webp",        alt: "Cherry blossom",    title: "Sakura" },
+      { src: "Gallery/06_自然与植物/后视镜里的海.webp", alt: "Sea in mirror",     title: "Sea in the Mirror" },
+
+      // ── 07 物与细节 · Objects & Details ──────────────────────────
+      { src: "Gallery/07_物与细节/海边露台.webp",     alt: "Seaside terrace",   title: "Seaside Terrace" },
+      { src: "Gallery/07_物与细节/Porsche_911.webp", alt: "Porsche detail",    title: "911 Spirit 70" },
+      { src: "Gallery/07_物与细节/阶梯长椅.webp",     alt: "Stairs",            title: "Stairs" },
+    ];
+
+    // ════════════════════════════════════════════════════════════════════
+    // Navigation logic — wheel, click, keyboard all advance / retreat
+    // ════════════════════════════════════════════════════════════════════
+    (function () {
+      const stage    = document.getElementById('g-stage');
+      const imgEl    = document.getElementById('g-img');
+      const titleEl  = document.getElementById('g-title');
+      const locEl    = document.getElementById('g-location');
+      const yearEl   = document.getElementById('g-year');
+      const captEl   = document.getElementById('g-caption');
+      const countEl  = document.getElementById('g-counter');
+      const hintEl   = document.getElementById('g-hint');
+      // Two ambient layers — we ping-pong them so each photo change is a
+      // smooth opacity cross-fade rather than a hard background swap.
+      const ambientLayers = [
+        document.getElementById('g-ambient-a'),
+        document.getElementById('g-ambient-b')
+      ];
+      let ambientCursor = 0;     // which layer is currently visible
+
+      let index = 0;
+      let inFlight = null;      // Promise lock: only one transition at a time
+      const total = WORKS.length;
+      const pad = n => String(n).padStart(2, '0');
+      const wait  = ms => new Promise(r => setTimeout(r, ms));
+      const frame = ()  => new Promise(r => requestAnimationFrame(r));
+      // Fully load + decode an image so the bitmap is GPU-ready before we use it.
+      // Resolves on success OR failure — we never want this to reject the chain.
+      const decodeOnce = src => new Promise(resolve => {
+        if (!src) return resolve();
+        const im = new Image();
+        im.onload  = () => (im.decode ? im.decode().then(resolve, resolve) : resolve());
+        im.onerror = () => resolve();
+        im.src = src;
+      });
+
+      // Fill a single text element + hide it when empty
+      function setText(el, text) {
+        const t = text || '';
+        el.textContent = t;
+        el.style.display = t ? '' : 'none';
+      }
+
+      // Cross-fade ambient: write the new photo into the *inactive* layer,
+      // pre-decode it so it's ready, then flip active/inactive. The CSS
+      // 0.9s opacity transition does the rest.
+      function setAmbient(src) {
+        if (!src || !ambientLayers[0]) return;
+        const next = ambientLayers[1 - ambientCursor];
+        const prev = ambientLayers[ambientCursor];
+        const url = `url("${src.replace(/"/g, '\\"')}")`;
+        // Decode first so the fade-in starts on a fully-loaded image
+        const preload = new Image();
+        preload.onload = () => {
+          next.style.backgroundImage = url;
+          // One frame to commit, then swap classes for the cross-fade
+          requestAnimationFrame(() => {
+            next.classList.add('is-active');
+            prev.classList.remove('is-active');
+            ambientCursor = 1 - ambientCursor;
+          });
+        };
+        preload.src = src;
+      }
+
+      function paint(i) {
+        const w = WORKS[i];
+        if (!w) return;
+        imgEl.src = w.src;
+        imgEl.alt = w.alt || '';
+        setAmbient(w.src);
+        setText(titleEl,  w.title);
+        setText(locEl,    w.location);
+        setText(yearEl,   w.year);
+        setText(captEl,   w.caption);
+        countEl.innerHTML = `No.&nbsp;${pad(i + 1)} <span class="g-counter-of">of ${pad(total)}</span>`;
+      }
+
+      // Render the work at `i`, animating in the direction given (+1 = next, -1 = prev).
+      // Pre-decodes the new image first so it's fully ready when imgEl.src changes —
+      // otherwise the bitmap shows up mid-animation and the user sees a blurry snap.
+      async function render(i, dir) {
+        index = i;
+        const w = WORKS[i];
+        if (!w) return;
+
+        // Phase 0: ensure the new bitmap is decoded BEFORE the visual change.
+        await decodeOnce(w.src);
+
+        // Phase 1: slide the current artwork off-stage. We wait the FULL CSS
+        // transition duration so transform never gets interrupted mid-flight
+        // (the interruption is what produced the "bounce-back" feel).
+        stage.style.setProperty('--g-dir', dir < 0 ? '-1' : '1');
+        stage.classList.add('is-out');
+        await wait(320);
+
+        // Phase 2: swap content + prime entry on the opposite side, with
+        // transitions disabled so the prime doesn't animate.
+        paint(i);
+        stage.classList.remove('is-out');
+        stage.classList.add('is-in');
+        stage.style.setProperty('--g-dir', dir < 0 ? '1' : '-1');
+
+        // Phase 3: two frames to commit, then drop is-in so the default
+        // transition glides the artwork back to rest.
+        await frame(); await frame();
+        stage.classList.remove('is-in');
+      }
+
+      function go(step) {
+        if (inFlight) return;
+        const next = ((index + step) % total + total) % total;
+        if (next === index) return;
+        hideHint();
+        inFlight = render(next, step).finally(() => {
+          inFlight = null;
+          preloadNeighbours();
+        });
+      }
+
+      function hideHint() {
+        if (hintEl) hintEl.classList.add('is-hidden');
+      }
+
+      // ── Inputs ──────────────────────────────────────────────────────
+      // Wheel — inertia-aware throttle: a single trackpad / scroll gesture
+      // advances exactly one image. The lock stays set until wheel events
+      // have been silent for ~280ms (i.e. the gesture + its inertia tail
+      // have both ended), so a long fast scroll won't burn through cards.
+      let wheelLock = false;
+      let lastWheelAt = 0;
+      const QUIET_MS = 280;
+
+      function wheelUnlockWhenQuiet() {
+        const elapsed = Date.now() - lastWheelAt;
+        if (elapsed >= QUIET_MS) {
+          wheelLock = false;
+        } else {
+          setTimeout(wheelUnlockWhenQuiet, QUIET_MS - elapsed + 20);
+        }
+      }
+
+      window.addEventListener('wheel', e => {
+        e.preventDefault();
+        lastWheelAt = Date.now();
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 6) return;
+        wheelLock = true;
+        go(e.deltaY > 0 ? 1 : -1);
+        // After the animation finishes (~520ms) and the wheel has been
+        // quiet for QUIET_MS, release the lock so the next gesture can fire.
+        setTimeout(wheelUnlockWhenQuiet, 520);
+      }, { passive: false });
+
+      // Click — anywhere except real links / buttons
+      document.addEventListener('click', e => {
+        if (e.target.closest('a, button')) return;
+        go(1);
+      });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          go(1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          go(-1);
+        } else if (e.key === 'Home') {
+          go(-index);
+        } else if (e.key === 'End') {
+          go(total - 1 - index);
+        }
+      });
+
+      // Touch swipe (vertical or horizontal)
+      let touchStart = null;
+      window.addEventListener('touchstart', e => {
+        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+      }, { passive: true });
+      window.addEventListener('touchend', e => {
+        if (!touchStart) return;
+        const dx = e.changedTouches[0].clientX - touchStart.x;
+        const dy = e.changedTouches[0].clientY - touchStart.y;
+        const dt = Date.now() - touchStart.t;
+        touchStart = null;
+        if (dt > 600) return;
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 40) return;
+        // Choose the dominant axis
+        const delta = Math.abs(dx) > Math.abs(dy) ? -dx : -dy;
+        go(delta < 0 ? 1 : -1);
+      }, { passive: true });
+
+      // Preload neighbours so prev/next feels instant
+      function preloadNeighbours() {
+        [-1, 1].forEach(d => {
+          const n = WORKS[((index + d) % total + total) % total];
+          if (n && n.src) {
+            const i = new Image();
+            i.src = n.src;
+          }
+        });
+      }
+
+      paint(0);
+      preloadNeighbours();
+
+      // Re-preload after each step
+      const _origGo = go;
+      window.__galleryGo = step => { _origGo(step); preloadNeighbours(); };
+    })();
+  </script>
+</body>
+</html>

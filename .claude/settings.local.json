@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(git --version)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(ls ~/.ssh/*.pub)",
+      "Bash(ssh:*)",
+      "Bash(ssh-keygen:*)",
+      "Bash(grep -v -E '\\\\.\\(html|css|json\\)$|^\\\\.git$')"
+    ]
+  }
+}

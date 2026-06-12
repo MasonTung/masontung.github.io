@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-color="purple">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Mason Dong®</title>
+	<meta name="description" content="Mason Dong (Runlin DONG) — ShanghaiTech junior in Smart Design. Founder & CEO of Match Biotech.">
+	<meta name="HandheldFriendly" content="True">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#524FC4">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes">
+	<style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito+Sans:wght@400;500;600;700&display=swap'); </style>
+	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+	<link rel="stylesheet" href="CV.css">
+	<script>
+	// Restore lang preference before body parses → no flash
+	(function () {
+		try {
+			var stored = localStorage.getItem('cv-lang');
+			if (stored === 'zh' || stored === 'en') {
+				document.documentElement.setAttribute('lang', stored);
+			}
+		} catch (_) {}
+	})();
+	// Mark that JS is available BEFORE first paint, so the reveal targets are
+	// hidden from frame one (no flash). If this script never runs, content
+	// stays visible — graceful no-JS fallback.
+	document.documentElement.classList.add('js-reveal');
+	</script>
+</head>
+<body class="purple">
+
+	<!-- Top-right language toggle — switches EN ↔ 中 -->
+	<button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch language">
+		<span data-when="en">中</span><span data-when="zh">EN</span>
+	</button>
+
+	<div class="page-reveal" aria-hidden="true"></div>
+
+	<div id="ns">
+		<div id="content" class="container">
+			<div id="main">
+				<h1 class="reveal-on">
+					<a href="index.html" class="name-link" title="Refresh">
+						<span data-lang="en">Mason Dong</span><span data-lang="zh">董润霖</span>
+					</a><span id="r" onclick="theme()" class="">®</span>
+				</h1>
+
+				<div id="current-titles" class="reveal-on">
+					<p class="current-primary"><span data-lang="en">Founder &amp; CEO <span>@</span> Match Biotech</span><span data-lang="zh">创始人兼 CEO <span>@</span> Match Biotech</span> <sup onclick="go()">3</sup></p>
+					<p class="sm current-secondary"><span data-lang="en">Founder <span>@</span> MakeSense Society</span><span data-lang="zh">创始人 <span>@</span> MakeSense Society</span></p>
+					<p class="sm current-secondary"><span data-lang="en">B.Eng, Industrial Design (Smart Design), Class of 2023 <span>@</span> ShanghaiTech University</span><span data-lang="zh">工学学士，工业设计（智能设计方向），2023 级 <span>@</span> 上海科技大学</span></p>
+				</div>
+
+				<h2 class="reveal-on">
+					<span data-lang="en">Junior at <strong>ShanghaiTech University · School of Creativity &amp; Art</strong>, majoring in <strong>Smart Design</strong> and working at the intersection of <strong>healthcare · business · design · AI</strong>. Based in Shanghai, originally from Sichuan; running <a href="https://matchbiotech.com/" target="_blank"><strong>Match Biotech</strong></a> — a full-stack biosensor startup for molecular detection, currently tackling key sensing problems in Parkinson's care. Off the clock: <a href="gallery.html"><strong>photography</strong></a>, <strong>reading widely</strong>, <strong>performing arts</strong>, <strong>open research</strong>, <strong>writing</strong>, <strong>distance running</strong>, <strong>boxing</strong>, <strong>drums</strong>, <strong>de novo protein design</strong>, <strong>CS 2</strong>, and <strong>trading of all kinds</strong>.</span>
+					<span data-lang="zh">上海科技大学·创意与艺术学院 <strong>智能设计</strong> 专业大三，身处 <strong>医疗 · 商业 · 设计 · AI</strong> 的交叉处。籍贯四川，现居上海；创办 <a href="https://matchbiotech.com/" target="_blank"><strong>Match Biotech</strong></a> — 分子检测的全栈生物传感器初创公司，目前正在攻克帕金森领域的关键检测问题。爱好 <a href="gallery.html"><strong>摄影</strong></a>、<strong>阅读各类书籍</strong>、<strong>表演艺术</strong>、<strong>公开研究</strong>、<strong>写作</strong>、<strong>长跑</strong>、<strong>拳击</strong>、<strong>架子鼓</strong>、<strong>蛋白从头设计</strong>、<strong>CS 2</strong> 与 <strong>各种交易</strong>。</span>
+				</h2>
+
+				<!-- Key-numbers wall — personal stats, directly below the intro -->
+				<div id="statwall">
+					<h3 class="reveal-on"><span data-lang="en">By the Numbers</span><span data-lang="zh">关键数字</span></h3>
+					<div class="statgrid">
+						<div class="stat wide reveal-on">
+							<p class="num">GOAT</p>
+							<p class="lab"><span data-lang="en">Global Champion</span><span data-lang="zh">全球冠军</span></p>
+							<p class="desc"><span data-lang="en">SensUs 2025 — the contest's first perfect analytical score in 10 years. My teammates carried the win; I ran with everything after — the pivot, the product, the company.</span><span data-lang="zh">SensUs 2025 — 赛史十年首个分析满分。夺冠是被队友带飞的，冠军之后的一切由我接手 —— 转向、产品、做成一家公司。</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">2</p>
+							<p class="lab"><span data-lang="en">Startups</span><span data-lang="zh">创业公司</span></p>
+							<p class="desc"><span data-lang="en">Founder &amp; CEO, Match Biotech; Co-founder &amp; Creative Director, Olfano (¥2M angel round closed)</span><span data-lang="zh">Match Biotech 创始人兼 CEO；Olfano 联合创始人兼创意总监（已完成 ¥2M 天使轮）</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">2</p>
+							<p class="lab"><span data-lang="en">Internships</span><span data-lang="zh">名企实习</span></p>
+							<p class="desc"><span data-lang="en">At major tech &amp; industry companies, incl. Covestro APAC</span><span data-lang="zh">知名科技与行业企业，含科思创亚太创新中心</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">2</p>
+							<p class="lab"><span data-lang="en">Global Awards</span><span data-lang="zh">国际奖项</span></p>
+							<p class="desc"><span data-lang="en">SensUs &amp; iGEM international golds</span><span data-lang="zh">SensUs 与 iGEM 国际金奖</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">6</p>
+							<p class="lab"><span data-lang="en">National Awards</span><span data-lang="zh">国家级奖项</span></p>
+							<p class="desc"><span data-lang="en">Across research, business &amp; design</span><span data-lang="zh">涵盖科研、商业与设计</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">1</p>
+							<p class="lab"><span data-lang="en">Organization Founded</span><span data-lang="zh">创办组织</span></p>
+							<p class="desc"><span data-lang="en">A large campus sci-tech innovation org — MakeSense Society</span><span data-lang="zh">大型校园科创组织 — MakeSense Society</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">10+</p>
+							<p class="lab"><span data-lang="en">Roadshows &amp; Talks</span><span data-lang="zh">路演与演讲</span></p>
+							<p class="desc"><span data-lang="en">Pitches &amp; public speaking, audiences to 1,000+</span><span data-lang="zh">路演与公开演讲，听众逾千人</span></p>
+						</div>
+						<div class="stat reveal-on">
+							<p class="num">20+</p>
+							<p class="lab"><span data-lang="en">Awards &amp; Honors</span><span data-lang="zh">奖项荣誉</span></p>
+							<p class="desc"><span data-lang="en">Covering design, business, sports &amp; management</span><span data-lang="zh">涵盖设计、商业、体育与管理</span></p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Awards -->
+				<div id="awards" class="reveal-on">
+					<h3><span data-lang="en">Awards</span><span data-lang="zh">奖项</span> <sup onclick="go()">2</sup></h3>
+
+					<div class="acc">
+						<div class="acc-item">
+							<button type="button" class="acc-bar" aria-expanded="false">
+								<span class="acc-title"><span data-lang="en">Research &amp; Tech Innovation</span><span data-lang="zh">科研与技术创新</span></span>
+								<span class="acc-count">4</span>
+								<span class="acc-chevron" aria-hidden="true"></span>
+							</button>
+							<div class="acc-panel"><div class="acc-inner">
+								<p><span data-lang="en">SensUs 2025 — International Gold</span><span data-lang="zh">SensUs 2025 — 国际金奖</span></p>
+								<p class="sm m"><span data-lang="en">Gold &middot; Analytical Performance Champion (first perfect score in 10 years) &middot; Innovation Runner-up, 2025</span><span data-lang="zh">金牌 &middot; 检测分析性能冠军（赛史十年首个满分）&middot; 创新亚军，2025</span></p>
+								<p><span data-lang="en">iGEM 2025 — International Gold</span><span data-lang="zh">iGEM 2025 — 国际金奖</span></p>
+								<p class="sm m"><span data-lang="en">Nominated: Best Measurement · Best Presentation · Best Foundational Advance · Project DOCTOR, 2025</span><span data-lang="zh">单项提名：最佳测量 · 最佳展示 · 最佳基础研究 · Project DOCTOR，2025</span></p>
+								<p><span data-lang="en">China BME Innovation Design Competition</span><span data-lang="zh">全国大学生生物医学工程创新设计竞赛</span></p>
+								<p class="sm m"><span data-lang="en">10th edition — National Second Prize, 2025</span><span data-lang="zh">第十届 — 全国二等奖，2025</span></p>
+								<p><span data-lang="en">National Synthetic Biology Innovation Contest</span><span data-lang="zh">全国合成生物学创新赛</span></p>
+								<p class="sm"><span data-lang="en">4th edition — National Silver, 2025</span><span data-lang="zh">第四届 — 全国银奖，2025</span></p>
+							</div></div>
+						</div>
+
+						<div class="acc-item">
+							<button type="button" class="acc-bar" aria-expanded="false">
+								<span class="acc-title"><span data-lang="en">Entrepreneurship &amp; Commercialization</span><span data-lang="zh">创新创业与商业转化</span></span>
+								<span class="acc-count">5</span>
+								<span class="acc-chevron" aria-hidden="true"></span>
+							</button>
+							<div class="acc-panel"><div class="acc-inner">
+								<p><span data-lang="en">&ldquo;Chuangling Pudong&rdquo; Innovation &amp; Entrepreneurship Competition</span><span data-lang="zh">「创领浦东」创新创业大赛</span></p>
+								<p class="sm m"><span data-lang="en">2026 Finals — First Prize, Young New Force Track</span><span data-lang="zh">2026 总决赛 — 青年新势力赛道一等奖</span></p>
+								<p><span data-lang="en">WAIC Global Project Roadshow × Campus Tour</span><span data-lang="zh">WAIC 全球创新项目路演校园行</span></p>
+								<p class="sm m"><span data-lang="en">Outstanding Project — invited to the Global Annual Roadshow</span><span data-lang="zh">优秀项目 — 受邀全球年度路演</span></p>
+								<p><span data-lang="en">Cesim Global Business Challenge</span><span data-lang="zh">Cesim 商业模拟全球挑战赛</span></p>
+								<p class="sm m"><span data-lang="en">18th edition · China region — Most Favored by Entrepreneurs · National Second Prize · Elite Poster Award</span><span data-lang="zh">第十八届 · 中国赛区 — 最受企业家欢迎奖 · 全国二等奖 · 精英海报奖</span></p>
+								<p><span data-lang="en">ShanghaiTech Entrepreneurship Cup</span><span data-lang="zh">上海科技大学双创大赛</span></p>
+								<p class="sm m"><span data-lang="en">7th edition — Second Prize + 2× Honorable Mention</span><span data-lang="zh">第七届 — 二等奖 + 优秀奖 × 2</span></p>
+								<p><span data-lang="en">ShanghaiTech Sci-Pop Innovation Cup</span><span data-lang="zh">上海科技大学双创科普大赛</span></p>
+								<p class="sm"><span data-lang="en">Honorable Mention</span><span data-lang="zh">优秀奖</span></p>
+							</div></div>
+						</div>
+
+						<div class="acc-item">
+							<button type="button" class="acc-bar" aria-expanded="false">
+								<span class="acc-title"><span data-lang="en">Honors &amp; Activities</span><span data-lang="zh">综合素养</span></span>
+								<span class="acc-count">7</span>
+								<span class="acc-chevron" aria-hidden="true"></span>
+							</button>
+							<div class="acc-panel"><div class="acc-inner">
+								<p><span data-lang="en">Guoqing Cup National Art &amp; Design Competition</span><span data-lang="zh">国青杯全国艺术设计大赛</span></p>
+								<p class="sm m"><span data-lang="en">National Second Prize, 2025</span><span data-lang="zh">全国二等奖，2025</span></p>
+								<p><span data-lang="en">Qingyun National College Design Competition</span><span data-lang="zh">青昀全国大学生设计大赛</span></p>
+								<p class="sm m"><span data-lang="en">1st edition — National Top 3</span><span data-lang="zh">第一届 — 前三强</span></p>
+								<p><span data-lang="en">ShanghaiTech Admissions Publicity Competition</span><span data-lang="zh">上海科技大学招生宣传大赛</span></p>
+								<p class="sm m"><span data-lang="en">2nd edition — Silver Award, Photography Track</span><span data-lang="zh">第二届 — 摄影赛道银奖</span></p>
+								<p><span data-lang="en">National College Mental-Health Knowledge Contest</span><span data-lang="zh">全国大学生心理测评暨心理知识竞赛</span></p>
+								<p class="sm m"><span data-lang="en">4th edition — National First Prize</span><span data-lang="zh">第四届 — 一等奖</span></p>
+								<p><span data-lang="en">ShanghaiTech 4th Sports Meet — Men's 4×100m</span><span data-lang="zh">上海科技大学第四届运动会 — 男子 4×100m</span></p>
+								<p class="sm m"><span data-lang="en">Silver Medal — school record broken</span><span data-lang="zh">银牌 — 打破校纪录</span></p>
+								<p><span data-lang="en">Shanghai Rowing Open 2025</span><span data-lang="zh">2025 上海赛艇公开赛</span></p>
+								<p class="sm m"><span data-lang="en">Men's 8+ · 4.2 km pursuit — 5th Place</span><span data-lang="zh">男子八人单桨 4.2 公里追逐赛 — 第五名</span></p>
+								<p><span data-lang="en">ShanghaiTech Practice Programs</span><span data-lang="zh">上海科技大学实践项目</span></p>
+								<p class="sm"><span data-lang="en">2024 Social Practice — Outstanding Individual &amp; Team 2nd Prize · 2025 Industry Practice — Outstanding Individual</span><span data-lang="zh">2024 社会实践 — 优秀个人 &amp; 团体二等奖 · 2025 产业实践 — 优秀个人</span></p>
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="roles" class="reveal-on">
+				<div id="projects">
+					<h3><span data-lang="en">Selected Projects</span><span data-lang="zh">精选项目</span></h3>
+					<ol class="timeline">
+						<li>
+							<p class="tl-year">2025 — <span data-lang="en">Present</span><span data-lang="zh">至今</span></p>
+							<p class="tl-title"><span data-lang="en">Match Biotech × SensUs 2026</span><span data-lang="zh">Match Biotech × SensUs 2026</span></p>
+							<p class="sm m"><a href="https://matchbiotech.com/" target="_blank"><span data-lang="en">Wearable continuous L-Dopa monitoring for Parkinson's care</span><span data-lang="zh">面向帕金森护理的 L-Dopa 连续监测可穿戴设备</span></a></p>
+						</li>
+						<li>
+							<p class="tl-year">2025</p>
+							<p class="tl-title"><span data-lang="en">iGEM 2025: Project DOCTOR</span><span data-lang="zh">iGEM 2025：Project DOCTOR</span></p>
+							<p class="sm m"><a href="https://2025.igem.wiki/shanghaitech-china/index.html" target="_blank"><span data-lang="en">Diagnostic Optimization &amp; Chemical Treatment Of Rhinosinusitis</span><span data-lang="zh">鼻窦炎诊断优化与化学治疗</span></a></p>
+						</li>
+						<li>
+							<p class="tl-year">2025 — <span data-lang="en">Present</span><span data-lang="zh">至今</span></p>
+							<p class="tl-title"><span data-lang="en">MakeSense Society</span><span data-lang="zh">MakeSense Society</span></p>
+							<p class="sm m"><span data-lang="en">Interdisciplinary sci-tech innovation community</span><span data-lang="zh">跨学科科创社群</span></p>
+						</li>
+						<li>
+							<p class="tl-year">2025</p>
+							<p class="tl-title"><span data-lang="en">Handbook of Project DOCTOR</span><span data-lang="zh">Project DOCTOR 手册</span></p>
+							<p class="sm m"><span data-lang="en">Science-outreach handbook for general audiences</span><span data-lang="zh">面向大众的科普手册</span></p>
+						</li>
+						<li>
+							<p class="tl-year">2025</p>
+							<p class="tl-title"><span data-lang="en">Olfano — Custom Diffuser</span><span data-lang="zh">Olfano — 定制留香机</span></p>
+							<p class="sm m"><span data-lang="en">Market-tested scent diffuser launched on the Shanghai Bund</span><span data-lang="zh">在上海外滩首发的市场验证产品</span></p>
+						</li>
+						<li>
+							<p class="tl-year">2024</p>
+							<p class="tl-title"><span data-lang="en">2025+ Global CMF Trend Handbook</span><span data-lang="zh">2025+ 全球 CMF 趋势手册</span></p>
+							<p class="sm m"><span data-lang="en">Contributor at Covestro APAC</span><span data-lang="zh">科思创亚太创新中心参与撰写</span></p>
+						</li>
+					</ol>
+				</div>
+
+				<h3><span data-lang="en">Past Roles</span><span data-lang="zh">过往履历</span></h3>
+				<p><span data-lang="en">Co-founder &amp; Creative Director <span>@</span> Shanghai Olfano Technology Co., Ltd.</span><span data-lang="zh">联合创始人兼创意总监 <span>@</span> 上海偶的科技有限公司</span></p>
+				<p class="sm">2024.11 - 2025.09</p>
+				<p><span data-lang="en">Color &amp; Design Trend Scout Intern <span>@</span> Covestro APAC Innovation Center</span><span data-lang="zh">色彩与设计趋势研究实习生 <span>@</span> 科思创亚太创新中心</span></p>
+				<p class="sm">2024.07 - 2024.10</p>
+				<p><span data-lang="en">Industrial Design Intern <span>@</span> Yineng Radio</span><span data-lang="zh">工业设计实习生 <span>@</span> 异能电台</span></p>
+				<p class="sm">2024.09 - 2024.12</p>
+				<p><span data-lang="en">Art &amp; Design Lead <span>@</span> iGEM 2025 ShanghaiTech</span><span data-lang="zh">Art &amp; Design 组长 <span>@</span> iGEM 2025 上科大</span></p>
+				<p class="sm">2025 - 2025</p>
+				<p><span data-lang="en">Design &amp; Commercialization Lead <span>@</span> SensUs MakeSense Team</span><span data-lang="zh">设计与商业转化负责人 <span>@</span> SensUs MakeSense</span></p>
+				<p class="sm l">2024 - Present</p>
+
+				<h3><span data-lang="en">Odds &amp; Ends</span><span data-lang="zh">其他角色</span></h3>
+				<p><span data-lang="en">Key Visual Design Lead</span><span data-lang="zh">主视觉设计负责人</span></p>
+				<p class="sm m"><span data-lang="en">Philadelphia Orchestra 2025 China Tour · Shanghai Philharmonic Percussion concert &ldquo;Schrödinger's Perpetual Motion Machine&rdquo;</span><span data-lang="zh">费城交响乐团 2025 中国巡演上科大站 · 上海爱乐打击乐音乐会《薛定谔的永动机》</span></p>
+				<p><span data-lang="en">Project Director, ShanghaiTech DreamBox 2024</span><span data-lang="zh">项目负责人，上科大 DreamBox 2024</span></p>
+				<p class="sm m"><span data-lang="en">School of Creativity &amp; Art</span><span data-lang="zh">创意与艺术学院</span></p>
+				<p><span data-lang="en">Research Grant Recipient</span><span data-lang="zh">科研基金获得者</span></p>
+				<p class="sm l"><span data-lang="en">ShanghaiTech "Future Materials Innovation Class"</span><span data-lang="zh">上科大「未来材料创新班」</span></p>
+
+				<h3><span data-lang="en">Elsewhere</span><span data-lang="zh">联系方式</span></h3>
+				<div id="elsewhere">
+					<p><a href="https://matchbiotech.com/" target="_blank"><span></span>
+						<span data-lang="en"> Visit <span>matchbiotech.com</span></span><span data-lang="zh"> 公司官网 <span>matchbiotech.com</span></span><sup onclick="go()">1</sup></a></p>
+					<p><a href="#" id="wechat-link"><span></span>
+						<span data-lang="en"> Find me on WeChat 公众号 <span>董寜寜</span></span><span data-lang="zh"> 微信公众号 <span>董寜寜</span></span></a></p>
+					<p><a href="mailto:masondong@shanghaitech.edu.cn"><span></span>
+						<span data-lang="en"> Drop me a line at <span>masondong@shanghaitech.edu.cn</span></span><span data-lang="zh"> 邮件 <span>masondong@shanghaitech.edu.cn</span></span></a></p>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer" class="container reveal-on">
+			<div id="notes">
+				<img src="mason-tung-avatar.jpg" alt="Photo of Mason Dong (Runlin DONG).">
+				<h4><span data-lang="en">About Me</span><span data-lang="zh">关于我</span></h4>
+				<p>
+					<span data-lang="en">I've been incredibly lucky to find collaborators — much of my growth has come through a network of talented friends and mentors at ShanghaiTech and in the iGEM &amp; SensUs communities. For them, I am grateful.</span>
+					<span data-lang="zh">我很幸运找到一群同行者 —— 我的成长大半来自大学和社会的那些聪明、热情并且非功利的人。感谢他们。</span>
+				</p>
+				<h3><span data-lang="en">Speaking of collaboration...</span><span data-lang="zh">说到合作……</span></h3>
+				<p>
+					<span data-lang="en">I love connecting with others who care about <strong>healthcare innovation</strong>, <strong>building small ambitious teams</strong>, or <strong>bridging design &amp; biology</strong>. I'm particularly happy to chat with undergrads thinking about getting into research or starting a company. Please don't hesitate to <a href="mailto:masondong@shanghaitech.edu.cn">reach out</a> if I can be of help in any way.</span>
+					<span data-lang="zh">我喜欢和这些人聊：关心 <strong>医疗创新</strong>、热爱 <strong>Supercell式的团队</strong>、致力于 <strong>设计与生物的交叉</strong>。特别欢迎正在考虑做科研或创业的本科生。如有任何我能帮上忙的地方，请<a href="mailto:masondong@shanghaitech.edu.cn">直接发邮件</a>。</span>
+				</p>
+			</div>
+
+			<div id="footnotes">
+				<h4><span data-lang="en">Footnotes</span><span data-lang="zh">Footnotes</span></h4>
+				<ul>
+					<li><em>↳</em><span>1</span>
+						<span data-lang="en">You can also reach the WeChat 公众号 「<strong>董寜寜</strong>」 — just copy and search.</span>
+						<span data-lang="zh">也可以微信搜索公众号 「<strong>董寜寜</strong>」。</span>
+					</li>
+					<li><em>↳</em><span>2</span>
+						<span data-lang="en">I'm open to speaking opportunities. Topics I'm interested in: <strong>healthcare ventures from student labs</strong>, <strong>biosensing competitions like SensUs and iGEM</strong>, and <strong>interdisciplinary undergrad research</strong>. If you have something I'd be a fit for, please <a href="mailto:masondong@shanghaitech.edu.cn">reach out</a>.</span>
+						<span data-lang="zh">欢迎演讲邀请：话题：<strong>学生实验室孵化的医疗创业</strong>、<strong>SensUs / iGEM 这类生物传感比赛</strong>、<strong>跨学科科创</strong>。合适的机会请<a href="mailto:masondong@shanghaitech.edu.cn">来信</a>。</span>
+					</li>
+					<li><em>↳</em><span>3</span>
+						<span data-lang="en">Match Biotech is targeting real-time L-Dopa monitoring for Parkinson's disease — a painless-microneedle wearable to crack 60+ years of dosing uncertainty. <strong>Few things have been more valuable in my growth than building this team from a SensUs competition entry into an actual company.</strong></span>
+						<span data-lang="zh">Match Biotech 专注帕金森病 L-Dopa 的实时监测 —— 用无痛微针可穿戴设备破解 60 多年来的剂量不确定难题。<strong>从一支 SensUs 参赛队走到一家真公司 —— 这段过程是我成长里最值钱的事之一。</strong></span>
+					</li>
+				</ul>
+			</div>
+
+			<p class="copy">
+				<span data-lang="en">© 2026 Runlin DONG — Shanghai</span>
+				<span data-lang="zh">© 2026 董润霖 — 上海</span>
+			</p>
+		</div>
+	</div>
+
+	<script>
+	function go() {
+		const footnotes = document.getElementById('footnotes');
+		setTimeout(function () {
+			footnotes.scrollIntoView({behavior: 'smooth'});
+		}, 50);
+	}
+
+	// ---- THEME CYCLE (R ®) ----------------------------------------
+	const ALL_THEMES = ['purple', 'brown', 'green', 'blue'];
+
+	// Rotation accumulator — every click adds 360°, CSS transition smoothly
+	// chases the new target. No interrupt, no snap on rapid clicks.
+	let rTotalDeg = 0;
+	function theme() {
+		const r = document.getElementById('r');
+		rTotalDeg += 360;
+		r.style.transition = 'transform 650ms cubic-bezier(0.22, 1, 0.36, 1)';
+		r.style.transform  = 'rotate(' + rTotalDeg + 'deg)';
+
+		const body = document.body;
+		let next = ALL_THEMES[Math.floor(Math.random() * ALL_THEMES.length)];
+		while (body.classList.contains(next)) {
+			next = ALL_THEMES[Math.floor(Math.random() * ALL_THEMES.length)];
+		}
+		ALL_THEMES.forEach(t => body.classList.remove(t));
+		body.classList.add(next);
+	}
+
+	// ---- LANGUAGE TOGGLE ------------------------------------------
+	(function () {
+		const btn = document.getElementById('lang-toggle');
+		const html = document.documentElement;
+		function apply(lang) {
+			html.setAttribute('lang', lang);
+			try { localStorage.setItem('cv-lang', lang); } catch (_) {}
+		}
+		btn.addEventListener('click', () => {
+			const cur = html.getAttribute('lang') || 'en';
+			apply(cur === 'en' ? 'zh' : 'en');
+		});
+		try {
+			if (!localStorage.getItem('cv-lang')) {
+				const browser = (navigator.language || 'en').toLowerCase();
+				if (browser.startsWith('zh')) apply('zh');
+			}
+		} catch (_) {}
+	})();
+
+	// ---- PAGE TRANSITION (CV ↔ Gallery / Index) -------------------
+	// Intercept internal navigations and play a brief fade-out before
+	// the actual hop so the swap doesn't feel like a hard reload.
+	(function () {
+		const INTERNAL = /^(gallery\.html|CV\.html|index\.html)(\?|#|$)/i;
+		const DURATION = 240;
+		document.addEventListener('click', function (e) {
+			const a = e.target.closest('a');
+			if (!a) return;
+			if (a.target === '_blank') return;
+			const href = a.getAttribute('href');
+			if (!href || !INTERNAL.test(href)) return;
+			if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+			e.preventDefault();
+			document.body.classList.add('is-leaving');
+			setTimeout(function () { window.location.href = href; }, DURATION);
+		});
+	})();
+
+	// ---- WECHAT COPY ----------------------------------------------
+	(function () {
+		const link = document.getElementById('wechat-link');
+		if (!link) return;
+		link.addEventListener('click', async (e) => {
+			e.preventDefault();
+			const name = '董寜寜';
+			let ok = false;
+			try { await navigator.clipboard.writeText(name); ok = true; }
+			catch (_) {
+				const ta = document.createElement('textarea');
+				ta.value = name; ta.style.position = 'fixed'; ta.style.opacity = '0';
+				document.body.appendChild(ta); ta.select();
+				try { ok = document.execCommand('copy'); } catch (_) {}
+				document.body.removeChild(ta);
+			}
+			const lang = document.documentElement.getAttribute('lang') || 'en';
+			alert(lang === 'zh'
+				? (ok ? `已复制公众号「${name}」· 请在微信中搜索` : `公众号「${name}」· 请在微信中搜索`)
+				: (ok ? `Copied WeChat ID "${name}" — search it in WeChat` : `WeChat ID "${name}" — search it in WeChat`));
+		});
+	})();
+
+	// ---- PAGE-LOAD REVEAL CASCADE ---------------------------------
+	// Each .reveal-on element fades in just as the saturation wipe passes
+	// over it: delay = (element top ÷ viewport height) × sweep duration, so a
+	// constant-speed wipe keeps text and colour in lock-step. Off-screen
+	// elements get a gentle stagger right after the wipe.
+	(function () {
+		const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const els = document.querySelectorAll('.reveal-on');
+		if (reduce) { document.body.classList.add('reveal-go'); return; }
+		const SWEEP = 720;   // ms — matches the .page-reveal wipe duration
+		const LEAD = 60;     // ms — text trails just behind the colour front
+		const vh = window.innerHeight || 800;
+		let below = 0;
+		els.forEach((el) => {
+			const top = el.getBoundingClientRect().top;
+			const delay = top <= vh
+				? Math.max(0, (top / vh) * SWEEP) + LEAD
+				: SWEEP + 80 + (below++ * 55);
+			el.style.animationDelay = Math.round(delay) + 'ms';
+		});
+		// Trigger the animations once the delays are in place. rAF is paused in
+		// background / headless tabs, so a setTimeout fallback guarantees the
+		// content is never left stuck hidden (adding the class twice is a no-op).
+		const start = () => document.body.classList.add('reveal-go');
+		requestAnimationFrame(start);
+		setTimeout(start, 60);
+		// Failsafe: whatever happens to the animations (paused tab, power
+		// saving, etc.), force everything visible after the cascade window so
+		// content is never left hidden.
+		setTimeout(() => document.body.classList.add('reveal-done'), 2600);
+	})();
+
+	// ---- AWARDS ACCORDION -----------------------------------------
+	// Click a category bar to expand / collapse its awards. Each bar toggles
+	// independently; the count badge is baked into the markup.
+	(function () {
+		document.querySelectorAll('.acc-bar').forEach((bar) => {
+			bar.addEventListener('click', () => {
+				const item = bar.closest('.acc-item');
+				const open = item.classList.toggle('open');
+				bar.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		});
+	})();
+	</script>
+</body>
+</html>
