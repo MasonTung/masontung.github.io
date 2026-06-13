@@ -51,7 +51,7 @@ body.load {
 }
 
 body.purple { background: #524FC4; }
-body.green { background: #3DB97A; }
+body.green { background: #0E7A45; }
 body.brown { background: #C07A3F; }
 body.blue { background: #2F57E8; }
 
@@ -99,7 +99,7 @@ body.blue #main, body.blue #roles { border-left: 1px solid rgba(138, 160, 255, 0
   grid-area: n;
   position: relative;
   padding: 100px 60px;
-  border-left: 1px solid #313E36;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   column-gap: 60px;
@@ -137,7 +137,7 @@ body.blue #main, body.blue #roles { border-left: 1px solid rgba(138, 160, 255, 0
   grid-area: f;
   position: relative;
   padding: 100px 60px 40px;
-  border-left: 1px solid #313E36;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #footnotes ul li {
@@ -191,7 +191,17 @@ body.blue #footnotes li span, body.blue #footnotes li a, body.blue #footnotes li
   position: relative;
   padding: 0 60px;
   background: #1A2920;
+  transition: background 0.5s ease;
+  -webkit-transition: background 0.5s ease;
 }
+
+/* Footer bar tracks the active theme — a deep, low-luminance shade of each
+   hue so the cream text stays crisp while the bottom bar harmonises with the
+   main page instead of always being forest-green. */
+body.purple #footer { background: #1A1742; }
+body.green  #footer { background: #0A2A1A; }
+body.brown  #footer { background: #271710; }
+body.blue   #footer { background: #0E1838; }
 
 #footer .container { padding: 0; }
 
