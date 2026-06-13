@@ -481,6 +481,19 @@ p.tl-title {
   transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .acc-item.open .acc-panel { grid-template-rows: 1fr; }
+
+/* Hover-to-expand on pointer devices: moving the mouse over a category opens
+   it; leaving collapses it. Hovering anywhere on the item (bar OR the opened
+   panel) keeps it open, so you can read the contents. Touch devices have no
+   hover, so they fall back to the tap/click toggle (.open) above.
+   focus-within keeps it keyboard-accessible. */
+@media (hover: hover) and (pointer: fine) {
+  .acc-item:hover .acc-panel,
+  .acc-item:focus-within .acc-panel { grid-template-rows: 1fr; }
+  .acc-item:hover .acc-chevron,
+  .acc-item:focus-within .acc-chevron { transform: rotate(-135deg); margin-bottom: -1px; }
+}
+
 .acc-inner {
   overflow: hidden;
   min-height: 0;
