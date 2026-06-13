@@ -1,6 +1,8 @@
-# Local-only folders — never publish
+# Local-only folders — never publish (kept in local backups, not online)
 个人资料/
 参考网页/
+backups/
+frozen/
 .DS_Store
 **/.DS_Store
 .claude/launch.json
