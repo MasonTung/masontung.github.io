@@ -103,12 +103,6 @@ Long form:
 - **Link**: https://www.sohu.com/a/934091809_121124378
 - **Lede**: A compact, high-caliber, interdisciplinary innovation community at ShanghaiTech — bringing researchers and builders together on ambitious sci-tech projects.
 
-### 4. Handbook of Project DOCTOR
-- **Tags**: iGEM · Outreach
-- **Role**: Editorial & Design
-- **Year**: 2025
-- **Format**: PDF handbook
-- **Lede**: Science-outreach handbook introducing rhinosinusitis to general audiences, alongside Project DOCTOR's diagnostic and treatment innovations.
 
 ### Side / Past projects (CV references):
 - Shanghai Oude Custom Diffuser — Market-tested fragrance product launched on the Shanghai Bund, 2025

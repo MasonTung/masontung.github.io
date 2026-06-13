@@ -63,7 +63,6 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 | Match Biotech × SensUs 2026 | Wearable continuous L-Dopa monitoring for Parkinson's care | Match Biotech × SensUs 2026 | 面向帕金森护理的 L-Dopa 连续监测可穿戴设备 | https://matchbiotech.com/ |
 | Project DOCTOR | Diagnostic Optimization & Chemical Treatment Of Rhinosinusitis | Project DOCTOR | 鼻窦炎诊断优化与化学治疗 | https://2025.igem.wiki/shanghaitech-china/index.html |
 | MakeSense Society | Interdisciplinary sci-tech innovation community | MakeSense Society | 跨学科科创社群 | (no link) |
-| Handbook of Project DOCTOR | Science-outreach handbook for general audiences | Project DOCTOR 手册 | 面向大众的科普手册 | (no link) |
 | Olfano — Custom Diffuser | Market-tested scent diffuser launched on the Shanghai Bund, 2025 | Olfano — 定制留香机 | 在上海外滩首发的市场验证产品，2025 | (no link) |
 | 2025+ Global CMF Trend Handbook | Contributor at Covestro APAC, 2024 | 2025+ 全球 CMF 趋势手册 | 科思创亚太创新中心参与撰写，2024 | (no link) |
 
