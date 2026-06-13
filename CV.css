@@ -1095,3 +1095,46 @@ h1 > span#r          { top: -22px !important; }
     vertical-align: baseline !important;
   }
 }
+
+/* ===========================
+   ® — DESKTOP / TABLET SIZING (authoritative override of the legacy Noah
+   breakpoints). The old rules shrank the box to 40px at ≤1199 while the
+   glyph stayed full-size until ≤1140, so a 120px glyph in a 40px box spilled
+   onto the wordmark at mid widths. Here the mark scales in lockstep with the
+   h1 font-size (which only changes at 1140px): one size above 1140, a
+   proportional smaller one from 768–1140. Box : line-height : glyph ratios
+   are kept constant so the glyph stays centred and the click-rotation spins
+   on the geometric centre. Position clears the end of "Dong" by ~9px.
+=========================== */
+@media screen and (min-width: 1141px) {
+  h1 > span#r,
+  h1 span#r {
+    position: absolute !important;
+    display: inline-block !important;
+    font-size: 108px !important;
+    width: 70px !important;
+    height: 70px !important;
+    line-height: 91px !important;
+    text-indent: -1px !important;
+    top: -22px !important;
+    right: -84px !important;
+    left: auto !important;
+    vertical-align: baseline !important;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1140px) {
+  h1 > span#r,
+  h1 span#r {
+    position: absolute !important;
+    display: inline-block !important;
+    font-size: 60px !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 52px !important;
+    text-indent: -1px !important;
+    top: -12px !important;
+    right: -50px !important;
+    left: auto !important;
+    vertical-align: baseline !important;
+  }
+}
