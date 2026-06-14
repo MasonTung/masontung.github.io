@@ -129,8 +129,8 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 **中**: 也可以访问 [Match Biotech](https://matchbiotech.com/)，或微信搜索公众号 「**董寜寜**」。
 
 ### Footnote 2
-**EN**: I'm open to speaking opportunities. Topics I'm interested in speaking about: **healthcare ventures from student labs**, **biosensing competitions like SensUs and iGEM**, and **interdisciplinary undergrad research**. If you have something I'd be a fit for, please [reach out](mailto:masondong@shanghaitech.edu.cn).
-**中**: 欢迎演讲邀请。感兴趣的话题：**学生实验室孵化的医疗创业**、**SensUs / iGEM 这类生物传感比赛**、**跨学科本科科研**。合适的机会请[来信](mailto:masondong@shanghaitech.edu.cn)。
+**EN**: I'm open to speaking opportunities. Topics I'm interested in speaking about: **healthcare ventures from student labs**, **biosensing competitions like SensUs**, and **interdisciplinary undergrad research**. If you have something I'd be a fit for, please [reach out](mailto:masondong@shanghaitech.edu.cn).
+**中**: 欢迎演讲邀请。感兴趣的话题：**学生实验室孵化的医疗创业**、**SensUs 这类生物传感比赛**、**跨学科本科科研**。合适的机会请[来信](mailto:masondong@shanghaitech.edu.cn)。
 
 ### Footnote 3
 **EN**: Match Biotech is targeting real-time L-Dopa monitoring for Parkinson's disease — a painless-microneedle wearable to crack 60+ years of dosing uncertainty. **Few things have been more valuable in my growth than building this team from a SensUs competition entry into an actual company.**
