@@ -35,7 +35,7 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 |---|---|---|---|
 | Company | Visit matchbiotech.com | 访问 matchbiotech.com | https://matchbiotech.com/ |
 | WeChat  | Find me on WeChat 公众号 董寜寜 | 微信公众号 董寜寜（点击复制） | (copy-only) |
-| Email   | Drop me a line at masondong@shanghaitech.edu.cn | 邮件 masondong@shanghaitech.edu.cn | masondong@shanghaitech.edu.cn |
+| Email   | Drop me a line at masondong@matchbiotech.com | 邮件 masondong@matchbiotech.com | masondong@matchbiotech.com |
 
 (GitHub row deleted by user 2026-05-19. Gallery row removed — Gallery is now linked from the "photography / 摄影" word in the hero intro paragraph.)
 
@@ -115,10 +115,10 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 
 ### Collaboration paragraph
 **EN**:
-> I love connecting with others who care about **healthcare innovation**, **building small ambitious teams**, or **bridging design & biology**. I'm particularly happy to chat with undergrads thinking about getting into research or starting a company. Please don't hesitate to [reach out](mailto:masondong@shanghaitech.edu.cn) if I can be of help in any way.
+> I love connecting with others who care about **healthcare innovation**, **building small ambitious teams**, or **bridging design & biology**. I'm particularly happy to chat with undergrads thinking about getting into research or starting a company. Please don't hesitate to [reach out](mailto:masondong@matchbiotech.com) if I can be of help in any way.
 
 **中**:
-> 我喜欢和这些人聊：关心 **医疗创新**、热爱 **建小而野心的团队**、致力于 **设计与生物的交叉**。特别欢迎正在考虑做科研或创业的本科生。如有任何我能帮上忙的地方，请[直接发邮件](mailto:masondong@shanghaitech.edu.cn)。
+> 我喜欢和这些人聊：关心 **医疗创新**、热爱 **建小而野心的团队**、致力于 **设计与生物的交叉**。特别欢迎正在考虑做科研或创业的本科生。如有任何我能帮上忙的地方，请[直接发邮件](mailto:masondong@matchbiotech.com)。
 
 ---
 
@@ -129,8 +129,8 @@ Format: each section has an `EN` block and `中` block. Inline HTML (`<strong>`,
 **中**: 也可以访问 [Match Biotech](https://matchbiotech.com/)，或微信搜索公众号 「**董寜寜**」。
 
 ### Footnote 2
-**EN**: I'm open to speaking opportunities. Topics I'm interested in speaking about: **healthcare ventures from student labs**, **biosensing competitions like SensUs**, and **interdisciplinary undergrad research**. If you have something I'd be a fit for, please [reach out](mailto:masondong@shanghaitech.edu.cn).
-**中**: 欢迎演讲邀请。感兴趣的话题：**学生实验室孵化的医疗创业**、**SensUs 这类生物传感比赛**、**跨学科本科科研**。合适的机会请[来信](mailto:masondong@shanghaitech.edu.cn)。
+**EN**: I'm open to speaking opportunities. Topics I'm interested in speaking about: **healthcare ventures from student labs**, **biosensing competitions like SensUs**, and **interdisciplinary undergrad research**. If you have something I'd be a fit for, please [reach out](mailto:masondong@matchbiotech.com).
+**中**: 欢迎演讲邀请。感兴趣的话题：**学生实验室孵化的医疗创业**、**SensUs 这类生物传感比赛**、**跨学科本科科研**。合适的机会请[来信](mailto:masondong@matchbiotech.com)。
 
 ### Footnote 3
 **EN**: Match Biotech is targeting real-time L-Dopa monitoring for Parkinson's disease — a painless-microneedle wearable to crack 60+ years of dosing uncertainty. **Few things have been more valuable in my growth than building this team from a SensUs competition entry into an actual company.**

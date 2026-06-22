@@ -7,7 +7,7 @@ Source of truth for site rebuilds. All copy / data lives here.
 ## Identity
 - **English name**: Mason Dong (or Runlin DONG)
 - **Chinese name**: 董润霖
-- **Email**: masondong@shanghaitech.edu.cn
+- **Email**: masondong@matchbiotech.com
 - **GitHub**: github.com/MasonTung
 - **WeChat 公众号**: 董寜寜
 - **Company**: matchbiotech.com
