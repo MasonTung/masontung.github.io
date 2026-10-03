@@ -15,6 +15,7 @@ This is Mason Dong / 董润霖's public GitHub Pages website. It uses static HTM
 - The company, ShanghaiTech MakeSense competition team and MakeSense community are separate entities.
 - Use precise award categories and years; gold medals do not imply an overall championship.
 - Year 0 / pre-master's status is not an awarded master's degree. The undergraduate degree is in progress with an expected graduation date.
+- Do not display advisor names on the public profile; the owner requested their removal on 2026-10-03.
 - Separate research goals and prototypes from clinically validated or approved products.
 - Preserve both English and Chinese copy. Keep the Chinese name 董润霖 distinct from the WeChat public account 董寜寜.
 - Do not invent metrics, customer relationships, credentials or technical outcomes. Record public source links and the date of owner-confirmed identity changes.

@@ -72,7 +72,7 @@ Positioning: an industrial-design founder working on biosensing, with personal c
 | Education & Research | 教育与研究 |
 | CASE Lab · ShanghaiTech University | CASE Lab · 上海科技大学 |
 | Pre-master’s student (Year 0) · Mechanical Engineering, Intelligent Manufacturing | 研0 · 机械专业，智能制造方向 |
-| School of Creativity and Art · Advisors: Rui Yang and Yingna Wu | 创意与艺术学院 · 导师：杨锐、武颖娜 |
+| School of Creativity and Art | 创意与艺术学院 |
 | B.Eng. in progress · Industrial Design | 工学学士在读 · 工业设计 |
 | Smart Design track · ShanghaiTech · 2023–2027 (expected) | 智能设计方向 · 上海科技大学 · 2023–2027（预计） |
 | Selected Projects | 精选项目 |

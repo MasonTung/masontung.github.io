@@ -6,7 +6,7 @@ The active site is `CV.html`; `index.html` redirects there. `cv-content.md` mirr
 
 - Founder & CEO, Match Biotech / 火柴生物, Shanghai.
 - Product definition, industrial design, clinical-needs research and commercialization.
-- Pre-master’s student (Year 0), CASE Lab, School of Creativity and Art, ShanghaiTech University. Mechanical Engineering, Intelligent Manufacturing. Advisors: Rui Yang (杨锐) and Yingna Wu (武颖娜).
+- Pre-master’s student (Year 0), CASE Lab, School of Creativity and Art, ShanghaiTech University. Mechanical Engineering, Intelligent Manufacturing.
 - Undergraduate Industrial Design, Smart Design track, ShanghaiTech, 2023–2027 (expected). Degree in progress.
 - Email: masondong@matchbiotech.com
 - LinkedIn: https://www.linkedin.com/in/mason-dong/
