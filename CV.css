@@ -507,7 +507,7 @@ p.tl-title {
 #statwall { margin: 44px 0 54px; }
 .statgrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 36px 30px;
 }
 .stat { min-width: 0; }
@@ -663,14 +663,14 @@ sup {
     margin: 0 0 30px;
     padding: 0;
   }
-  #footnotes ul li span, #footnotes ul li em {
+  #footnotes ul li span:not([data-lang]), #footnotes ul li em {
     position: relative;
     display: inline-block;
     top: auto;
     left: auto;
     margin: 0 5px 0 0;
   }
-  #footnotes ul li span { margin: 0 8px 0 0; }
+  #footnotes ul li span:not([data-lang]) { margin: 0 8px 0 0; }
   h1 span {
     width: 40px;
     height: 40px;
@@ -1137,4 +1137,18 @@ h1 > span#r          { top: -22px !important; }
     left: auto !important;
     vertical-align: baseline !important;
   }
+}
+
+/* Keep the personal contribution close to the company introduction. */
+#main h2 { margin-bottom: 20px; }
+.intro-detail { font-size: 18px; line-height: 1.5; max-width: 780px; margin: 0 0 16px; }
+.intro-detail span { color: #FFF8DE; }
+#awards a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 767px) { .intro-detail { font-size: 16px; } }
+
+#elsewhere a { overflow-wrap: anywhere; }
+#footer p.copy { right: 30px; }
+
+@media (max-width: 767px) {
+  html[lang="zh"] h1 > span#r { right: -46px !important; }
 }
