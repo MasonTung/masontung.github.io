@@ -1,6 +1,6 @@
 # CV bilingual copy reference
 
-> Reviewed for this website update on 2026-10-03. This file mirrors the public copy in CV.html, in document order. There is no automatic generator; update both files together.
+> Updated on 2026-10-04. The public page shows English only; Chinese copy is retained in source but hidden at the owner's request. This file mirrors the copy in CV.html, in document order. There is no automatic generator; update both files together.
 
 Positioning: an industrial-design founder working on biosensing, with personal contributions, team achievements and research stage stated separately.
 
@@ -109,7 +109,7 @@ Positioning: an industrial-design founder working on biosensing, with personal c
 | You can also reach the WeChat 公众号 「董寜寜」 — just copy and search. | 也可以微信搜索公众号 「董寜寜」。 |
 | I'm open to speaking opportunities. Topics I'm interested in: healthcare ventures from student labs, biosensing competitions like SensUs, and interdisciplinary undergrad research. If you have something I'd be a fit for, please reach out. | 欢迎演讲邀请：话题：学生实验室孵化的医疗创业、SensUs 这类生物传感比赛、跨学科科创。合适的机会请来信。 |
 | DopaMatch is a research project for continuous levodopa monitoring. It remains in prototype R&D. SensUs results describe the ShanghaiTech MakeSense team’s performance under competition test conditions; they do not establish clinical performance or medical-device approval. | DopaMatch 是左旋多巴连续监测研发项目，目前仍在原型研发阶段。SensUs 成绩属于上海科技大学 MakeSense 战队在赛事测试条件下的表现，不代表临床性能或医疗器械获批。 |
-| © 2026 Runlin DONG — Shanghai · Updated October 3, 2026 | © 2026 董润霖 — 上海 · 更新于 2026 年 10 月 3 日 |
+| © 2026 Runlin DONG — Shanghai · Updated October 4, 2026 | © 2026 董润霖 — 上海 · 更新于 2026 年 10 月 4 日 |
 
 ## Public evidence and maintenance boundaries
 

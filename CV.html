@@ -19,15 +19,7 @@
 	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 	<link rel="stylesheet" href="CV.css">
 	<script>
-	// Restore lang preference before body parses → no flash
-	(function () {
-		try {
-			var stored = localStorage.getItem('cv-lang');
-			if (stored === 'zh' || stored === 'en') {
-				document.documentElement.setAttribute('lang', stored);
-			}
-		} catch (_) {}
-	})();
+	// English-only presentation for now. Ignore saved and browser language preferences.
 	// Mark that JS is available BEFORE first paint, so the reveal targets are
 	// hidden from frame one (no flash). If this script never runs, content
 	// stays visible — graceful no-JS fallback.
@@ -36,10 +28,7 @@
 </head>
 <body class="purple">
 
-	<!-- Top-right language toggle — switches EN ↔ 中 -->
-	<button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch language">
-		<span data-when="en">中</span><span data-when="zh">EN</span>
-	</button>
+	<!-- Chinese copy is retained below for future use; language switching is disabled. -->
 
 	<div class="page-reveal" aria-hidden="true"></div>
 
@@ -256,7 +245,7 @@
 			</div>
 
 			<p class="copy">
-				<span data-lang="en">© 2026 Runlin DONG — Shanghai · Updated October 3, 2026</span><span data-lang="zh">© 2026 董润霖 — 上海 · 更新于 2026 年 10 月 3 日</span>
+				<span data-lang="en">© 2026 Runlin DONG — Shanghai · Updated October 4, 2026</span><span data-lang="zh">© 2026 董润霖 — 上海 · 更新于 2026 年 10 月 4 日</span>
 			</p>
 		</div>
 	</div>
@@ -289,29 +278,6 @@
 		ALL_THEMES.forEach(t => body.classList.remove(t));
 		body.classList.add(next);
 	}
-
-	// ---- LANGUAGE TOGGLE ------------------------------------------
-	(function () {
-		const btn = document.getElementById('lang-toggle');
-		const html = document.documentElement;
-		function apply(lang) {
-			html.setAttribute('lang', lang);
-			document.title = lang === 'zh' ? '董润霖 — 生物传感、设计与创业' : 'Mason Dong — Biosensing, Design & Entrepreneurship';
-			btn.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换为中文');
-			try { localStorage.setItem('cv-lang', lang); } catch (_) {}
-		}
-		btn.addEventListener('click', () => {
-			const cur = html.getAttribute('lang') || 'en';
-			apply(cur === 'en' ? 'zh' : 'en');
-		});
-		try {
-			if (!localStorage.getItem('cv-lang')) {
-				const browser = (navigator.language || 'en').toLowerCase();
-				if (browser.startsWith('zh')) apply('zh');
-			}
-		} catch (_) {}
-		apply(html.getAttribute('lang') || 'en');
-	})();
 
 	// ---- PAGE TRANSITION (CV ↔ Gallery / Index) -------------------
 	// Intercept internal navigations and play a brief fade-out before

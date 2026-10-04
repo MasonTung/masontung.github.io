@@ -6,7 +6,7 @@ Static HTML/CSS/JavaScript. No backend, build step, npm dependencies, environmen
 
 ## Files
 
-- `CV.html` / `CV.css`: active bilingual profile.
+- `CV.html` / `CV.css`: active English-only profile. Chinese copy is retained in source but hidden; there is no language switch or automatic language selection (owner request, 2026-10-04).
 - `index.html`: redirect to the profile.
 - `gallery.html`: photography.
 - `content.md` / `cv-content.md`: public content references; edit alongside HTML.

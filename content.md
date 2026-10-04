@@ -29,6 +29,6 @@ The active site is `CV.html`; `index.html` redirects there. `cv-content.md` mirr
 
 ## Maintenance
 
-Preserve the bilingual presentation, theme cycle, page reveal, awards accordion, WeChat copy interaction and gallery. Keep personal interests outside the professional introduction. Do not restore obsolete “Junior,” “GOAT,” overall championship, clinical-product, painless-microneedle or completed-degree claims from older drafts.
+The public profile shows only English as of the owner's request on 2026-10-04. Chinese copy stays hidden in source for future restoration; do not re-enable language switching or browser/saved-language selection without an owner request. Preserve the theme cycle, page reveal, awards accordion, WeChat copy interaction and gallery. Keep personal interests outside the professional introduction. Do not restore obsolete “Junior,” “GOAT,” overall championship, clinical-product, painless-microneedle or completed-degree claims from older drafts.
 
 Specific company progress, experimental data, patent details, partnerships, orders and fundraising milestones are confidential unless the owner specifically authorizes publication. Do not add internal notes or private personal material to this public repository.
